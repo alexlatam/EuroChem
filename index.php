@@ -10,14 +10,14 @@ include 'common/datosGenerales.php';
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta name="desciption" content="Mavic es una nueva E-commerce Venezolana, creyente de la nueva era digital de venta por internet.">
-  <meta name="keywords" content="Suminstros Mavic, Mavic, Mavic vzla">
+  <meta name="desciption" content="">
+  <meta name="keywords" content="">
   <meta name="author" content="Eutuxia, C.A.">
-  <meta name="application-name" content="Suministros Mavic."/>
+  <meta name="application-name" content=""/>
   <link rel="icon" type="image/jpg" sizes="16x16" href="admin/img/<?php echo $imageLogo;?>">
-  <link rel="stylesheet" href="admin/assets/vendor/owlcarousel/assets/owl.carousel.min.css">
-  <link rel="stylesheet" href="admin/assets/vendor/owlcarousel/assets/owl.theme.default.min.css">
-  <link rel="stylesheet" href="css/new.css">
+  <link rel="stylesheet" href="assets/vendor/owlcarousel/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="assets/vendor/owlcarousel/assets/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/style.css">
   <link href="assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
   <script src="assets/libs/jquery/dist/jquery.min.js"></script>
@@ -47,6 +47,38 @@ include 'common/datosGenerales.php';
       </div>
     </div>
   </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white pt-0">
+    <div class="container my-0">
+      <a class="navbar-brand py-0" href="#">
+        <img src="imagen/logo-conquimica.png" class="d-inline-block align-top" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-3">
+        <li class="nav-item active">
+          <a class="nav-link text_menu_2 active" href="#">Inicio</a>
+        </li>
+        <li class="nav-item ml-3">
+          <a class="nav-link text_menu_2" href="#">Divisiones</a>
+        </li>
+        <li class="nav-item ml-3">
+          <a class="nav-link text_menu_2" href="#">Industrias</a>
+        </li>
+        <li class="nav-item ml-3">
+          <a class="nav-link text_menu_2" href="#">Nuestra compañía</a>
+        </li>
+        <li class="nav-item ml-3">
+          <a class="nav-link text_menu_2" href="#">Pagos en línea</a>
+        </li>
+        <li class="nav-item ml-3">
+          <a class="nav-link text_menu_2" href="#">Contáctenos</a>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </nav>
   <?php// include 'common/menu.php'; include 'common/2domenu.php';?>
   <!--Colores #cc0033 #000066 -->
   <!--Corousel Library-->

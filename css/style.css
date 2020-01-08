@@ -6,7 +6,7 @@
   background-color: #f2f2f2;
 }
 .border_rigth{
-  border-right: #000066 solid 1px;
+  border-right: #000066 solid 0.5px;
 }
 .text_menu_1{
   font-weight: 600;
@@ -23,4 +23,16 @@
   text-decoration: none;
   -webkit-transition: color 1.5s;
   transition: color 1.5s;
+}
+.text_menu_2{
+  font-weight: 700;
+  font-size: 16px;
+  color:#8a8b8c;
+}
+.text_menu_2:hover{
+  color:#8a8b8c !important;
+  text-decoration: underline !important;
+}
+.text_menu_2.active{
+  color:#000066 !important;
 }
