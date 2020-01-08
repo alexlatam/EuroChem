@@ -1,0 +1,25 @@
+.div_top{
+  background-color: #000066;
+  height: 5px;
+}
+.border_rigth{
+  border-right: #000066 solid 1px;
+}
+.text_menu_1{
+  font-size: 15px;
+  color:#8a8b8c;
+  line-height: 39px;
+}
+.enlace_menu{
+  color:#8a8b8c;
+  font-size: 15px;
+}
+.enlace_menu:hover{
+  color:#000066;
+  text-decoration: none;
+  -webkit-transition: color 1.5s; /* Safari prior 6.1 */
+  transition: color 1.5s;
+}
+.div_ppal{
+  background-color: #f2f2f2;
+}
