@@ -100,4 +100,18 @@
 }
 .titulos{
   color:#000066;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+.contenedor_pagos{
+  background-color: #255aa7;
+  min-width: 20%;
+  min-height: 70vh;
+}
+.text_pagos_home{
+  font-size: 22px;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+.titulos_blog{
+  color:#000066;
+  font-family: 'Roboto Condensed', sans-serif;
 }

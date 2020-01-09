@@ -103,7 +103,82 @@ include 'common/datosGenerales.php';
       </div>
     </div>
   </section>
+  <!-- Seccion de Video -->
+  <section class="container px-5 my-5">
+    <div class="row px-4">
+      <div class="col-6">
+        <div class="row mt-3">
+          <h2 class="titulos" style="font-family: 'Roboto Condensed', sans-serif;">Nuestra compañía</h2>
+        </div>
+        <div class="row text-muted">
+          Conquimica S.A. es una compañía colombiana con 40 años de experiencia en la comercialización de materias primas para diversos sectores productivos en el país: recubrimientos, aseo, plásticos, ingredientes para la industria de alimentos y bebidas, agro, adhesivos y pegantes, textil, farma, cosméticos, petróleos, fabricación de intermediarios químicos, entre otros.
+        </div>
+        <div class="row justify-content-center mt-5">
+          <a class="btn btn-primary px-5" href="#">Ver Más</a>
+        </div>
+      </div>
+      <div class="col-6">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/ZOV-7f3aofM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+  <!-- Seccion Prodcuto del mes -->
+  <section class="container px-5 mb-5">
+    <div class="row px-4">
+      <div class="col-8">
+        <div class="row">
+          <h2 class="titulos">Producto del mes</h2>
+        </div>
+        <div class="row mt-4">
+          <img src="imagen/producto_del_mes.jpg" alt="" width="90%">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row justify-content-center">
+          <h2 class="titulos">Portal Empresarial</h2>
+        </div>
+        <div class="row contenedor_pagos mt-4 justify-content-center align-items-center">
+          <div class="text-white px-5 text-center text_pagos_home mt-3">
+            Ahora puedes realizar tus pagos por internet de forma ágil, fácil y segura.
+          </div>
+          <div class="text-center">
+            <a class="btn btn-secondary px-5 py-2" href="#">Pagar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Seccion Actualida -->
+  <section class="container px-5">
+    <div class="row px-4">
+      <h2 class="titulos">Actualidad</h2>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <div class="row">
+          <img src="" alt="">
+        </div>
+        <div class="row">
+          <h3 class="titulos_blog">Actualidad</h3>
+        </div>
+      </div>
+    </div>
+  </section>
   <?php// include 'common/footer.php';?>
+  <script>
+    window.onscroll = function() {
+      var scroll=window.scrollY;
+      var navbar = document.getElementById("navbar2");
+      if(scroll>=400){
+        navbar.classList.add("fixed-top");
+      }else if (scroll<200) {
+        var hasClase2 = navbar.classList.contains( 'fixed-top' );
+        if (hasClase2) {
+          navbar.classList.remove("fixed-top");
+        }
+      }
+    };
+  </script>
   <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
   <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>

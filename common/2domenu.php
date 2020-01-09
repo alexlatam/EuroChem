@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white pt-0">
+<nav class="navbar navbar-expand-lg navbar-light bg-white pt-0 navbar_fixed" id="navbar2">
   <div class="container my-0">
     <a class="navbar-brand py-0" href="#">
       <img src="imagen/logo-conquimica.png" class="d-inline-block align-top" alt="">
