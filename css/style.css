@@ -30,8 +30,8 @@
   background-color: #000066;
   height: 4px;
 }
-.div_ppal{
-  background-color: #f2f2f2;
+.bg-euro{
+  background-color: #ededed;
 }
 .border_rigth{
   border-right: #000066 solid 0.5px;
@@ -129,12 +129,42 @@
   display:flex;
   flex-direction:row;
   flex-wrap:wrap;
-  margin-bottom: 0;
 }
 .img-blog{
-  width:95%;
+  width:100%;
   max-height:40vh!important;
   object-fit:contain;
   object-position:center center;
-  margin-bottom: 0;
+}
+/*BLOG*/
+/* Carousel Clients*/
+.img_clients{
+  min-height: 100px;
+  max-height: 150px;
+  min-width: 100px;
+  max-width: 150px;
+}
+.owl-theme {
+  position: relative!important;
+}
+.owl-theme .owl-nav {
+  position: absolute;
+  top: 0;
+}
+.owl-theme .owl-nav .owl-prev:hover{
+  background-color: inherit;
+}
+.owl-theme .owl-nav .owl-next:hover{
+  background-color: inherit;
+}
+.owl-theme .owl-nav button{
+  padding-top: 0!important;
+}
+.owl-theme .owl-nav button span{
+  font-size: 60px;
+  line-height: 60px;
+  color: #414141;
+}
+.owl-theme .owl-nav button.owl-next span{
+
 }

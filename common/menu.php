@@ -1,5 +1,5 @@
 <div class="div_top"></div>
-<div class="div_ppal">
+<div class="bg-euro">
   <div class="container">
     <div class="row align-items-center">
       <div class="col-auto align-self-center">

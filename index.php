@@ -52,7 +52,7 @@ include 'common/datosGenerales.php';
     })
   </script>
   <!-- Seccion de buscar productos y facebook -->
-  <section class="container-fluid mt-4 pt-3 pb-4" style="background-color:#ededed;">
+  <section class="container-fluid mt-4 pt-3 pb-4 bg-euro">
     <div class="container py-4 px-5">
       <div class="row pb-4 px-4">
         <input class="col-auto search_productos_home" type="search" name="" value="" placeholder="Buscar productos...">
@@ -96,7 +96,7 @@ include 'common/datosGenerales.php';
     </div>
   </section>
   <!-- Imagenes de categorias -->
-  <section class="container-fluid mt-5" style="background-color:#ededed;">
+  <section class="container-fluid mt-5 bg-euro">
     <div class="container pt-5 pb-3 px-5">
       <div class="row mt-3 px-4">
         <h2 class="titulos" style="font-family: 'Roboto Condensed', sans-serif;">Industrias</h2>
@@ -153,9 +153,9 @@ include 'common/datosGenerales.php';
     <div class="row px-4">
       <h2 class="titulos">Actualidad</h2>
     </div>
-    <div class="row">
-      <div class="col-4" style="background-color:#f7f7f7;">
-        <div class="row">
+    <div class="row mt-4">
+      <div class="col-4" style="padding:0 2%;">
+        <div class="row" style="background-color:#f7f7f7;">
           <div class="container-img-blog">
             <a class="d-flex" href="#">
               <div class="imagen-blog">
@@ -164,66 +164,102 @@ include 'common/datosGenerales.php';
             </a>
           </div>
         </div>
-        <div class="row px-2">
+        <div class="row px-2" style="background-color:#f7f7f7;">
           <h4 class="titulos_blog pt-3">Un Aporte De Conquimica a la Economía Circular Desde la Eficiencia</h4>
         </div>
-        <div class="row text-muted px-2">
+        <div class="row text-muted px-2" style="background-color:#f7f7f7;">
           <p>Con el objetivo de fomentar la economía circular, impulsar el aprovechamiento de los envases y empaques que circulan en el mercado, el Ministerio de Ambiente y Desarrollo Sostenible  Mediante la Resolución 1407 de 2018 reglamentó la gestión ambiental de los residuos de envases y empaques de papel, cartón, plástico, vidrio y metal. </p>
         </div>
-        <div class="row px-2">
+        <div class="row px-2 pb-4" style="background-color:#f7f7f7;">
           <a class="btn btn-primary px-4" href="#">Leer más</a>
         </div>
       </div>
-      <div class="col-4" style="background-color:#f7f7f7;">
-        <div class="row">
+      <div class="col-4" style="padding:0 2%;">
+        <div class="row" style="background-color:#f7f7f7;">
           <div class="container-img-blog">
             <a class="d-flex" href="#">
               <div class="imagen-blog">
-                <img class="img-blog" src="imagen/blog1.jpg">
+                <img class="img-blog" src="imagen/blog2.jpg">
               </div>
             </a>
           </div>
         </div>
-        <div class="row px-2">
+        <div class="row px-2" style="background-color:#f7f7f7;">
           <h4 class="titulos_blog pt-3">
             PUBLICACIÓN DE LOS CONDICIONAMIENTOS DERIVADOS DE LA OPERACIÓN DE INTEGRACIÓN ENTRE BRENNTAG COLOMBIA S.A. Y CONQUIMICA S.A.
           </h4>
         </div>
-        <div class="row text-muted px-2">
+        <div class="row text-muted px-2" style="background-color:#f7f7f7;">
           <p>
             Entre las partes a saber: de una parte BRENNTAG COLOMBIA S.A. y de otra parte CONQUIMICA S.A. (en adelante las “INTERVINIENTES” –como más adelante se define-) de acuerdo con lo establecido en la resolución N° 83700 del 14 de noviembre de 2018, se permiten comunicar a los interesados los condicionamientos derivados de la operación de
           </p>
         </div>
-        <div class="row px-2">
+        <div class="row px-2 pb-4" style="background-color:#f7f7f7;">
           <a class="btn btn-primary px-4" href="#">Leer más</a>
         </div>
       </div>
-      <div class="col-4" style="background-color:#f7f7f7;">
-        <div class="row">
+      <div class="col-4" style="padding:0 2%;">
+        <div class="row" style="background-color:#f7f7f7;">
           <div class="container-img-blog">
             <a class="d-flex" href="#">
               <div class="imagen-blog">
-                <img class="img-blog" src="imagen/blog1.jpg">
+                <img class="img-blog" src="imagen/blog3.jpg">
               </div>
             </a>
           </div>
         </div>
-        <div class="row px-2">
+        <div class="row px-2" style="background-color:#f7f7f7;">
           <h4 class="titulos_blog pt-3">
             Aditivos Para La Industria De Recubrimientos
           </h4>
         </div>
-        <div class="row text-muted px-2">
+        <div class="row text-muted px-2" style="background-color:#f7f7f7;">
           <p>
             Para CONQUIMICA la industria de recubrimientos siempre ha sido uno de sus sectores foco de crecimiento y presencia, es por esto que con gran alegría nos permitimos informar que continuaremos ofreciendo al mercado los aditivos para recubrimientos de la mano de un nuevo aliado, ADD Additives.
           </p>
         </div>
-        <div class="row px-2">
+        <div class="row px-2 pb-4" style="background-color:#f7f7f7;">
           <a class="btn btn-primary px-4" href="#">Leer más</a>
         </div>
       </div>
     </div>
   </section>
+  <!-- Carousel Clientes -->
+  <section class="container-fluid bg-euro mt-4">
+    <div class="container px-5 py-5">
+      <div class="row px-4 align-items-center">
+        <div class="owl-carousel owl-theme" id="carouselclients">
+          <div class="img_clients"><img class="img-fluid" src="imagen/client1.png" alt=""></div>
+          <div class="img_clients"><img class="img-fluid" src="imagen/client2.png" alt=""></div>
+          <div class="img_clients"><img class="img-fluid" src="imagen/client3.png" alt=""></div>
+          <div class="img_clients"><img class="img-fluid" src="imagen/client4.png" alt=""></div>
+          <div class="img_clients"><img class="img-fluid" src="imagen/client6.png" alt=""></div>
+          <div class="img_clients"><img class="img-fluid" src="imagen/client7.png" alt=""></div>
+          <div class="img_clients"><img class="img-fluid" src="imagen/client8.png" alt=""></div>
+          <div class="img_clients"><img class="img-fluid" src="imagen/client9.png" alt=""></div>
+          <div class="img_clients"><img class="img-fluid" src="imagen/client10.png" alt=""></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    $('#carouselclients').owlCarousel({
+      loop:true,
+      dots:false,
+      nav:true,
+      center:true,
+      mouseDrag: false,
+      autoplay:true,
+      autoplayHoverPause:true,
+      autoplayTimeout:4000,
+      smartSpeed:1000,
+      margin:0,
+      responsive:{
+        0:{items:3},
+        600:{items:5}
+      }
+    })
+  </script>
   <?php// include 'common/footer.php';?>
   <script>
     window.onscroll = function() {
