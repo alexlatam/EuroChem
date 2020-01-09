@@ -148,18 +148,78 @@ include 'common/datosGenerales.php';
       </div>
     </div>
   </section>
-  <!-- Seccion Actualida -->
-  <section class="container px-5">
+  <!-- Seccion Actualidad -->
+  <section class="container px-5 mb-5">
     <div class="row px-4">
       <h2 class="titulos">Actualidad</h2>
     </div>
     <div class="row">
-      <div class="col-4">
+      <div class="col-4" style="background-color:#f7f7f7;">
         <div class="row">
-          <img src="" alt="">
+          <div class="container-img-blog">
+            <a class="d-flex" href="#">
+              <div class="imagen-blog">
+                <img class="img-blog" src="imagen/blog1.jpg">
+              </div>
+            </a>
+          </div>
         </div>
+        <div class="row px-2">
+          <h4 class="titulos_blog pt-3">Un Aporte De Conquimica a la Economía Circular Desde la Eficiencia</h4>
+        </div>
+        <div class="row text-muted px-2">
+          <p>Con el objetivo de fomentar la economía circular, impulsar el aprovechamiento de los envases y empaques que circulan en el mercado, el Ministerio de Ambiente y Desarrollo Sostenible  Mediante la Resolución 1407 de 2018 reglamentó la gestión ambiental de los residuos de envases y empaques de papel, cartón, plástico, vidrio y metal. </p>
+        </div>
+        <div class="row px-2">
+          <a class="btn btn-primary px-4" href="#">Leer más</a>
+        </div>
+      </div>
+      <div class="col-4" style="background-color:#f7f7f7;">
         <div class="row">
-          <h3 class="titulos_blog">Actualidad</h3>
+          <div class="container-img-blog">
+            <a class="d-flex" href="#">
+              <div class="imagen-blog">
+                <img class="img-blog" src="imagen/blog1.jpg">
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="row px-2">
+          <h4 class="titulos_blog pt-3">
+            PUBLICACIÓN DE LOS CONDICIONAMIENTOS DERIVADOS DE LA OPERACIÓN DE INTEGRACIÓN ENTRE BRENNTAG COLOMBIA S.A. Y CONQUIMICA S.A.
+          </h4>
+        </div>
+        <div class="row text-muted px-2">
+          <p>
+            Entre las partes a saber: de una parte BRENNTAG COLOMBIA S.A. y de otra parte CONQUIMICA S.A. (en adelante las “INTERVINIENTES” –como más adelante se define-) de acuerdo con lo establecido en la resolución N° 83700 del 14 de noviembre de 2018, se permiten comunicar a los interesados los condicionamientos derivados de la operación de
+          </p>
+        </div>
+        <div class="row px-2">
+          <a class="btn btn-primary px-4" href="#">Leer más</a>
+        </div>
+      </div>
+      <div class="col-4" style="background-color:#f7f7f7;">
+        <div class="row">
+          <div class="container-img-blog">
+            <a class="d-flex" href="#">
+              <div class="imagen-blog">
+                <img class="img-blog" src="imagen/blog1.jpg">
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="row px-2">
+          <h4 class="titulos_blog pt-3">
+            Aditivos Para La Industria De Recubrimientos
+          </h4>
+        </div>
+        <div class="row text-muted px-2">
+          <p>
+            Para CONQUIMICA la industria de recubrimientos siempre ha sido uno de sus sectores foco de crecimiento y presencia, es por esto que con gran alegría nos permitimos informar que continuaremos ofreciendo al mercado los aditivos para recubrimientos de la mano de un nuevo aliado, ADD Additives.
+          </p>
+        </div>
+        <div class="row px-2">
+          <a class="btn btn-primary px-4" href="#">Leer más</a>
         </div>
       </div>
     </div>

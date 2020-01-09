@@ -111,7 +111,30 @@
   font-size: 22px;
   font-family: 'Roboto Condensed', sans-serif;
 }
+/*BLOG*/
 .titulos_blog{
   color:#000066;
   font-family: 'Roboto Condensed', sans-serif;
+}
+.container-img-blog{
+  position:relative;
+  background-color:#ffffff;
+  height:40vh;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.imagen-blog{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  margin-bottom: 0;
+}
+.img-blog{
+  width:95%;
+  max-height:40vh!important;
+  object-fit:contain;
+  object-position:center center;
+  margin-bottom: 0;
 }
