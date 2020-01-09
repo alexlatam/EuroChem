@@ -1,80 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+<div class="div_top"></div>
+<div class="div_ppal">
   <div class="container">
-    <a class="navbar-brand" href="<?php echo $root_folder;?>/index.php">
-      <img class="" width="30px" src="">
-      EuroChem
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <?php if(isset($_GET['genero']) && $_GET['genero']==1){ ?>
-            <a class="nav-link active" href="<?php echo $root_folder;?>/vitrina/index.php?genero=1">Damas</a>
-          <?php }else{ ?>
-            <a class="nav-link" href="<?php echo $root_folder;?>/vitrina/index.php?genero=1">Damas</a>
-          <?php } ?>
-        </li>
-        <li class="nav-item">
-          <?php if(isset($_GET['genero']) && $_GET['genero']==2){ ?>
-            <a class="nav-link active" href="<?php echo $root_folder;?>/vitrina/index.php?genero=2">Caballeros</a>
-          <?php }else{ ?>
-            <a class="nav-link" href="<?php echo $root_folder;?>/vitrina/index.php?genero=2">Caballeros</a>
-          <?php } ?>
-        </li>
-        <li class="nav-item ml-4">
-          <form class="d-none d-lg-inline-block" action="<?php echo $root_folder;?>/vitrina/index.php" method="get">
-            <?php if(isset($_GET['busqueda'])){ ?>
-              <input class="search-principal" type="search" name="busqueda" placeholder="Buscar..." value="<?php echo $_GET['busqueda'];?>">
-            <?php }else{ ?>
-              <input class="search-principal" type="search" name="busqueda" placeholder="Buscar...">
-            <?php } ?>
-            <button class="search-button" type="submit">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="15" height="15"><path fill="#a5a5a5"d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
-            </button>
-          </form>
-        </li>
-    </ul>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
-          <?php if(isset($_SESSION['NAME_USER'])){
-            $user=$_SESSION['NAME_USER'];
-            ?>
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <?php echo $user;?>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="<?php echo $root_folder;?>/perfil/">Mi Cuenta</a>
-              <a class="dropdown-item" href="<?php echo $root_folder;?>/perfil/compras.php">Mis compras</a>
-              <span class="dropdown-item">
-                <form action="<?php echo $root_folder;?>/login/index.php" method="post">
-                  <input type="hidden" name="out" value="1">
-                  <button class="btn btn-link text-dark p-0" type="submit" name="button" style="text-decoration:none;">Salir</button>
-                </form>
-              </span>
-            </div>
-            <?php }else{ ?>
-            <a class="text-white" href="<?php echo $root_folder;?>/login/">
-              Entrar
-            </a>
-            <?php } ?>
-      </li>
-      </ul>
-      <span class="ml-auto pt-2">
-        <a href="<?php echo $root_folder;?>/carrito/index.php">
-          <?php if(isset($_SESSION['carrito'])){ ?>
-            <span style="position:relative;">
-              <svg class='svg-light' width="23px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                <path d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z"/>
-                <span class="car_red"></span>
-              </svg>
-            </span>
-          <?php }else{ ?>
-            <svg class='svg-light' width="23px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z"/></svg>
-          <?php } ?>
-        </a>
-      </span>
+    <div class="row align-items-center">
+      <div class="col-auto align-self-center">
+        <svg width="13px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone-alt" class="svg-inline--fa fa-phone-alt fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#000066" d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z"></path></svg>
+        <span class="text_menu_1" style="font-family: 'Roboto Condensed', sans-serif;">Teléfono: (021) 50 658 212</span>
+        <span class="ml-2"><svg width="17px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#000066" d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"/></svg></span>
+        <span class="text_menu_1" style="font-family: 'Roboto Condensed', sans-serif;">ventas@eurochem.com</span>
+      </div>
+      <div class="col-auto" style="font-family: 'Roboto Condensed', sans-serif;">
+        <span class="border_rigth px-1"><a class="enlace_menu" href="#">Certificaciones</a> </span>
+        <span class="border_rigth px-1"><a class="enlace_menu" href="#">Sustentabilidad</a> </span>
+        <span class="border_rigth px-1"><a class="enlace_menu" href="#">Trabaje con nosotros</a> </span>
+        <span class="border_rigth px-1"><a class="enlace_menu" href="#">Actualidad</a> </span>
+      </div>
+      <div class="col-auto ml-auto">
+        <input type="search" name="" value="" placeholder="Buscar productos...">
+      </div>
     </div>
   </div>
-</nav>
+</div>
