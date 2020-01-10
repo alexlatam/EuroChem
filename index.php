@@ -2,7 +2,7 @@
 #Quitar el comentario para entrar en mantenimiento.
 #header('Location: mantenimiento/');
 session_start();
-//include 'common/conexion.php';
+include 'common/conexion.php';
 include 'common/datosGenerales.php';
 ?>
 <!doctype html>
@@ -26,6 +26,7 @@ include 'common/datosGenerales.php';
   <title>Eurochem-Us</title>
 </head>
 <body style="background-color:#ffffff;">
+  <?php $section="home";?>
   <?php include 'common/menu.php'; include 'common/2domenu.php';?>
   <!--Colores #cc0033 #000066 -->
   <!--Corousel Library-->
@@ -46,8 +47,7 @@ include 'common/datosGenerales.php';
       smartSpeed:1000,
       margin:0,
       responsive:{
-        0:{items:3},
-        600:{items:1}
+        0:{items:1}
       }
     })
   </script>
@@ -73,22 +73,22 @@ include 'common/datosGenerales.php';
       <p class="text-muted" style="font-family: 'Roboto Condensed', sans-serif;">Contamos con cuatro divisiones de negocio con las cuales atendemos a los principales sectores de la industria</p>
     </div>
     <div class="row px-4 mt-3">
-      <div class="col-3">
+      <div class="col-12 col-md-4 col-lg-3 mb-2 text-center">
         <a class="imagen_divisiones_home" href="#">
           <img src="imagen/division_alimentos.png" alt="">
         </a>
       </div>
-      <div class="col-3">
+      <div class="col-12 col-md-4 col-lg-3 mb-2 text-center">
         <a class="imagen_divisiones_home" href="#">
           <img src="imagen/division_especializadas.png" alt="">
         </a>
       </div>
-      <div class="col-3">
+      <div class="col-12 col-md-4 col-lg-3 mb-2 text-center">
         <a class="imagen_divisiones_home" href="#">
           <img src="imagen/division_genericos.png" alt="">
         </a>
       </div>
-      <div class="col-3">
+      <div class="col-12 col-md-4 col-lg-3 mb-2 text-center">
         <a class="imagen_divisiones_home" href="#">
           <img src="imagen/division_plasticos.png" alt="">
         </a>
@@ -106,26 +106,26 @@ include 'common/datosGenerales.php';
   <!-- Seccion de Video -->
   <section class="container px-5 my-5">
     <div class="row px-4">
-      <div class="col-6">
+      <div class="col-12 col-md-6">
         <div class="row mt-3">
           <h2 class="titulos" style="font-family: 'Roboto Condensed', sans-serif;">Nuestra compañía</h2>
         </div>
         <div class="row text-muted">
           Conquimica S.A. es una compañía colombiana con 40 años de experiencia en la comercialización de materias primas para diversos sectores productivos en el país: recubrimientos, aseo, plásticos, ingredientes para la industria de alimentos y bebidas, agro, adhesivos y pegantes, textil, farma, cosméticos, petróleos, fabricación de intermediarios químicos, entre otros.
         </div>
-        <div class="row justify-content-center mt-5">
+        <div class="row justify-content-center mt-5 mb-4">
           <a class="btn btn-primary px-5" href="#">Ver Más</a>
         </div>
       </div>
-      <div class="col-6">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/ZOV-7f3aofM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="col-12 col-md-6">
+        <iframe width="100%" height="250vh" src="https://www.youtube.com/embed/ZOV-7f3aofM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
   </section>
   <!-- Seccion Prodcuto del mes -->
   <section class="container px-5 mb-5">
     <div class="row px-4">
-      <div class="col-8">
+      <div class="col-12 col-md-8">
         <div class="row">
           <h2 class="titulos">Producto del mes</h2>
         </div>
@@ -133,7 +133,7 @@ include 'common/datosGenerales.php';
           <img src="imagen/producto_del_mes.jpg" alt="" width="90%">
         </div>
       </div>
-      <div class="col-4">
+      <div class="col-12 col-md-4">
         <div class="row justify-content-center">
           <h2 class="titulos">Portal Empresarial</h2>
         </div>
@@ -154,7 +154,7 @@ include 'common/datosGenerales.php';
       <h2 class="titulos">Actualidad</h2>
     </div>
     <div class="row mt-4">
-      <div class="col-4" style="padding:0 2%;">
+      <div class="col-12 col-md-4" style="padding:0 2%;">
         <div class="row" style="background-color:#f7f7f7;">
           <div class="container-img-blog">
             <a class="d-flex" href="#">
@@ -174,7 +174,7 @@ include 'common/datosGenerales.php';
           <a class="btn btn-primary px-4" href="#">Leer más</a>
         </div>
       </div>
-      <div class="col-4" style="padding:0 2%;">
+      <div class="col-12 col-md-4" style="padding:0 2%;">
         <div class="row" style="background-color:#f7f7f7;">
           <div class="container-img-blog">
             <a class="d-flex" href="#">
@@ -198,7 +198,7 @@ include 'common/datosGenerales.php';
           <a class="btn btn-primary px-4" href="#">Leer más</a>
         </div>
       </div>
-      <div class="col-4" style="padding:0 2%;">
+      <div class="col-12 col-md-4" style="padding:0 2%;">
         <div class="row" style="background-color:#f7f7f7;">
           <div class="container-img-blog">
             <a class="d-flex" href="#">
@@ -255,12 +255,14 @@ include 'common/datosGenerales.php';
       smartSpeed:1000,
       margin:0,
       responsive:{
-        0:{items:3},
-        600:{items:5}
+        0:{items:2},
+        768:{items:3},
+        992:{items:5}
       }
     })
   </script>
-  <?php// include 'common/footer.php';?>
+  <!-- Footer -->
+  <?php include 'common/footer.php';?>
   <script>
     window.onscroll = function() {
       var scroll=window.scrollY;

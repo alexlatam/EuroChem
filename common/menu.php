@@ -9,10 +9,10 @@
         <span class="text_menu_1" style="font-family: 'Roboto Condensed', sans-serif;">ventas@eurochem.com</span>
       </div>
       <div class="col-auto" style="font-family: 'Roboto Condensed', sans-serif;">
-        <span class="border_rigth px-1"><a class="enlace_menu" href="#">Certificaciones</a> </span>
-        <span class="border_rigth px-1"><a class="enlace_menu" href="#">Sustentabilidad</a> </span>
-        <span class="border_rigth px-1"><a class="enlace_menu" href="#">Trabaje con nosotros</a> </span>
-        <span class="border_rigth px-1"><a class="enlace_menu" href="#">Actualidad</a> </span>
+        <span class="border_rigth px-1"><a class="enlace_menu <?php if($section=="certificaciones"){echo "active";} ?>" href="">Certificaciones</a> </span>
+        <span class="border_rigth px-1"><a class="enlace_menu <?php if($section=="sustentabilidad"){echo "active";} ?>" href="sustentabilidad/">Sustentabilidad</a> </span>
+        <span class="border_rigth px-1"><a class="enlace_menu <?php if($section=="trabaje"){echo "active";} ?>" href="#">Trabaje con nosotros</a> </span>
+        <span class="border_rigth px-1"><a class="enlace_menu <?php if($section=="actualidad"){echo "active";} ?>" href="#">Actualidad</a> </span>
       </div>
       <div class="col-auto ml-auto">
         <input type="search" name="" value="" placeholder="Buscar productos...">

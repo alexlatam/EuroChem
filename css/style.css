@@ -33,6 +33,9 @@
 .bg-euro{
   background-color: #ededed;
 }
+.bg-euro-dark{
+  background-color: #8A8B8C;
+}
 .border_rigth{
   border-right: #000066 solid 0.5px;
 }
@@ -51,6 +54,9 @@
   text-decoration: none;
   -webkit-transition: color 1.5s;
   transition: color 1.5s;
+}
+.enlace_menu.active{
+  color:#000066;
 }
 .text_menu_2{
   font-weight: 700;
@@ -167,4 +173,14 @@
 }
 .owl-theme .owl-nav button.owl-next span{
 
+}
+/* Footer*/
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px!important;
 }

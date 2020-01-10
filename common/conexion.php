@@ -7,7 +7,7 @@ $dbname="id4956438_rouxa";*/
 //localhost
 $username="root";
 $password="";
-$dbname="rouxa";
+$dbname="eurochem";
 // Create connection
 $conn=new mysqli($servername,$username,$password,$dbname);
 $conn->set_charset("utf8");
