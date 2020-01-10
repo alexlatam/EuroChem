@@ -2,7 +2,7 @@
 #Quitar el comentario para entrar en mantenimiento.
 #header('Location: mantenimiento/');
 session_start();
-include 'common/conexion.php';
+//include 'common/conexion.php';
 include 'common/datosGenerales.php';
 ?>
 <!doctype html>
