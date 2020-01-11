@@ -14,14 +14,14 @@ if(isset($_POST['correo'])){
         session_start();
         $_SESSION['ACCESO']=TRUE;
         $_SESSION['USUARIO']=$_POST['correo'];
-        header ('Location:blog/');
+        header ('Location:principal.php');
       }else{ $pass=1; }
     }else{ $usua=1; }
   }
 }
 session_start();
 if(isset($_SESSION['USUARIO'])){
-  header('Location:blog/');
+  header('Location:principal.php');
 }else{session_destroy();}
 ?>
 <!DOCTYPE html>

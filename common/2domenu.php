@@ -38,7 +38,7 @@
         <a class="nav-link text_menu_2 py-4 <?php if($section=="pagos"){echo "active";} ?>" href="<?php if($section!="home"){echo "../";} ?>pagos/index.php">Pagos en línea</a>
       </li>
       <li class="nav-item ml-3 pt-2">
-        <a class="nav-link text_menu_2 py-4 <?php if($section=="contacto"){echo "active";} ?>" href="#">Contáctenos</a>
+        <a class="nav-link text_menu_2 py-4 <?php if($section=="contacto"){echo "active";} ?>" href="<?php if($section!="home"){echo "../";} ?>contacto/index.php">Contáctenos</a>
       </li>
     </ul>
   </div>
