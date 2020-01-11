@@ -4,7 +4,7 @@
 session_start();
 include '../common/conexion.php';
 include '../common/datosGenerales.php';
-$section="sustentabilidad";
+$section="trabaje";
 ?>
 <!doctype html>
 <html lang="es">
@@ -28,9 +28,9 @@ $section="sustentabilidad";
 <body style="background-color:#ffffff;">
   <?php include '../common/menu.php'; include '../common/2domenu.php';?>
   <div class="container px-5">
-    <div class="row px-4 mt-3">
+    <div class="row px-4 mt-2">
       <!-- Menu lateral -->
-      <div class="col-3 mt-2">
+      <div class="col-3 mt-3">
         <div class="row">
           <div class="col-12">
             <h2 class="titulos_blog lead">Búsqueda</h2>
@@ -62,7 +62,20 @@ $section="sustentabilidad";
           </div>
         </div>
       </div>
-      <div class="col-9">
+      <div class="col-9 mt-2">
+        <div class="row">
+          <div class="col-6">
+            <h4 class="text-muted"><strong>Envíanos tu hoja de vida</strong></h4>
+            <p class="text-muted">
+              Conquimica pone a  disposición este correo para enviar su hoja de vida
+               y su información profesional de acuerdo al perfil que más se ajuste a
+               su experiencia y conocimientos
+            </p>
+          </div>
+          <div class="col-6">
+            <img src="../imagen/trabaja_nosotros.jpg" alt="">
+          </div>
+        </div>
       </div>
     </div>
   </div>

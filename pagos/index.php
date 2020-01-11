@@ -4,7 +4,7 @@
 session_start();
 include '../common/conexion.php';
 include '../common/datosGenerales.php';
-$section="sustentabilidad";
+$section="pagos";
 ?>
 <!doctype html>
 <html lang="es">

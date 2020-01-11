@@ -3,26 +3,26 @@ include '../common/conexion.php';
 if(isset($_POST['correo'])){
   $pass=0;
   $usua=0;
-    if($_POST['correo']!=null && $_POST['clave']!=null){
-      $user=$_POST['correo'];
-      $clave=$_POST['clave'];
-      $sql="SELECT * FROM usuarios WHERE CORREO='$user';";
-      $res=$conn->query($sql);
-      if($row=$res->fetch_assoc()){//usuario registrado
-        $clave=md5($clave);
-        if($clave==$row['CLAVE']){//usuario loggeado
-          session_start();
-          $_SESSION['ACCESO']=TRUE;
-          $_SESSION['USUARIO']=$_POST['correo'];
-          header ('Location:blog/');
-        }else{ $pass=1; }
-      }else{ $usua=1; }
-    }
+  if($_POST['correo']!=null && $_POST['clave']!=null){
+    $user=$_POST['correo'];
+    $clave=$_POST['clave'];
+    $sql="SELECT * FROM usuarios WHERE CORREO='$user';";
+    $res=$conn->query($sql);
+    if($row=$res->fetch_assoc()){//usuario registrado
+      $clave=md5($clave);
+      if($clave==$row['CLAVE']){//usuario loggeado
+        session_start();
+        $_SESSION['ACCESO']=TRUE;
+        $_SESSION['USUARIO']=$_POST['correo'];
+        header ('Location:blog/');
+      }else{ $pass=1; }
+    }else{ $usua=1; }
+  }
 }
-    session_start();
-    if(isset($_SESSION['USUARIO'])){
-      header ('Location:blog/');
-    }else{ session_destroy(); }
+session_start();
+if(isset($_SESSION['USUARIO'])){
+  header('Location:blog/');
+}else{session_destroy();}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -32,9 +32,9 @@ if(isset($_POST['correo'])){
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Balita- Administración</title>
+  <title>EuroChem- Administración</title>
   <link rel="icon" type="image/png" href="../images/favicon1.png"/>
-  <link href="../libraries/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
   <div class="container mt-4">
@@ -68,7 +68,7 @@ if(isset($_POST['correo'])){
       if(usuario == 1){ document.getElementById("usuario").innerHTML = "Correo "+" <span class='text-danger'>Correo Incorrecto!</span>"; }
     });
   </script>
-  <script src="../js/jquery.min.js"></script>
-  <script src="../libraries/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

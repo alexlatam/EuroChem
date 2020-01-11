@@ -4,7 +4,7 @@
 session_start();
 include '../common/conexion.php';
 include '../common/datosGenerales.php';
-$section="sustentabilidad";
+$section="certificaciones";
 ?>
 <!doctype html>
 <html lang="es">
@@ -63,6 +63,38 @@ $section="sustentabilidad";
         </div>
       </div>
       <div class="col-9">
+        <div class="row">
+          <div class="col-6">
+            <img src="../imagen/certificacion.jpg" alt="">
+          </div>
+          <div class="col-6">
+            <p class="text-muted">
+              Los elementos de nuestra oferta de valor concurren en la mejora continua de los
+              distintos procesos que se desarrollan en nuestro sistema de gestión integral.
+              La proactividad con la cual hemos enfocado la gestión, nos ha valido el otorgamiento
+              de los certificados de los sistemas de gestión Calidad, Seguridad, Salud y Ambiente.
+            </p>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-6">
+            <h4 class="text-muted"><strong>Política de Gestión Integral</strong></h4>
+            <p class="text-muted">
+              CONQUIMICA S.A. es una empresa que provee soluciones confiables para el abastecimiento de productos químicos, la cual establece su compromiso de gestión integral a través de: <br>
+              1. El mejoramiento continuo de los procesos para el desarrollo sostenible de la organización. <br> <br>
+              2. El suministro de productos y la prestación de servicios que cumplan con los acuerdos establecidos con proveedores y clientes. <br> <br>
+              3. La gestión y control  de los procesos para el cuidado del medio ambiente, la salud y la seguridad del personal.*2 <br> <br>
+              4. El cumplimiento de los requisitos legales y reglamentarios aplicables.<br> <br>
+              5. La formación y entrenamiento del personal con el fin de mantener un equipo competente para el cumplimiento de los objetivos.<br> <br>
+              NOTAS: <br>
+              *1  El desarrollo sostenible es el equilibrio entre los ámbitos económico, social y ambiental. <br> <br>
+              *2 Protección del medio ambiente (programas y prácticas para evitar la contaminación u otros impactos/daños).  Protección de la seguridad y salud de todos (trabajadores directos/misión, contratistas, comunidad y visitantes) .
+            </p>
+          </div>
+          <div class="col-6">
+            <img src="../imagen/certificacion2.jpg" alt="">
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -4,6 +4,7 @@
 session_start();
 include 'common/conexion.php';
 include 'common/datosGenerales.php';
+$section="home";
 ?>
 <!doctype html>
 <html lang="es">
@@ -19,14 +20,12 @@ include 'common/datosGenerales.php';
   <link rel="stylesheet" href="assets/vendor/owlcarousel/assets/owl.theme.default.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link href="assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
   <!--link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet"-->
   <script src="assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="assets/vendor/owlcarousel/owl.carousel.min.js"></script>
   <title>Eurochem-Us</title>
 </head>
 <body style="background-color:#ffffff;">
-  <?php $section="home";?>
   <?php include 'common/menu.php'; include 'common/2domenu.php';?>
   <!--Colores #cc0033 #000066 -->
   <!--Corousel Library-->
@@ -67,7 +66,7 @@ include 'common/datosGenerales.php';
   <!-- Imagenes de productos -->
   <section class="container my-5 px-5 pb-4">
     <div class="row px-4">
-      <h2 class="titulos" style="font-family: 'Roboto Condensed', sans-serif;">Divisiones de productos</h2>
+      <h2 class="titulos">Divisiones de productos</h2>
     </div>
     <div class="row px-4">
       <p class="text-muted" style="font-family: 'Roboto Condensed', sans-serif;">Contamos con cuatro divisiones de negocio con las cuales atendemos a los principales sectores de la industria</p>
@@ -99,7 +98,7 @@ include 'common/datosGenerales.php';
   <section class="container-fluid mt-5 bg-euro">
     <div class="container pt-5 pb-3 px-5">
       <div class="row mt-3 px-4">
-        <h2 class="titulos" style="font-family: 'Roboto Condensed', sans-serif;">Industrias</h2>
+        <h2 class="titulos">Industrias</h2>
       </div>
     </div>
   </section>
