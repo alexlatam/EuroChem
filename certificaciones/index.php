@@ -30,7 +30,7 @@ $section="certificaciones";
   <div class="container px-5">
     <div class="row px-4 mt-3">
       <!-- Menu lateral -->
-      <div class="col-3 mt-2">
+      <div class="col-12 col-md-3 mt-2">
         <div class="row">
           <div class="col-12">
             <h2 class="titulos_blog lead">Búsqueda</h2>
@@ -62,12 +62,12 @@ $section="certificaciones";
           </div>
         </div>
       </div>
-      <div class="col-9">
+      <div class="col-12 col-md-9">
         <div class="row">
-          <div class="col-6">
-            <img src="../imagen/certificacion.jpg" alt="">
+          <div class="col-12 col-lg-6 mt-3">
+            <img src="../imagen/certificacion.jpg" alt="" width="100%">
           </div>
-          <div class="col-6">
+          <div class="col-12 col-lg-6 mt-3">
             <p class="text-muted">
               Los elementos de nuestra oferta de valor concurren en la mejora continua de los
               distintos procesos que se desarrollan en nuestro sistema de gestión integral.
@@ -77,7 +77,7 @@ $section="certificaciones";
           </div>
         </div>
         <div class="row mt-4">
-          <div class="col-6">
+          <div class="col-12 col-lg-6">
             <h4 class="text-muted"><strong>Política de Gestión Integral</strong></h4>
             <p class="text-muted">
               CONQUIMICA S.A. es una empresa que provee soluciones confiables para el abastecimiento de productos químicos, la cual establece su compromiso de gestión integral a través de: <br>
@@ -91,7 +91,7 @@ $section="certificaciones";
               *2 Protección del medio ambiente (programas y prácticas para evitar la contaminación u otros impactos/daños).  Protección de la seguridad y salud de todos (trabajadores directos/misión, contratistas, comunidad y visitantes) .
             </p>
           </div>
-          <div class="col-6">
+          <div class="col-12 col-lg-6">
             <img src="../imagen/certificacion2.jpg" alt="">
           </div>
         </div>

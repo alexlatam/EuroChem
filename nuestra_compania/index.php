@@ -30,7 +30,7 @@ $section="nuestra_company";
   <div class="container px-5">
     <div class="row px-4 mt-3">
       <!-- Menu lateral -->
-      <div class="col-3 mt-2">
+      <div class="col-12 col-md-3 mt-2">
         <div class="row">
           <div class="col-12">
             <h2 class="titulos_blog lead">Búsqueda</h2>
@@ -62,12 +62,12 @@ $section="nuestra_company";
           </div>
         </div>
       </div>
-      <div class="col-9 mt-2">
+      <div class="col-12 col-md-9 mt-2">
         <div class="row">
           <h2 class="titulos">Nuestra Compañía</h2>
         </div>
         <div class="row mt-4">
-          <img src="../imagen/nuestra_compania_conquimica.jpg" alt="">
+          <img src="../imagen/nuestra_compania_conquimica.jpg" alt="" width="100%">
         </div>
         <div class="row mt-4">
           <p class="text-muted text-justify">
@@ -114,7 +114,7 @@ $section="nuestra_company";
           </p>
         </div>
         <div class="row mt-4">
-          <div class="col-6">
+          <div class="col-12 col-md-6">
             <h4 class="titulos_blog">Logística</h4>
             <p class="text-muted text-justify">
               La logística es fundamental para ofrecer ventajas competitivas
@@ -128,15 +128,15 @@ $section="nuestra_company";
               para esta actividad.
             </p>
           </div>
-          <div class="col-6">
-            <img src="../imagen/nuestra_compania_logistica_conquimica.jpg" alt="">
+          <div class="col-12 col-md-6">
+            <img src="../imagen/nuestra_compania_logistica_conquimica.jpg" alt="" width="100%">
           </div>
         </div>
         <div class="row mt-3">
-          <div class="col-6">
-            <img src="../imagen/nuestra_compania_transporte_conquimica.jpg" alt="">
+          <div class="col-12 col-md-6">
+            <img src="../imagen/nuestra_compania_transporte_conquimica.jpg" alt="" width="100%">
           </div>
-          <div class="col-6 pl-3">
+          <div class="col-12 col-md-6 pl-3">
             <h4 class="titulos_blog">Transporte</h4>
             <p class="text-muted text-justify">
               60 vehículos de diversas especificaciones y categorías, carro-tanques,
@@ -150,7 +150,7 @@ $section="nuestra_company";
           </div>
         </div>
         <div class="row mt-3">
-          <div class="col-6">
+          <div class="col-12 col-md-6">
             <h4 class="titulos_blog">Instalaciones</h4>
             <p class="text-muted text-justify">
               Actualmente contamos con 4 sedes ubicadas en las principales
@@ -161,8 +161,8 @@ $section="nuestra_company";
               todos los requerimientos de nuestros clientes.
             </p>
           </div>
-          <div class="col-6">
-            <img src="../imagen/nuestra_compania_transporte_conquimica (1).jpg" alt="">
+          <div class="col-12 col-md-6">
+            <img src="../imagen/trabaja_nosotros.jpg" alt="" width="100%">
           </div>
         </div>
       </div>

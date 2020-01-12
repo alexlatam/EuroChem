@@ -30,7 +30,7 @@ $section="sustentabilidad";
   <div class="container px-5">
     <div class="row px-4 mt-3">
       <!-- Menu lateral -->
-      <div class="col-3 mt-2">
+      <div class="col-12 col-sm-3 mt-2">
         <div class="row">
           <div class="col-12">
             <h2 class="titulos_blog lead">Búsqueda</h2>
@@ -62,7 +62,7 @@ $section="sustentabilidad";
           </div>
         </div>
       </div>
-      <div class="col-9">
+      <div class="col-12 col-sm-9">
       </div>
     </div>
   </div>

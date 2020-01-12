@@ -30,7 +30,7 @@ $section="trabaje";
   <div class="container px-5">
     <div class="row px-4 mt-2">
       <!-- Menu lateral -->
-      <div class="col-3 mt-3">
+      <div class="col-12 col-md-3 mt-3">
         <div class="row">
           <div class="col-12">
             <h2 class="titulos_blog lead">Búsqueda</h2>
@@ -62,9 +62,9 @@ $section="trabaje";
           </div>
         </div>
       </div>
-      <div class="col-9 mt-2">
+      <div class="col-12 col-md-9 mt-2">
         <div class="row">
-          <div class="col-6">
+          <div class="col-12 col-md-6">
             <h4 class="text-muted"><strong>Envíanos tu hoja de vida</strong></h4>
             <p class="text-muted">
               Conquimica pone a  disposición este correo para enviar su hoja de vida
@@ -72,8 +72,8 @@ $section="trabaje";
                su experiencia y conocimientos
             </p>
           </div>
-          <div class="col-6">
-            <img src="../imagen/trabaja_nosotros.jpg" alt="">
+          <div class="col-12 col-md-6">
+            <img src="../imagen/trabaja_nosotros.jpg" alt="" width="100%">
           </div>
         </div>
       </div>

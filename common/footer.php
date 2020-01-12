@@ -43,7 +43,7 @@
           </p>
         </div>
         <div class="row mt-3">
-          <a class="text-white" href="#">Otras sedes</a>
+          <a class="text-white" href="<?php if($section!="contacto" && $section!="home"){echo "../";} ?>contacto/">Otras sedes</a>
         </div>
       </div>
     </div>

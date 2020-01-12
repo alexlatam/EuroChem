@@ -33,7 +33,7 @@ $section="contacto";
   </div>
   <div class="container px-5">
     <div class="row px-4 mt-5">
-      <div class="col-6">
+      <div class="col-12 col-md-6">
         <div class="row">
           <h2 class="titulos">Nuestras sedes</h2>
         </div>
@@ -41,10 +41,10 @@ $section="contacto";
           <img src="../imagen/logo-conquimica.png" alt="">
         </div>
         <div class="row mt-4">
-          <div class="col-4">
+          <div class="col-12 col-sm-4">
             <h4 class="text-muted"><strong>Medellín</strong></h4>
           </div>
-          <div class="col-6">
+          <div class="col-12 col-sm-6">
             <p class="text-muted">
               Cra 42 # 53-24. Itagüí <br>
               Teléfono: (4)- 3720733 <br>
@@ -54,10 +54,10 @@ $section="contacto";
           </div>
         </div>
         <div class="row mt-3">
-          <div class="col-4">
+          <div class="col-12 col-sm-4">
             <h4 class="text-muted"><strong>Bogotá</strong></h4>
           </div>
-          <div class="col-6">
+          <div class="col-12 col-sm-6">
             <p class="text-muted">
               Vereda La Punta. Autopista Medellin <br>
               km 6+200 costado sur y km 0+950 <br>
@@ -69,10 +69,10 @@ $section="contacto";
           </div>
         </div>
         <div class="row mt-3">
-          <div class="col-4">
+          <div class="col-12 col-sm-4">
             <h4 class="text-muted"><strong>Cali</strong></h4>
           </div>
-          <div class="col-6">
+          <div class="col-12 col-sm-6">
             <p class="text-muted">
               Calle 15 No. 32-571. Acopi Yumbo <br>
               Teléfono: (2)- 6644643 <br>
@@ -82,10 +82,10 @@ $section="contacto";
           </div>
         </div>
         <div class="row mt-3">
-          <div class="col-4">
+          <div class="col-12 col-sm-4">
             <h4 class="text-muted"><strong>Bucaramanga</strong></h4>
           </div>
-          <div class="col-6">
+          <div class="col-12 col-sm-6">
             <p class="text-muted">
               Cra 16 No. 59-70. km 7 vía Girón <br>
               Teléfono: (7)- 6917380 <br>
@@ -95,7 +95,7 @@ $section="contacto";
           </div>
         </div>
       </div>
-      <div class="col-4">
+      <div class="col-12 col-md-4">
         <form action="" method="post">
         <div class="row text-muted mb-2">
           Nombre *

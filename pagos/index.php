@@ -63,6 +63,32 @@ $section="pagos";
         </div>
       </div>
       <div class="col-9">
+        <div class="row">
+          <div class="col-6">
+            <div class="row">
+              <h4 class="text-muted"><strong>Ingreso al Sitio</strong></h4>
+            </div>
+            <div class="row">
+              <input type="text" name="" value="" placeholder="Usuario">
+            </div>
+            <div class="row">
+              <input type="password" name="" value="" placeholder="Contraseña">
+            </div>
+          </div>
+          <div class="col-6">
+              <div class="row contenedor_pagos">
+                <div class="col-12">
+                  <h4 class="text-muted"><strong>En este sitio podrá:</strong></h4>
+                </div>
+                <div class="col-12">
+                  <h6 class="text-muted"><strong>Consultar</strong></h6>
+                </div>
+                <div class="col-12">
+                  <span>Histórico de documentos transaccionales.</span>
+                </div>
+              </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
