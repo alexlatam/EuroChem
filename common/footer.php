@@ -25,8 +25,8 @@
           <h4 class="text-white pt-3">Menú</h4>
         </div>
         <ul>
-          <li><a class="text-white" href="#">Protección de datos</a> </li>
-          <li><a class="text-white" href="#">Políticas de quejas y reclamos</a> </li>
+          <li><a class="text-white" href="<?php if($section!="home"){echo "../";} ?>proteccion/">Protección de datos</a> </li>
+          <li><a class="text-white" href="<?php if($section!="home"){echo "../";} ?>politicas/">Políticas de quejas y reclamos</a> </li>
           <li><a class="text-white" href="#">Mapa del sitio</a> </li>
         </ul>
       </div>
@@ -39,7 +39,7 @@
             Carrera 42 No. 53-24 Itaguí, Antioquia <br>
             PBX: 574-3720733 <br>
             Call Center: 574-3750050 <br>
-            ventasmedellín@conquimica.com <br>
+            ventas@eurochem.com <br>
           </p>
         </div>
         <div class="row mt-3">
