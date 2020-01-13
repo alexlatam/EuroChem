@@ -20,7 +20,7 @@ $section="trabaje";
   <link rel="stylesheet" href="../assets/vendor/owlcarousel/assets/owl.theme.default.min.css">
   <link rel="stylesheet" href="../css/style.css">
   <link href="../assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!--link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet"-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
   <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="../assets/vendor/owlcarousel/owl.carousel.min.js"></script>
   <title>Eurochem-Us</title>

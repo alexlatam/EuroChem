@@ -1,13 +1,14 @@
 <?php
   include '../common/conexion.php';
   include '../common/datosGenerales.php';
-  //include 'common/sesion.php';
-  /*$email=$_SESSION['USUARIO'];
-  $sql="SELECT NIVEL FROM ADMIN_USUARIOS WHERE CORREO='$email'";
+  include 'common/sesion.php';
+  $email=$_SESSION['USUARIO'];
+  $sql="SELECT NIVEL FROM USUARIOS WHERE CORREO='$email'";
   $result_nivel=$conn->query($sql);
   if($row=$result_nivel->fetch_assoc()){
     $_SESSION['nivel']=$row['NIVEL'];
-  }*/
+  }
+  $section="home";
  ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">

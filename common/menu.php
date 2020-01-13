@@ -10,16 +10,16 @@
       </div>
       <div class="col-auto d-none d-md-block" style="font-family:'Roboto Condensed',sans-serif;">
         <span class="border_rigth px-1">
-          <a class="enlace_menu <?php if($section=="certificaciones"){echo "active";} ?>" href="<?php if($section!="home"){echo "../";} ?>certificaciones/">Certificaciones</a>
+          <a class="enlace_menu <?php if($section=="certificaciones"){echo "active";} ?>" href="/certificaciones/">Certificaciones</a>
         </span>
         <span class="border_rigth px-1">
-          <a class="enlace_menu <?php if($section=="sustentabilidad"){echo "active";} ?>" href="<?php if($section!="home"){echo "../";} ?>sustentabilidad/">Sustentabilidad</a>
+          <a class="enlace_menu <?php if($section=="sustentabilidad"){echo "active";} ?>" href="/sustentabilidad/">Sustentabilidad</a>
         </span>
         <span class="border_rigth px-1">
-          <a class="enlace_menu <?php if($section=="trabaje"){echo "active";} ?>" href="<?php if($section!="home"){echo "../";} ?>trabaje/">Trabaje con nosotros</a>
+          <a class="enlace_menu <?php if($section=="trabaje"){echo "active";} ?>" href="/trabaje/">Trabaje con nosotros</a>
         </span>
         <span class="border_rigth px-1">
-          <a class="enlace_menu <?php if($section=="actualidad"){echo "active";} ?>" href="<?php if($section!="home"){echo "../";} ?>actualidad/">Actualidad</a>
+          <a class="enlace_menu <?php if($section=="actualidad"){echo "active";} ?>" href="/actualidad/">Actualidad</a>
         </span>
       </div>
       <div class="col-auto ml-auto d-none d-sm-block">

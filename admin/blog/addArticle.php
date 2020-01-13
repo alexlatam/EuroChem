@@ -8,7 +8,7 @@ if(isset($_FILES['imagen'])){
   }else{
     $limite_kb=500;
     if($_FILES["imagen"]["size"]<=$limite_kb*1024){
-      $ruta='img/';
+      $ruta="img/";
       $name_archivo=basename($_FILES["imagen"]["name"]);
       $archivo=$ruta.$name_archivo;
       $resultado=move_uploaded_file($_FILES["imagen"]["tmp_name"],$archivo);
@@ -16,14 +16,14 @@ if(isset($_FILES['imagen'])){
     }else{$respuesta=5;}
   }
 }
-if($iscreated and isset($_POST['title'],$_POST['description'],$_POST['keywords'],$_POST['content'])){
+if($iscreated && isset($_POST['title'],$_POST['description'],$_POST['keywords'],$_POST['content'])){
 $titulo=$_POST['title'];
 $descripcion=$_POST['description'];
 $contenido=$_POST['content'];
 $keywords=$_POST['keywords'];
 $autor=$_POST['autor'];
-$sql="INSERT INTO `articlesblog` (`TITLE`,`IMAGE`,`DESCRIPTION`,`CONTENT`,`KEYWORDS`,`AUTOR`) VALUES ('$titulo','$name_archivo','$descripcion','$contenido','$keywords','$autor');";
+$sql="INSERT INTO `ARTICLESBLOG` (`TITLE`,`IMAGE`,`DESCRIPTION`,`CONTENT`,`KEYWORDS`,`AUTOR`) VALUES ('$titulo','$name_archivo','$descripcion','$contenido','$keywords','$autor');";
 if($conn->query($sql)===TRUE){$respuesta=1;}else{$respuesta=6;}
 }else{$respuesta=7;}
 $conn->close();
-header("Location: ver_blogs.php?r=$respuesta");
+header("Location: index.php?r=$respuesta");

@@ -6,7 +6,7 @@ if(isset($_POST['correo'])){
   if($_POST['correo']!=null && $_POST['clave']!=null){
     $user=$_POST['correo'];
     $clave=$_POST['clave'];
-    $sql="SELECT * FROM usuarios WHERE CORREO='$user';";
+    $sql="SELECT * FROM USUARIOS WHERE CORREO='$user';";
     $res=$conn->query($sql);
     if($row=$res->fetch_assoc()){//usuario registrado
       $clave=md5($clave);

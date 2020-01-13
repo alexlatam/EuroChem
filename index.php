@@ -20,7 +20,7 @@ $section="home";
   <link rel="stylesheet" href="assets/vendor/owlcarousel/assets/owl.theme.default.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link href="assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!--link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet"-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
   <script src="assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="assets/vendor/owlcarousel/owl.carousel.min.js"></script>
   <title>Eurochem-Us</title>
@@ -153,74 +153,40 @@ $section="home";
       <h2 class="titulos">Actualidad</h2>
     </div>
     <div class="row mt-4">
-      <div class="col-12 col-md-4" style="padding:0 2%;">
-        <div class="row" style="background-color:#f7f7f7;">
-          <div class="container-img-blog">
-            <a class="d-flex" href="#">
-              <div class="imagen-blog">
-                <img class="img-blog" src="imagen/blog1.jpg">
+      <?php
+      $sql="SELECT IDARTICULO,TITLE,CONTENT,IMAGE FROM ARTICLESBLOG LIMIT 3;";
+      $result=$conn->query($sql);
+      if($result->num_rows>0){
+        while($row=$result->fetch_assoc()){
+          $id_articulo=$row['IDARTICULO'];
+          $titulo=ucwords($row['TITLE']);
+          $contenido=ucfirst($row['CONTENT']);
+          $imagen=$row['IMAGE'];
+          ?>
+          <div class="col-12 col-md-4" style="padding:0 2%;">
+            <div class="row" style="background-color:#f7f7f7;">
+              <div class="container-img-blog">
+                <a class="d-flex" href="#">
+                  <div class="imagen-blog">
+                    <img class="img-blog" src="admin/blog/img/<?php echo $imagen;?>">
+                  </div>
+                </a>
               </div>
-            </a>
+            </div>
+            <div class="row px-2" style="background-color:#f7f7f7;">
+              <h4 class="titulos_blog pt-3"><?php echo $titulo;?></h4>
+            </div>
+            <div class="row text-muted px-2" style="background-color:#f7f7f7;">
+              <p><?php echo substr($contenido,0,335)."[...]";?></p>
+            </div>
+            <div class="row px-2 pb-4" style="background-color:#f7f7f7;">
+              <a class="btn btn-primary px-4" href="actualidad/article.php?id=<?php echo $id_articulo;?>">Leer más</a>
+            </div>
           </div>
-        </div>
-        <div class="row px-2" style="background-color:#f7f7f7;">
-          <h4 class="titulos_blog pt-3">Un Aporte De Conquimica a la Economía Circular Desde la Eficiencia</h4>
-        </div>
-        <div class="row text-muted px-2" style="background-color:#f7f7f7;">
-          <p>Con el objetivo de fomentar la economía circular, impulsar el aprovechamiento de los envases y empaques que circulan en el mercado, el Ministerio de Ambiente y Desarrollo Sostenible  Mediante la Resolución 1407 de 2018 reglamentó la gestión ambiental de los residuos de envases y empaques de papel, cartón, plástico, vidrio y metal. </p>
-        </div>
-        <div class="row px-2 pb-4" style="background-color:#f7f7f7;">
-          <a class="btn btn-primary px-4" href="#">Leer más</a>
-        </div>
-      </div>
-      <div class="col-12 col-md-4" style="padding:0 2%;">
-        <div class="row" style="background-color:#f7f7f7;">
-          <div class="container-img-blog">
-            <a class="d-flex" href="#">
-              <div class="imagen-blog">
-                <img class="img-blog" src="imagen/blog2.jpg">
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="row px-2" style="background-color:#f7f7f7;">
-          <h4 class="titulos_blog pt-3">
-            PUBLICACIÓN DE LOS CONDICIONAMIENTOS DERIVADOS DE LA OPERACIÓN DE INTEGRACIÓN ENTRE BRENNTAG COLOMBIA S.A. Y CONQUIMICA S.A.
-          </h4>
-        </div>
-        <div class="row text-muted px-2" style="background-color:#f7f7f7;">
-          <p>
-            Entre las partes a saber: de una parte BRENNTAG COLOMBIA S.A. y de otra parte CONQUIMICA S.A. (en adelante las “INTERVINIENTES” –como más adelante se define-) de acuerdo con lo establecido en la resolución N° 83700 del 14 de noviembre de 2018, se permiten comunicar a los interesados los condicionamientos derivados de la operación de
-          </p>
-        </div>
-        <div class="row px-2 pb-4" style="background-color:#f7f7f7;">
-          <a class="btn btn-primary px-4" href="#">Leer más</a>
-        </div>
-      </div>
-      <div class="col-12 col-md-4" style="padding:0 2%;">
-        <div class="row" style="background-color:#f7f7f7;">
-          <div class="container-img-blog">
-            <a class="d-flex" href="#">
-              <div class="imagen-blog">
-                <img class="img-blog" src="imagen/blog3.jpg">
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="row px-2" style="background-color:#f7f7f7;">
-          <h4 class="titulos_blog pt-3">
-            Aditivos Para La Industria De Recubrimientos
-          </h4>
-        </div>
-        <div class="row text-muted px-2" style="background-color:#f7f7f7;">
-          <p>
-            Para CONQUIMICA la industria de recubrimientos siempre ha sido uno de sus sectores foco de crecimiento y presencia, es por esto que con gran alegría nos permitimos informar que continuaremos ofreciendo al mercado los aditivos para recubrimientos de la mano de un nuevo aliado, ADD Additives.
-          </p>
-        </div>
-        <div class="row px-2 pb-4" style="background-color:#f7f7f7;">
-          <a class="btn btn-primary px-4" href="#">Leer más</a>
-        </div>
-      </div>
+          <?php
+        }
+      }
+       ?>
     </div>
   </section>
   <!-- Carousel Clientes -->

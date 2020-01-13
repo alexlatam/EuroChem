@@ -23,7 +23,6 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?php echo $root_folder;?>/admin/img/" alt="user" class="rounded-circle" width="31"></a>
           <div class="dropdown-menu dropdown-menu-right user-dd animated">
-            <a class="dropdown-item" href="/admin/perfil.php"><i class="ti-user m-r-5 m-l-5"></i>Mi Perfil</a>
             <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal" data-target="#closeSesion"><i class="ti-export m-r-5 m-l-5"></i>Cerrar sesión</a>
           </div>
         </li>
@@ -42,16 +41,18 @@
           </a>
           <div class="dropdown-container-sidemenu" style="display:none;" id="dropdown1">
             <a class="d-block sidebar-link waves-effect waves-dark sidebar-link ml-5" href="<?php echo $root_folder;?>/admin/generales/pagina.php"><span class="hide-menu">Página Web </span></a>
-            <a class="d-block sidebar-link waves-effect waves-dark sidebar-link ml-5" href="<?php echo $root_folder;?>/admin/generales/categoria.php"><span class="hide-menu">Categorias </span></a>
-            <a class="d-block sidebar-link waves-effect waves-dark sidebar-link ml-5" href="<?php echo $root_folder;?>/admin/generales/marcas.php"><span class="hide-menu">Marcas </span></a>
             <a class="d-block sidebar-link waves-effect waves-dark sidebar-link ml-5" href="<?php echo $root_folder;?>/admin/generales/usuarios.php"><span class="hide-menu">Usuarios </span></a>
           </div>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="blog/" aria-expanded="false">
+          <a class="sidebar-link waves-effect waves-dark sidebar-link dropdown-btn-sidebar">
             <i class="mdi mdi-ticket"></i>
-            <span class="hide-menu">Blog - Actualidad</span>
+            <span class="hide-menu">Blog - Actualidad </span>
           </a>
+          <div class="dropdown-container-sidemenu" style="display:none;" id="dropdown1">
+            <a class="d-block sidebar-link waves-effect waves-dark sidebar-link ml-5" href="/admin/blog/index.php"><span class="hide-menu">Nuevo Blog</span></a>
+            <a class="d-block sidebar-link waves-effect waves-dark sidebar-link ml-5" href="/admin/blog/ver_blogs.php"><span class="hide-menu">Ver Blogs Creados</span></a>
+          </div>
         </li>
       </ul>
     </nav>
@@ -76,18 +77,16 @@
     </div>
   </div>
 </div>
-<script type="text/javascript">
+<script>
   var dropdown = document.getElementsByClassName("dropdown-btn-sidebar");
   var i;
-  for (i = 0; i < dropdown.length; i++) {
-    dropdown[i].addEventListener("click", function(){
+  for(i=0;i<dropdown.length;i++){
+    dropdown[i].addEventListener("click",function(){
       this.classList.toggle("active");
       var dropdownContent = this.nextElementSibling;
-      if (dropdownContent.style.display === "block") {
-        dropdownContent.style.display = "none";
-      } else {
-        dropdownContent.style.display = "block";
-      }
+      if(dropdownContent.style.display==="block"){
+        dropdownContent.style.display="none";
+      }else{dropdownContent.style.display="block";}
     });
   }
 </script>

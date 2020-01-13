@@ -1,10 +1,11 @@
 <?php
-$servername="localhost";
 //servidor
-/*$username="id4956438_rouxa";
-$password="rouxarouxabd";
-$dbname="id4956438_rouxa";*/
+/*$servername="db5000266937.hosting-data.io";
+$username="dbu241881";
+$dbname="dbs260499";
+$password="Eurochem12345*";*/
 //localhost
+$servername="localhost";
 $username="root";
 $password="";
 $dbname="eurochem";
@@ -17,5 +18,5 @@ if($conn->connect_error){die("Connection failed: ".$conn->connect_error);}
 $root_folder="http://localhost/Rouxa/";
 //--para servidor--
 //$root_folder=""; // prints '/home/public_html/'
-$nombrePagina="Rouxa";
+$nombrePagina="Eurochem";
 $imageLogo="logo.png";
