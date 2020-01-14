@@ -1,6 +1,15 @@
-.imagenPpal{
-  height: 80vh;
-  width: auto;
+
+@media screen and (max-width:640px) {
+  .imagenPpal{
+    height: auto;
+    width: 100%;
+  }
+}
+@media screen and (min-width:1200px) {
+  .imagenPpal{
+    height: 80vh;
+    width: auto;
+  }
 }
 /*Dots del carousel*/
 .owl-theme .owl-nav.disabled + .owl-dots {
@@ -147,7 +156,7 @@
   flex-wrap:wrap;
 }
 .img-blog{
-  width:100%;
+  min-width:100%;
   max-height:40vh!important;
   object-fit:contain;
   object-position:center center;

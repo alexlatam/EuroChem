@@ -30,9 +30,9 @@ $section="home";
   <!--Colores #cc0033 #000066 -->
   <!--Corousel Library-->
   <div class="owl-carousel owl-theme" id="carousel">
-    <div class="imagenPpal"><img class="d-block d-sm-none" src="imagen/ppal1-responsive.jpg" alt=""><img class="img-fluid d-none d-sm-block" src="imagen/principal1.jpg" alt=""></div>
-    <div class="imagenPpal"><img class="d-block d-sm-none" src="imagen/ppal3-responsive.jpg" alt=""><img class="img-fluid d-none d-sm-block" src="imagen/principal3.jpg" alt=""></div>
-    <div class="imagenPpal"><img class="d-block d-sm-none" src="imagen/ppal2-responsive.jpg" alt=""><img class="img-fluid d-none d-sm-block" src="imagen/principal2.jpg" alt=""></div>
+    <div class="imagenPpal"><img class="img-fluid" src="imagen/principal1.jpg" alt=""></div>
+    <div class="imagenPpal"><img class="img-fluid" src="imagen/principal3.jpg" alt=""></div>
+    <div class="imagenPpal"><img class="img-fluid" src="imagen/principal2.jpg" alt=""></div>
   </div>
   <script>
     $('#carousel').owlCarousel({
@@ -64,30 +64,30 @@ $section="home";
     </div>
   </section>
   <!-- Imagenes de productos -->
-  <section class="container my-5 px-5 pb-4">
-    <div class="row px-4">
+  <section class="container my-5 px-md-5 pb-2">
+    <div class="row px-3 px-md-4">
       <h2 class="titulos">Divisiones de productos</h2>
     </div>
-    <div class="row px-4">
+    <div class="row px-3 px-md-4">
       <p class="text-muted" style="font-family: 'Roboto Condensed', sans-serif;">Contamos con cuatro divisiones de negocio con las cuales atendemos a los principales sectores de la industria</p>
     </div>
-    <div class="row px-4 mt-3">
-      <div class="col-12 col-md-4 col-lg-3 mb-2 text-center">
+    <div class="row px-3 px-md-4 mt-3">
+      <div class="col-12 col-md-4 col-lg-3 mb-4 text-center">
         <a class="imagen_divisiones_home" href="#">
           <img src="imagen/division_alimentos.png" alt="">
         </a>
       </div>
-      <div class="col-12 col-md-4 col-lg-3 mb-2 text-center">
+      <div class="col-12 col-md-4 col-lg-3 mb-4 text-center">
         <a class="imagen_divisiones_home" href="#">
           <img src="imagen/division_especializadas.png" alt="">
         </a>
       </div>
-      <div class="col-12 col-md-4 col-lg-3 mb-2 text-center">
+      <div class="col-12 col-md-4 col-lg-3 mb-4 text-center">
         <a class="imagen_divisiones_home" href="#">
           <img src="imagen/division_genericos.png" alt="">
         </a>
       </div>
-      <div class="col-12 col-md-4 col-lg-3 mb-2 text-center">
+      <div class="col-12 col-md-4 col-lg-3 mb-4 text-center">
         <a class="imagen_divisiones_home" href="#">
           <img src="imagen/division_plasticos.png" alt="">
         </a>
@@ -103,8 +103,8 @@ $section="home";
     </div>
   </section>
   <!-- Seccion de Video -->
-  <section class="container px-5 my-5">
-    <div class="row px-4">
+  <section class="container px-md-5 my-5">
+    <div class="row px-3 px-md-4">
       <div class="col-12 col-md-6">
         <div class="row mt-3">
           <h2 class="titulos" style="font-family: 'Roboto Condensed', sans-serif;">Nuestra compañía</h2>
@@ -122,8 +122,8 @@ $section="home";
     </div>
   </section>
   <!-- Seccion Prodcuto del mes -->
-  <section class="container px-5 mb-5">
-    <div class="row px-4">
+  <section class="container px-md-5 mb-5">
+    <div class="row px-3 px-md-4">
       <div class="col-12 col-md-8">
         <div class="row">
           <h2 class="titulos">Producto del mes</h2>
@@ -148,11 +148,11 @@ $section="home";
     </div>
   </section>
   <!-- Seccion Actualidad -->
-  <section class="container px-5 mb-5">
+  <section class="container px-md-5 mb-5">
     <div class="row px-4">
       <h2 class="titulos">Actualidad</h2>
     </div>
-    <div class="row mt-4">
+    <div class="row px-4 mt-4">
       <?php
       $sql="SELECT IDARTICULO,TITLE,CONTENT,IMAGE FROM ARTICLESBLOG LIMIT 3;";
       $result=$conn->query($sql);
