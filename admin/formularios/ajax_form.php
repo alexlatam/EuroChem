@@ -1,5 +1,5 @@
 <?php
-include 'common/conexion.php';
+include '../../common/conexion.php';
 $resp=0;
 $id_producto=$_GET['id'];
 $sql="SELECT URL_TEMP FROM PRODUCTOS WHERE ID=$id_producto;";

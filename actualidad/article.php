@@ -36,9 +36,9 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
   <script src="../assets/vendor/owlcarousel/owl.carousel.min.js"></script>
 </head>
 <body data-offset="200" data-spy="scroll" data-target=".ow-navigation">
-<?php $section="blog"; ?>
+<?php $section="blog";?>
  	<?php include '../common/menu.php'; include '../common/2domenu.php';?>
-  <div class="container">
+  <div class="container pb-4">
     <div class="row mt-5">
       <h2 class="titulos"><?php echo $titulo;?></h2>
     </div>

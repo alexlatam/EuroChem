@@ -27,7 +27,7 @@ $section="nuestra_company";
 </head>
 <body style="background-color:#ffffff;">
   <?php include '../common/menu.php'; include '../common/2domenu.php';?>
-  <div class="container px-5">
+  <div class="container px-5 pb-4">
     <div class="row px-4 mt-3">
       <!-- Menu lateral -->
       <div class="col-12 col-md-3 mt-2">

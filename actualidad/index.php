@@ -36,7 +36,7 @@ $section="actualidad";
 </head>
 <body style="background-color:#ffffff;">
   <?php include '../common/menu.php'; include '../common/2domenu.php';?>
-  <div class="container px-5">
+  <div class="container px-5 pb-4">
     <div class="row px-4 mt-3">
       <!-- Menu lateral -->
       <div class="col-12 col-md-3 mt-2">
@@ -119,45 +119,45 @@ $section="actualidad";
                 }
                ?>
         </div>
+        <!-- Paginacion -->
+        <section class="text-center">
+          <?php for($i=1;$i<=$total_paginas;$i++){ ?>
+            <?php if($page>5){
+              $inicio=$page-2;
+              $final=$page+2;
+              ?>
+              <a class="btn btn-link btn-sm ml-2 text_paginacion" href="?page=<?php echo ($inicio-1);?>">...</a>
+              <?php
+              for($i=$inicio;$i<$final;$i++){
+                if($page==$i){ ?>
+                  <a class="btn btn-link btn-sm ml-2 text_paginacion_active" href="?page=<?php echo $i;?>"><?php echo $i;?></a>
+                <?php }elseif($i>$total_paginas){
+                  break 2;
+                }else { ?>
+                  <a class="btn btn-link btn-sm ml-2 text_paginacion" href="?page=<?php echo $i;?>"><?php echo $i;?></a>
+                <?php } ?>
+              <?php } ?>
+              <?php if($i<$total_paginas){ ?>
+                <a class="btn btn-link btn-sm ml-2 text_paginacion" href="?page=<?php echo ($final+1);?>">...</a>
+              <?php } ?>
+              <?php break; ?>
+            <?php }else{ ?>
+              <?php if($i>5){ ?>
+                <a class="btn btn-link btn-sm ml-2 text_paginacion" href="?page=<?php echo $i;?>">...</a>
+                <?php break; ?>
+              <?php }else{ ?>
+                <?php if($page==$i){ ?>
+                  <a class="btn btn-link btn-sm ml-2 text_paginacion_active" href="?page=<?php echo $i;?>"><?php echo $i;?></a>
+                <?php }else{ ?>
+                  <a class="btn btn-link btn-sm ml-2 text_paginacion" href="?page=<?php echo $i;?>"><?php echo $i;?></a>
+                <?php } ?>
+              <?php } ?>
+            <?php } ?>
+          <?php } ?>
+        </section>
       </div>
     </div>
   </div>
-    <!-- Paginacion -->
-    <section class="text-center">
-      <?php for($i=1;$i<=$total_paginas;$i++){ ?>
-        <?php if($page>5){
-          $inicio=$page-2;
-          $final=$page+2;
-          ?>
-          <a class="btn btn-link btn-sm ml-2 text_paginacion" href="?page=<?php echo ($inicio-1);?>">...</a>
-          <?php
-          for($i=$inicio;$i<$final;$i++){
-            if($page==$i){ ?>
-              <a class="btn btn-link btn-sm ml-2 text_paginacion_active" href="?page=<?php echo $i;?>"><?php echo $i;?></a>
-            <?php }elseif($i>$total_paginas){
-              break 2;
-              }else { ?>
-              <a class="btn btn-link btn-sm ml-2 text_paginacion" href="?page=<?php echo $i;?>"><?php echo $i;?></a>
-            <?php } ?>
-          <?php } ?>
-          <?php if($i<$total_paginas){ ?>
-            <a class="btn btn-link btn-sm ml-2 text_paginacion" href="?page=<?php echo ($final+1);?>">...</a>
-          <?php } ?>
-          <?php break; ?>
-        <?php }else{ ?>
-          <?php if($i>5){ ?>
-            <a class="btn btn-link btn-sm ml-2 text_paginacion" href="?page=<?php echo $i;?>">...</a>
-            <?php break; ?>
-          <?php }else{ ?>
-            <?php if($page==$i){ ?>
-              <a class="btn btn-link btn-sm ml-2 text_paginacion_active" href="?page=<?php echo $i;?>"><?php echo $i;?></a>
-            <?php }else{ ?>
-              <a class="btn btn-link btn-sm ml-2 text_paginacion" href="?page=<?php echo $i;?>"><?php echo $i;?></a>
-            <?php } ?>
-          <?php } ?>
-        <?php } ?>
-      <?php } ?>
-    </section>
   <!-- Footer -->
   <?php include '../common/footer.php';?>
   <script>

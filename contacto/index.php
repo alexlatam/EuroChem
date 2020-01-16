@@ -31,7 +31,7 @@ $section="contacto";
   <div class="container-fluid mt-4 px-0">
     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15708.03522624633!2d-68.005718!3d10.179939!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1d47af71967d9a49!2sSuministros+Mavic%2C+C.A!5e0!3m2!1ses!2sve!4v1562178603833!5m2!1ses!2sve" width="100%" height="400px" frameborder="0" style="border:0" allowfullscreen></iframe>
   </div>
-  <div class="container px-5">
+  <div class="container px-5 pb-4">
     <div class="row px-4 mt-5">
       <div class="col-12 col-md-6">
         <div class="row">

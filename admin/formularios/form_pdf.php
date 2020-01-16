@@ -1,4 +1,4 @@
-<?php include 'common/conexion.php';
+<?php include '../../common/conexion.php';
 $iscreated=0;
 if(isset($_POST['producto'],$_POST['formula'],$_POST['nombre_comercial'],$_POST['peso_mol'],$_POST['sinonimos'],$_POST['descripcion'],$_POST['usos'],$_POST['pie_pagina'])){
   $id_producto=$_POST['producto'];
@@ -35,8 +35,8 @@ if(isset($_POST['producto'],$_POST['formula'],$_POST['nombre_comercial'],$_POST[
   <head>
     <meta charset="utf-8">
     <title>Formulario - Pdf</title>
-    <link href="assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+    <link href="../../assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
   </head>
   <body>
     <div class="container">
@@ -50,7 +50,7 @@ if(isset($_POST['producto'],$_POST['formula'],$_POST['nombre_comercial'],$_POST[
           </div>
           <select class="form-control" name="producto" id="select_p" required>
             <option value=""></option>
-            <?php $sql="SELECT ID,TITULO FROM PRODUCTOS;";
+            <?php $sql="SELECT p.ID,p.TITULO FROM PRODUCTOS p LEFT JOIN FICHA_TECNICA f ON p.ID=f.IDPRODUCTO WHERE p.ID NOT IN (SELECT IDPRODUCTO FROM FICHA_TECNICA);";
             $result=$conn->query($sql);
             if($result->num_rows>0){
               while($row=$result->fetch_assoc()){
@@ -185,8 +185,8 @@ if(isset($_POST['producto'],$_POST['formula'],$_POST['nombre_comercial'],$_POST[
         }
       });
     </script>
-    <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
-    <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src='https://cdn.jsdelivr.net/npm/sweetalert2@7.29.0/dist/sweetalert2.all.min.js'></script>
   </body>
 </html>
