@@ -1,4 +1,3 @@
-
 @media screen and (max-width:640px) {
   .imagenPpal{
     height: auto;
@@ -129,23 +128,23 @@
   display: block;
 }
 ul.col3{
-padding-right: 0px;
-padding-left: 0px;
-float: left;
-padding-bottom: 0px;
-margin: 15px 0px;
-width: 100%;
-padding-top: 0px;
-list-style-type: none;
+  padding-right: 0px;
+  padding-left: 0px;
+  float: left;
+  padding-bottom: 0px;
+  margin: 15px 0px;
+  width: 100%;
+  padding-top: 0px;
+  list-style-type: none;
 }
 ul.col3 li{
-padding-right: 2px;
-display: inline;
-padding-left: 2px;
-float: left;
-padding-bottom: 2px;
-width: 30%;
-padding-top: 2px
+  padding-right: 2px;
+  display: inline;
+  padding-left: 2px;
+  float: left;
+  padding-bottom: 2px;
+  width: 30%;
+  padding-top: 2px
 }
 /* 2Menu */
 .imagen_divisiones_home:hover{
@@ -172,32 +171,6 @@ padding-top: 2px
   font-size: 22px;
   font-family: 'Roboto Condensed', sans-serif;
 }
-/*BLOG*/
-.titulos_blog{
-  color:#000066;
-  font-family: 'Roboto Condensed', sans-serif;
-}
-.container-img-blog{
-  position:relative;
-  background-color:#ffffff;
-  height:40vh;
-  display:flex;
-  flex-direction:row;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-.imagen-blog{
-  display:flex;
-  flex-direction:row;
-  flex-wrap:wrap;
-}
-.img-blog{
-  min-width:100%;
-  max-height:40vh!important;
-  object-fit:contain;
-  object-position:center center;
-}
-/*BLOG*/
 /* Carousel Clients*/
 .img_clients{
   min-height: 100px;
@@ -205,29 +178,28 @@ padding-top: 2px
   min-width: 100px;
   max-width: 150px;
 }
-.owl-theme {
-  position: relative!important;
-}
-.owl-theme .owl-nav {
+#carouselclients .owl-nav{
   position: absolute;
   top: 0;
+  right: auto;
+  height: 50px;
+  width: inherit;
+  text-align: left;
+  display: flex;
+  align-items: flex-start;
 }
-.owl-theme .owl-nav .owl-prev:hover{
+#carouselclients .owl-nav button{
   background-color: inherit;
 }
-.owl-theme .owl-nav .owl-next:hover{
-  background-color: inherit;
+#carouselclients .owl-nav button:hover{
+  color:#adadad;
 }
-.owl-theme .owl-nav button{
-  padding-top: 0!important;
+#carouselclients .owl-nav button span{
+ font-size: 50px;
+ font-weight: bold;
 }
-.owl-theme .owl-nav button span{
-  font-size: 60px;
-  line-height: 60px;
-  color: #414141;
-}
-.owl-theme .owl-nav button.owl-next span{
-
+#carouselclients .owl-nav .owl-next{
+  margin-left: auto;
 }
 /* Footer*/
 ul {
@@ -246,6 +218,10 @@ ul {
   padding: 0;
 }
 /* Blog*/
+.titulos_blog{
+  color:#000066;
+  font-family: 'Roboto Condensed', sans-serif;
+}
 .container-img-blog{
   position:relative;
   background-color:#ffffff;

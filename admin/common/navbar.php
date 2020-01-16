@@ -1,33 +1,33 @@
 <header class="topbar" data-navbarbg="skin6">
 <nav class="navbar top-navbar navbar-expand-md navbar-light">
-    <div class="navbar-header" data-logobg="skin5">
-        <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
-            <i class="ti-menu ti-close"></i>
-        </a>
-        <div class="navbar-brand">
-            <a href="/admin/principal.php" class="logo">
-                EuroChem
-            </a>
-        </div>
-        <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="ti-more"></i>
-        </a>
+  <div class="navbar-header" data-logobg="skin5">
+    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
+      <i class="ti-menu ti-close"></i>
+    </a>
+    <div class="navbar-brand">
+      <a href="/admin/principal.php" class="logo">
+        EuroChem
+      </a>
     </div>
-    <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin6">
-        <ul class="navbar-nav float-left mr-auto">
-          <li class="nav-item search-box">
-          </li>
-        </ul>
-      <ul class="navbar-nav float-right">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?php echo $root_folder;?>/admin/img/" alt="user" class="rounded-circle" width="31"></a>
-          <div class="dropdown-menu dropdown-menu-right user-dd animated">
-            <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal" data-target="#closeSesion"><i class="ti-export m-r-5 m-l-5"></i>Cerrar sesión</a>
-          </div>
-        </li>
-      </ul>
-    </div>
+    <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="ti-more"></i>
+  </a>
+</div>
+<div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin6">
+  <ul class="navbar-nav float-left mr-auto">
+    <li class="nav-item search-box">
+    </li>
+  </ul>
+  <ul class="navbar-nav float-right">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?php echo $root_folder;?>/admin/img/" alt="user" class="rounded-circle" width="31"></a>
+      <div class="dropdown-menu dropdown-menu-right user-dd animated">
+        <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal" data-target="#closeSesion"><i class="ti-export m-r-5 m-l-5"></i>Cerrar sesión</a>
+      </div>
+    </li>
+  </ul>
+</div>
 </nav>
 </header>
 <aside class="left-sidebar" data-sidebarbg="skin5">
@@ -40,8 +40,8 @@
             <span class="hide-menu">Configuración General </span>
           </a>
           <div class="dropdown-container-sidemenu" style="display:none;" id="dropdown1">
-            <a class="d-block sidebar-link waves-effect waves-dark sidebar-link ml-5" href="<?php echo $root_folder;?>/admin/generales/pagina.php"><span class="hide-menu">Página Web </span></a>
-            <a class="d-block sidebar-link waves-effect waves-dark sidebar-link ml-5" href="<?php echo $root_folder;?>/admin/generales/usuarios.php"><span class="hide-menu">Usuarios </span></a>
+            <a class="d-block sidebar-link waves-effect waves-dark sidebar-link ml-5" href="/admin/generales/pagina.php"><span class="hide-menu">Página Web </span></a>
+            <a class="d-block sidebar-link waves-effect waves-dark sidebar-link ml-5" href="/admin/generales/usuarios.php"><span class="hide-menu">Usuarios </span></a>
           </div>
         </li>
         <li class="sidebar-item">
@@ -52,6 +52,16 @@
           <div class="dropdown-container-sidemenu" style="display:none;" id="dropdown1">
             <a class="d-block sidebar-link waves-effect waves-dark sidebar-link ml-5" href="/admin/blog/index.php"><span class="hide-menu">Nuevo Blog</span></a>
             <a class="d-block sidebar-link waves-effect waves-dark sidebar-link ml-5" href="/admin/blog/ver_blogs.php"><span class="hide-menu">Ver Blogs Creados</span></a>
+          </div>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link waves-effect waves-dark sidebar-link dropdown-btn-sidebar">
+            <i class="mdi mdi-ticket"></i>
+            <span class="hide-menu">Formularios </span>
+          </a>
+          <div class="dropdown-container-sidemenu" style="display:none;" id="dropdown1">
+            <a class="d-block sidebar-link waves-effect waves-dark sidebar-link ml-5" href="/admin/formularios/form_productos.php"><span class="hide-menu">Formulario Productos</span></a>
+            <a class="d-block sidebar-link waves-effect waves-dark sidebar-link ml-5" href="/admin/formularios/form_pdf.php"><span class="hide-menu">Formulario Pdf`s</span></a>
           </div>
         </li>
       </ul>
