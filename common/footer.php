@@ -1,4 +1,4 @@
-<section class="container-fluid bg-euro-dark pt-3 pb-4 mt-3">
+<section class="container-fluid bg-euro-dark pt-3 pb-4">
   <div class="container text-white px-5">
     <div class="row px-4">
       <div class="col-md-4">

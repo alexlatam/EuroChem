@@ -30,7 +30,7 @@ $section="pagos";
   <div class="container px-5">
     <div class="row px-4 mt-3">
       <!-- Menu lateral -->
-      <div class="col-3 mt-2">
+      <div class="col-12 col-md-3 mt-2">
         <div class="row">
           <div class="col-12">
             <h2 class="titulos_blog lead">Búsqueda</h2>
@@ -62,31 +62,44 @@ $section="pagos";
           </div>
         </div>
       </div>
-      <div class="col-9">
+      <div class="col-12 col-md-9">
         <div class="row">
-          <div class="col-6">
-            <div class="row">
+          <div class="col-12 col-md-6">
+            <div class="row px-5">
               <h4 class="text-muted"><strong>Ingreso al Sitio</strong></h4>
             </div>
-            <div class="row">
-              <input type="text" name="" value="" placeholder="Usuario">
+            <div class="row px-5 mt-4">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text bg-dark text-white">Usuario</span>
+                </div>
+                <input class="form-control" type="text" name="" value="" placeholder="Usuario">
+              </div>
             </div>
-            <div class="row">
-              <input type="password" name="" value="" placeholder="Contraseña">
+            <div class="row px-5">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text bg-dark text-white">Contraseña</span>
+                </div>
+                <input class="form-control" type="password" name="" value="" placeholder="Contraseña">
+              </div>
+            </div>
+            <div class="row px-5 mb-4">
+              <button class="btn btn-secondary px-4" type="button">Ingresar</button>
             </div>
           </div>
-          <div class="col-6">
-              <div class="row contenedor_pagos">
-                <div class="col-12">
-                  <h4 class="text-muted"><strong>En este sitio podrá:</strong></h4>
-                </div>
-                <div class="col-12">
-                  <h6 class="text-muted"><strong>Consultar</strong></h6>
-                </div>
-                <div class="col-12">
-                  <span>Histórico de documentos transaccionales.</span>
-                </div>
+          <div class="col-12 col-md-6">
+            <div class="row contenedor_pagos2 p-2">
+              <div class="col-12">
+                <h4 class="text-muted lead"><strong>En este sitio podrá:</strong></h4>
               </div>
+              <div class="col-12 mt-3 pl-5">
+                <h6 class="text-muted"><strong>Consultar</strong></h6>
+              </div>
+              <div class="col-12 mb-5 pl-5">
+                <span>Histórico de documentos transaccionales.</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

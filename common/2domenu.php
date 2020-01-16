@@ -15,15 +15,41 @@
         <div class="dropdown">
           <a class="nav-link dropbtn text_menu_2 py-4 <?php if($section=="divisiones"){echo "active";} ?>" href="#">Divisiones</a>
           <div class="dropdown-content">
-            <a class="text_menu_2" href="#">Alimentos</a>
-            <a class="text_menu_2" href="#">Especialidades</a>
-            <a class="text_menu_2" href="#">Genéricos</a>
-            <a class="text_menu_2" href="#">Plásticos</a>
+            <?php $sql="SELECT * FROM DIVISIONES;";
+            $result=$conn->query($sql);
+            if($result->num_rows>0){
+              while($row=$result->fetch_assoc()){
+                $id_division=$row['ID'];
+                $division=ucwords($row['DIVISION']);
+                ?>
+                <a class="text_menu_2" href="#"><?php echo $division;?></a>
+                <?php
+              }
+            }
+             ?>
           </div>
         </div>
       </li>
       <li class="nav-item ml-3 pt-2">
-        <a class="nav-link text_menu_2 py-4 <?php if($section=="industrias"){echo "active";} ?>" href="#">Industrias</a>
+        <div class="dropdown">
+          <a class="nav-link dropbtn text_menu_2 py-4 <?php if($section=="industrias"){echo "active";} ?>" href="#">Industrias</a>
+          <div class="dropdown-content2">
+            <ul class="col3">
+              <?php $sql="SELECT * FROM INDUSTRIAS;";
+              $result=$conn->query($sql);
+              if($result->num_rows>0){
+                while($row=$result->fetch_assoc()){
+                  $id_industria=$row['ID'];
+                  $industria=$row['INDUSTRIA'];
+                  ?>
+                  <li><a class="text_menu_2" href="#"><?php echo $industria;?></a></li>
+                  <?php
+                }
+              }
+               ?>
+            </ul>
+          </div>
+        </div>
       </li>
       <li class="nav-item ml-3 pt-2">
         <a class="nav-link text_menu_2 py-4 <?php if($section=="nuestra_company"){echo "active";} ?>" href="/nuestra_compania/index.php">Nuestra compañía</a>

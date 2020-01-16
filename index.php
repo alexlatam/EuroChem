@@ -1,6 +1,4 @@
 <?php
-#Quitar el comentario para entrar en mantenimiento.
-#header('Location: mantenimiento/');
 session_start();
 include 'common/conexion.php';
 include 'common/datosGenerales.php';
@@ -94,11 +92,98 @@ $section="home";
       </div>
     </div>
   </section>
-  <!-- Imagenes de categorias -->
-  <section class="container-fluid mt-5 bg-euro">
+  <!-- Imagenes de industrias -->
+  <section class="container-fluid mt-5 bg-euro pb-5">
     <div class="container pt-5 pb-3 px-5">
       <div class="row mt-3 px-4">
         <h2 class="titulos">Industrias</h2>
+      </div>
+      <div class="row justify-content-center align-items-center mt-2">
+        <a class="enlace_img_industrias mx-1" href="#">
+          <div class="contenedor_img_industrias mt-3">
+            <img class="img_industrias" src="imagen/industrias/comercializadores.jpg" alt="">
+            <div class="div_text_industria">
+              <div class="text_span text-white">Alimentos y bebidas</div>
+            </div>
+          </div>
+        </a>
+        <a class="enlace_img_industrias mx-1" href="#">
+          <div class="contenedor_img_industrias mt-3">
+            <img class="img_industrias" src="imagen/industrias/recubrimientos.jpg" alt="">
+            <div class="div_text_industria">
+              <span class="text_span text-white">Recubrimientos</span>
+            </div>
+          </div>
+        </a>
+        <a class="enlace_img_industrias mx-1" href="#">
+          <div class="contenedor_img_industrias mt-3">
+            <img class="img_industrias" src="imagen/industrias/comercializadores.jpg" alt="">
+            <div class="div_text_industria">
+              <span class="text_span text-white">Comercializadores</span>
+            </div>
+          </div>
+        </a>
+        <a class="enlace_img_industrias mx-1" href="#">
+          <div class="contenedor_img_industrias mt-3">
+            <img class="img_industrias" src="imagen/industrias/aseo.jpg" alt="">
+            <div class="div_text_industria">
+              <span class="text_span text-white">Aseo</span>
+            </div>
+          </div>
+        </a>
+        <a class="enlace_img_industrias mx-1" href="#">
+          <div class="contenedor_img_industrias mt-3">
+            <img class="img_industrias" src="imagen/industrias/telas.jpg" alt="">
+            <div class="div_text_industria">
+              <span class="text_span text-white">Textil y prendas</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="row justify-content-center align-items-center mt-2">
+        <a class="enlace_img_industrias mx-1" href="#">
+          <div class="contenedor_img_industrias mt-3">
+            <img class="img_industrias" src="imagen/industrias/industria.jpg" alt="">
+            <div class="div_text_industria">
+              <div class="text_span text-white">Industria Química</div>
+            </div>
+          </div>
+        </a>
+        <a class="enlace_img_industrias mx-1" href="#">
+          <div class="contenedor_img_industrias mt-3">
+            <img class="img_industrias" src="imagen/industrias/plasticos.jpg" alt="">
+            <div class="div_text_industria">
+              <span class="text_span text-white">Plasticos</span>
+            </div>
+          </div>
+        </a>
+        <a class="enlace_img_industrias mx-1" href="#">
+          <div class="contenedor_img_industrias mt-3">
+            <img class="img_industrias" src="imagen/industrias/adhesivos.jpg" alt="">
+            <div class="div_text_industria">
+              <span class="text_span text-white">Adhesivos y pegantes</span>
+            </div>
+          </div>
+        </a>
+        <a class="enlace_img_industrias mx-1" href="#">
+          <div class="contenedor_img_industrias mt-3">
+            <img class="img_industrias" src="imagen/industrias/impresion.jpg" alt="">
+            <div class="div_text_industria">
+              <span class="text_span text-white">Impresión</span>
+            </div>
+          </div>
+        </a>
+        <a class="enlace_img_industrias mx-1" href="#">
+          <div class="contenedor_img_industrias mt-3">
+            <img class="img_industrias" src="imagen/industrias/petroleos.jpg" alt="">
+            <div class="div_text_industria">
+              <span class="text_span text-white">Petróleos</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="row justify-content-center mt-5">
+        <a class="btn btn-primary px-4" href="#">Ver todas</a>
       </div>
     </div>
   </section>
