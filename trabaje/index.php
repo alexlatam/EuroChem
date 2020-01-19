@@ -71,6 +71,7 @@ $section="trabaje";
                y su información profesional de acuerdo al perfil que más se ajuste a
                su experiencia y conocimientos
             </p>
+            <a href="#">Info@eurochem.com</a>
           </div>
           <div class="col-12 col-md-6">
             <img src="../imagen/trabaja_nosotros.jpg" alt="" width="100%">

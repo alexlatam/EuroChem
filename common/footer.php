@@ -36,8 +36,10 @@
         </div>
         <div class="row">
           <p>Oficina Principal <br>
-            Carrera 42 No. 53-24 Itaguí, Antioquia <br>
-            PBX: 574-3720733 <br>
+            1359 SW 1st Street <br>
+            Miami-Fl <br>
+            33135 <br>
+            USA <br>
             Call Center: 574-3750050 <br>
             ventas@eurochem.com <br>
           </p>

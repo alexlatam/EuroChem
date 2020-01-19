@@ -80,7 +80,7 @@ $section="certificaciones";
           <div class="col-12 col-lg-6">
             <h4 class="text-muted"><strong>Política de Gestión Integral</strong></h4>
             <p class="text-muted">
-              CONQUIMICA S.A. es una empresa que provee soluciones confiables para el abastecimiento de productos químicos, la cual establece su compromiso de gestión integral a través de: <br>
+              EuroChem S.A. es una empresa que provee soluciones confiables para el abastecimiento de productos químicos, la cual establece su compromiso de gestión integral a través de: <br>
               1. El mejoramiento continuo de los procesos para el desarrollo sostenible de la organización. <br> <br>
               2. El suministro de productos y la prestación de servicios que cumplan con los acuerdos establecidos con proveedores y clientes. <br> <br>
               3. La gestión y control  de los procesos para el cuidado del medio ambiente, la salud y la seguridad del personal.*2 <br> <br>

@@ -86,7 +86,7 @@ $section="actualidad";
                   $imagen=$row['IMAGE'];
                   $autor=$row['AUTOR'];
                    ?>
-                   <div class="row mt-4">
+                   <div class="row mb-5">
                      <div class="col-12 col-md-6">
                        <div class="container-img-blog">
                          <a class="d-flex" href="article.php?id=<?php echo $id_articulo;?>">

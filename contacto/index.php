@@ -42,55 +42,30 @@ $section="contacto";
         </div>
         <div class="row mt-4">
           <div class="col-12 col-sm-4">
-            <h4 class="text-muted"><strong>Medellín</strong></h4>
+            <h4 class="text-muted"><strong>Florida</strong></h4>
           </div>
           <div class="col-12 col-sm-6">
             <p class="text-muted">
-              Cra 42 # 53-24. Itagüí <br>
-              Teléfono: (4)- 3720733 <br>
-              Call center: (4)- 375 00 50 <br>
-              ventasmedellin@conquimica.com
+              1359 SW 1st Street <br>
+              Miami-Fl <br>
+              33135 <br>
+              USA <br>
+              Call Center: 574-3750050 <br>
             </p>
           </div>
         </div>
         <div class="row mt-3">
           <div class="col-12 col-sm-4">
-            <h4 class="text-muted"><strong>Bogotá</strong></h4>
+            <h4 class="text-muted"><strong>Florida</strong></h4>
           </div>
           <div class="col-12 col-sm-6">
             <p class="text-muted">
-              Vereda La Punta. Autopista Medellin <br>
-              km 6+200 costado sur y km 0+950 <br>
-              Entrando por Festo. Tenjo-Cundinamarca <br>
-              Teléfono: (1)- 5886170 <br>
-              Call center: (1)- 5886600 <br>
-              ventasbogota@conquimica.com
-            </p>
-          </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-12 col-sm-4">
-            <h4 class="text-muted"><strong>Cali</strong></h4>
-          </div>
-          <div class="col-12 col-sm-6">
-            <p class="text-muted">
-              Calle 15 No. 32-571. Acopi Yumbo <br>
-              Teléfono: (2)- 6644643 <br>
-              Call center: (2)- 6515024 <br>
-              ventascali@conquimica.com
-            </p>
-          </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-12 col-sm-4">
-            <h4 class="text-muted"><strong>Bucaramanga</strong></h4>
-          </div>
-          <div class="col-12 col-sm-6">
-            <p class="text-muted">
-              Cra 16 No. 59-70. km 7 vía Girón <br>
-              Teléfono: (7)- 6917380 <br>
-              Call center y Televentas: (7)- 6917381 <br>
-              ventasbucaramanga@conquimica.com
+              P.O box <br>
+              1825 Ponce de León <br>
+              Suite 266 <br>
+              Coral Gables-Fl <br>
+              33134 <br>
+              USA
             </p>
           </div>
         </div>

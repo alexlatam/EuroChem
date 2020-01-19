@@ -70,24 +70,24 @@ $section="home";
       <p class="text-muted" style="font-family: 'Roboto Condensed', sans-serif;">Contamos con cuatro divisiones de negocio con las cuales atendemos a los principales sectores de la industria</p>
     </div>
     <div class="row px-3 px-md-4 mt-3">
-      <div class="col-12 col-md-4 col-lg-3 mb-4 text-center">
+      <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
         <a class="imagen_divisiones_home" href="#">
-          <img src="imagen/division_alimentos.png" alt="">
+          <img src="imagen/division_alimentos.png" alt="" width="100%">
         </a>
       </div>
-      <div class="col-12 col-md-4 col-lg-3 mb-4 text-center">
+      <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
         <a class="imagen_divisiones_home" href="#">
-          <img src="imagen/division_especializadas.png" alt="">
+          <img src="imagen/division_especializadas.png" alt="" width="100%">
         </a>
       </div>
-      <div class="col-12 col-md-4 col-lg-3 mb-4 text-center">
+      <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
         <a class="imagen_divisiones_home" href="#">
-          <img src="imagen/division_genericos.png" alt="">
+          <img src="imagen/division_genericos.png" alt="" width="100%">
         </a>
       </div>
-      <div class="col-12 col-md-4 col-lg-3 mb-4 text-center">
+      <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
         <a class="imagen_divisiones_home" href="#">
-          <img src="imagen/division_plasticos.png" alt="">
+          <img src="imagen/division_plasticos.png" alt="" width="100%">
         </a>
       </div>
     </div>
@@ -195,7 +195,7 @@ $section="home";
           <h2 class="titulos" style="font-family: 'Roboto Condensed', sans-serif;">Nuestra compañía</h2>
         </div>
         <div class="row text-muted">
-          Conquimica S.A. es una compañía colombiana con 40 años de experiencia en la comercialización de materias primas para diversos sectores productivos en el país: recubrimientos, aseo, plásticos, ingredientes para la industria de alimentos y bebidas, agro, adhesivos y pegantes, textil, farma, cosméticos, petróleos, fabricación de intermediarios químicos, entre otros.
+          EuroChem S.A. es una compañía con experiencia en la comercialización de materias primas para diversos sectores productivos en el país: recubrimientos, aseo, plásticos, ingredientes para la industria de alimentos y bebidas, agro, adhesivos y pegantes, textil, farma, cosméticos, petróleos, fabricación de intermediarios químicos, entre otros.
         </div>
         <div class="row justify-content-center mt-5 mb-4">
           <a class="btn btn-primary px-5" href="#">Ver Más</a>

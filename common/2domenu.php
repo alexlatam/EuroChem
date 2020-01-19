@@ -60,6 +60,16 @@
       <li class="nav-item ml-3 pt-2">
         <a class="nav-link text_menu_2 py-4 <?php if($section=="contacto"){echo "active";} ?>" href="/contacto/index.php">Contáctenos</a>
       </li>
+      <li class="nav-item ml-5 pt-2">
+        <a class="nav-link text_menu_2 py-4 <?php if($section==""){echo "active";} ?>" href="/index.php">
+          <img src="/imagen/usa.png" alt="" width="18px">
+        </a>
+      </li>
+      <li class="nav-item ml-3 pt-2">
+        <a class="nav-link text_menu_2 py-4 <?php if($section==""){echo "active";} ?>" href="/index.php">
+          <img src="/imagen/vzla.png" alt="" width="18px">
+        </a>
+      </li>
     </ul>
   </div>
   </div>
