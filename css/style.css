@@ -44,6 +44,18 @@
 .bg-euro-dark{
   background-color: #8A8B8C;
 }
+.texto_carousel{
+  background-color: #000066;
+  opacity: .7;
+  color: #fff;
+  font-weight: bold;
+  font-size: 40px;
+  padding: 7px 15px;
+  position: absolute;
+  bottom: 30%;
+  right: 50px;
+}
+/*Menu*/
 .border_rigth{
   border-right: #000066 solid 0.5px;
 }
@@ -177,6 +189,7 @@ ul.col3 li{
   max-height: 150px;
   min-width: 100px;
   max-width: 150px;
+  text-align: center;
 }
 #carouselclients .owl-nav{
   position: absolute;

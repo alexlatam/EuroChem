@@ -76,7 +76,7 @@ if(isset($_POST['producto'],$_POST['formula'],$_POST['nombre_comercial'],$_POST[
             <div class="input-group-prepend">
               <span class="input-group-text bg-dark text-white">Formula Quimica</span>
             </div>
-            <input type="text" class="form-control" name="formula" maxlength="100" required>
+            <input type="text" class="form-control" name="formula" maxlength="100" required autocomplete="off">
           </div>
         </div>
         <div class="row">
@@ -84,7 +84,7 @@ if(isset($_POST['producto'],$_POST['formula'],$_POST['nombre_comercial'],$_POST[
             <div class="input-group-prepend">
               <span class="input-group-text">Nombre Comercial</span>
             </div>
-            <input type="text" class="form-control" name="nombre_comercial" required>
+            <input type="text" class="form-control" name="nombre_comercial" required autocomplete="off">
           </div>
         </div>
         <div class="row">
@@ -92,7 +92,7 @@ if(isset($_POST['producto'],$_POST['formula'],$_POST['nombre_comercial'],$_POST[
             <div class="input-group-prepend">
               <span class="input-group-text bg-dark text-white">Peso Molecular</span>
             </div>
-            <input type="text" class="form-control" name="peso_mol" required>
+            <input type="text" class="form-control" name="peso_mol" required autocomplete="off">
           </div>
         </div>
         <div class="row">
@@ -100,7 +100,7 @@ if(isset($_POST['producto'],$_POST['formula'],$_POST['nombre_comercial'],$_POST[
             <div class="input-group-prepend">
               <span class="input-group-text">Sinonimos</span>
             </div>
-            <input type="text" class="form-control" name="sinonimos" required>
+            <input type="text" class="form-control" name="sinonimos" required autocomplete="off">
           </div>
         </div>
         <div class="row">
@@ -124,7 +124,7 @@ if(isset($_POST['producto'],$_POST['formula'],$_POST['nombre_comercial'],$_POST[
             <div class="input-group-prepend">
               <span class="input-group-text">Pie de Pagina</span>
             </div>
-            <input type="text" class="form-control" name="pie_pagina" required>
+            <input type="text" class="form-control" name="pie_pagina" required autocomplete="off">
           </div>
         </div>
         <div class="container-fluid" id="contenedor_especif">
@@ -136,25 +136,25 @@ if(isset($_POST['producto'],$_POST['formula'],$_POST['nombre_comercial'],$_POST[
               <div class="input-group-prepend">
                 <span class="input-group-text">Propiedad</span>
               </div>
-              <input type="text" class="form-control" name="propiedad[]">
+              <input type="text" class="form-control" name="propiedad[]" autocomplete="off">
             </div>
             <div class="input-group input-group-sm mb-3 col-6">
               <div class="input-group-prepend">
                 <span class="input-group-text">Metodo</span>
               </div>
-              <input type="text" class="form-control" name="metodo[]">
+              <input type="text" class="form-control" name="metodo[]" autocomplete="off">
             </div>
             <div class="input-group input-group-sm mb-3 col-6">
               <div class="input-group-prepend">
                 <span class="input-group-text bg-dark text-white">Unidad</span>
               </div>
-              <input type="text" class="form-control" name="unidad[]">
+              <input type="text" class="form-control" name="unidad[]" autocomplete="off">
             </div>
             <div class="input-group input-group-sm mb-3 col-6">
               <div class="input-group-prepend">
                 <span class="input-group-text bg-dark text-white">Especificacion</span>
               </div>
-              <input type="text" class="form-control" name="especificacion[]">
+              <input type="text" class="form-control" name="especificacion[]" autocomplete="off">
             </div>
           </div>
         </div>
@@ -178,7 +178,7 @@ if(isset($_POST['producto'],$_POST['formula'],$_POST['nombre_comercial'],$_POST[
         }
       });
       $(document).on('click','#agregar_especf',function(){
-        $("#contenedor_especif").append("<hr><div class='row'><div class='input-group input-group-sm mb-3 col-6'><div class='input-group-prepend'><span class='input-group-text'>Propiedad</span></div><input type='text' class='form-control' name='propiedad[]'></div><div class='input-group input-group-sm mb-3 col-6'><div class='input-group-prepend'><span class='input-group-text'>Metodo</span></div><input type='text' class='form-control' name='metodo[]'></div><div class='input-group input-group-sm mb-3 col-6'><div class='input-group-prepend'><span class='input-group-text bg-dark text-white'>Unidad</span></div><input type='text' class='form-control' name='unidad[]'></div><div class='input-group input-group-sm mb-3 col-6'><div class='input-group-prepend'><span class='input-group-text bg-dark text-white'>Especificacion</span></div><input type='text' class='form-control' name='especificacion[]'></div></div>");
+        $("#contenedor_especif").append("<hr><div class='row'><div class='input-group input-group-sm mb-3 col-6'><div class='input-group-prepend'><span class='input-group-text'>Propiedad</span></div><input type='text' class='form-control' name='propiedad[]' autocomplete='off'></div><div class='input-group input-group-sm mb-3 col-6'><div class='input-group-prepend'><span class='input-group-text'>Metodo</span></div><input type='text' class='form-control' name='metodo[]' autocomplete='off'></div><div class='input-group input-group-sm mb-3 col-6'><div class='input-group-prepend'><span class='input-group-text bg-dark text-white'>Unidad</span></div><input type='text' class='form-control' name='unidad[]' autocomplete='off'></div><div class='input-group input-group-sm mb-3 col-6'><div class='input-group-prepend'><span class='input-group-text bg-dark text-white'>Especificacion</span></div><input type='text' class='form-control' name='especificacion[]' autocomplete='off'></div></div>");
       });
     </script>
     <script>
