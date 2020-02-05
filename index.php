@@ -84,22 +84,22 @@ $section="home";
     </div>
     <div class="row px-3 px-md-4 mt-3">
       <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
-        <a class="imagen_divisiones_home" href="#">
+        <a class="imagen_divisiones_home" href="/es/productos/index.php?id_div=1">
           <img src="/imagen/divisiones/alimentos.png" alt="" width="100%">
         </a>
       </div>
       <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
-        <a class="imagen_divisiones_home" href="#">
+        <a class="imagen_divisiones_home" href="/es/productos/index.php?id_div=2">
           <img src="/imagen/divisiones/especialidades.png" alt="" width="100%">
         </a>
       </div>
       <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
-        <a class="imagen_divisiones_home" href="#">
+        <a class="imagen_divisiones_home" href="/es/productos/index.php?id_div=3">
           <img src="/imagen/divisiones/genericos.png" alt="" width="100%">
         </a>
       </div>
       <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
-        <a class="imagen_divisiones_home" href="#">
+        <a class="imagen_divisiones_home" href="/es/productos/index.php?id_div=4">
           <img src="/imagen/divisiones/plasticos.png" alt="" width="100%">
         </a>
       </div>

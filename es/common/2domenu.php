@@ -15,10 +15,19 @@
         <div class="dropdown">
           <a class="nav-link dropbtn text_menu_2 py-4 <?php if($section=="divisiones"){echo "active";} ?>" href="/es/productos/index.php?productos=1">Divisiones</a>
           <div class="dropdown-content">
-            <a class="text_menu_2" href="#">Alimentos</a>
-            <a class="text_menu_2" href="#">Especialidades</a>
-            <a class="text_menu_2" href="#">Genéricos</a>
-            <a class="text_menu_2" href="#">Plásticos</a>
+            <?php
+            $sqld="SELECT * FROM DIVISIONES";
+            $result=$conn->query($sqld);
+            if($result->num_rows>0){
+              while($row=$result->fetch_assoc()){
+                $id_division=$row['ID'];
+                $division=$row['DIVISION'];
+                ?>
+                <a class="text_menu_2" href="/es/productos/index.php?id_div=<?php echo $id_division;?>"><?php echo $division;?></a>
+                <?php
+              }
+            }
+             ?>
           </div>
         </div>
       </li>
@@ -27,29 +36,19 @@
           <a class="nav-link dropbtn text_menu_2 py-4 <?php if($section=="industrias"){echo "active";} ?>" href="/es/productos/index.php?industrias=1">Industrias</a>
           <div class="dropdown-content2">
             <ul class="col3">
-              <li><a class="text_menu_2" href="#">Adhesivos y pegantes</a></li>
-              <li><a class="text_menu_2" href="#">Alimentos y bebidas</a></li>
-              <li><a class="text_menu_2" href="#">Contrucción y vías</a></li>
-              <li><a class="text_menu_2" href="#">Farma y cosmética</a></li>
-              <li><a class="text_menu_2" href="#">Ingenios</a></li>
-              <li><a class="text_menu_2" href="#">Petróleos</a></li>
-              <li><a class="text_menu_2" href="#">Pulpa</a></li>
-              <li><a class="text_menu_2" href="#">Textil y prendas</a></li>
-              <li><a class="text_menu_2" href="#">Agro</a></li>
-              <li><a class="text_menu_2" href="#">Aseo</a></li>
-              <li><a class="text_menu_2" href="#">Cuero</a></li>
-              <li><a class="text_menu_2" href="#">Impresión</a></li>
-              <li><a class="text_menu_2" href="#">Otras industrias</a></li>
-              <li><a class="text_menu_2" href="#">Plásticos</a></li>
-              <li><a class="text_menu_2" href="#">Recubrimientos</a></li>
-              <li><a class="text_menu_2" href="#">Tratamiento de aguas</a></li>
-              <li><a class="text_menu_2" href="#">Alimentación animal</a></li>
-              <li><a class="text_menu_2" href="#">Comercializadores</a></li>
-              <li><a class="text_menu_2" href="#">Espumas</a></li>
-              <li><a class="text_menu_2" href="#">Industria Química</a></li>
-              <li><a class="text_menu_2" href="#">Papel y cartón</a></li>
-              <li><a class="text_menu_2" href="#">Productos de metal</a></li>
-              <li><a class="text_menu_2" href="#">Servicios</a></li>
+              <?php
+              $sqld="SELECT * FROM INDUSTRIAS";
+              $result=$conn->query($sqld);
+              if($result->num_rows>0){
+                while($row=$result->fetch_assoc()){
+                  $id_industria=$row['ID'];
+                  $industria=$row['INDUSTRIA'];
+                  ?>
+                  <li><a class="text_menu_2" href="/es/productos/index.php?id_ind=<?php echo $id_industria;?>"><?php echo $industria;?></a></li>
+                  <?php
+                }
+              }
+              ?>
             </ul>
           </div>
         </div>

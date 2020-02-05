@@ -4,11 +4,41 @@
 session_start();
 include '../common/conexion.php';
 include '../common/datosGenerales.php';
+//divisiones
+$sql="SELECT * FROM DIVISIONES";
+$id_divisiones=array();
+$divisiones=array();
+$result=$conn->query($sql);
+if($result->num_rows>0){
+  while($row=$result->fetch_assoc()){
+    array_push($id_divisiones,$row['ID']);
+    array_push($divisiones,$row['DIVISION']);
+  }
+}
 $section="productos";
 if(isset($_GET['productos'])){
   $producto=$_GET['productos'];
 }else if(isset($_GET['industrias'])){
   $industrias=$_GET['industrias'];
+}
+$sql_ppal="";
+if(isset($_GET['id_div'])){
+  $id_division_get=$_GET['id_div'];
+  $sql_ppal="SELECT p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p WHERE p.IDDIVISION=$id_division_get ";
+  if(isset($_GET['id_ind'])){
+    $id_industria_get=$_GET['id_ind'];
+    $sql_ppal="SELECT p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p INNER JOIN PRODUCTOS_INDUSTRIAS i ON p.ID=i.IDPRODUCTO WHERE p.IDDIVISION=$id_division_get AND i.IDINDUSTRIA=$id_industria_get ";
+  }
+}
+if(isset($_GET['id_ind'])){
+  $id_industria_get=$_GET['id_ind'];
+  if($sql_ppal==""){
+    $sql_ppal="SELECT p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p INNER JOIN PRODUCTOS_INDUSTRIAS i ON p.ID=i.IDPRODUCTO WHERE i.IDINDUSTRIA=$id_industria_get ";
+  }
+}
+if(isset($_GET['id_tipo']) && $sql_ppal!=""){
+  $id_tipo_producto_get=$_GET['id_tipo'];
+  $sql_ppal.="AND p.IDTIPOPRODUCTO=$id_tipo_producto_get";
 }
 ?>
 <!doctype html>
@@ -33,10 +63,10 @@ if(isset($_GET['productos'])){
 <body style="background-color:#ffffff;">
   <?php include '../common/menu.php'; include '../common/2domenu.php';?>
   <div class="container px-5 pb-4">
-    <div class="row px-4 mt-3">
+    <div class="row mt-3">
       <!-- Menu lateral -->
       <div class="col-12 col-sm-3 mt-2">
-        <div class="row">
+        <div class="row pr-4">
           <div class="col-12">
             <h2 class="titulos_blog lead">Búsqueda</h2>
           </div>
@@ -45,49 +75,135 @@ if(isset($_GET['productos'])){
             <button type="button" name="button">Buscar</button>
           </div>
         </div>
-        <div class="row mt-4">
+        <div class="row mt-4 pr-4">
           <div class="col-12">
             <h2 class="titulos_blog lead">Divisiones</h2>
           </div>
-          <div class="col-12 mt-2 mb-1">
-            <a class="enlace_menu_lateral" href="">Alimentos</a>
-            <hr class="my-0">
-          </div>
-          <div class="col-12 my-1">
-            <a class="enlace_menu_lateral" href="">Especialidades</a>
-            <hr class="my-0">
-          </div>
-          <div class="col-12 my-1">
-            <a class="enlace_menu_lateral" href="">Genericos</a>
-            <hr class="my-0">
-          </div>
-          <div class="col-12 my-1">
-            <a class="enlace_menu_lateral" href="">Plásticos</a>
-            <hr class="my-0">
-          </div>
+          <?php
+          $sqld="SELECT * FROM DIVISIONES";
+          $result=$conn->query($sqld);
+          if($result->num_rows>0){
+            while($row=$result->fetch_assoc()){
+              $id_division=$row['ID'];
+              $division=$row['DIVISION'];
+                if($id_division_get==$id_division){
+                  ?>
+                  <div class="col-12 mt-2 mb-1 div_menu_lateral_active">
+                    <a class="enlace_menu_lateral_active" href="/es/productos/index.php?id_div=<?php echo $id_division;?>"><?php echo $division;?></a>
+                    <hr class="my-0">
+                  </div>
+                  <?php
+                }else{
+                  ?>
+                  <div class="col-12 mt-2 mb-1">
+                    <a class="enlace_menu_lateral" href="/es/productos/index.php?id_div=<?php echo $id_division;?>"><?php echo $division;?></a>
+                    <hr class="my-0">
+                  </div>
+                  <?php
+                }
+              }
+            }
+           ?>
         </div>
+        <?php if (isset($_GET['id_div']) || isset($_GET['id_ind'])): ?>
+        <div class="row mt-4 pr-4">
+            <div class="col-12">
+              <h2 class="titulos_blog lead">Tipo de productos</h2>
+            </div>
+            <?php
+            $sqld="SELECT * FROM TIPO_PRODUCTOS";
+            $result=$conn->query($sqld);
+            if($result->num_rows>0){
+              while($row=$result->fetch_assoc()){
+                $id_tipo_producto=$row['ID'];
+                $tipo_producto=$row['TIPO_PRODUCTO'];
+                $complemento_enlace="?id_tipo=$id_tipo_producto";
+                if(isset($_GET['id_div'])){
+                  $complemento_enlace.="&id_div=$id_division_get";
+                }
+                if(isset($_GET['id_ind'])){
+                  $complemento_enlace.="&id_ind=$id_industria_get";
+                }
+                if($id_tipo_producto_get==$id_tipo_producto){
+                  ?>
+                  <div class="col-12 mt-2 mb-1 div_menu_lateral_active">
+                    <a class="enlace_menu_lateral_active" href="/es/productos/index.php<?php echo $complemento_enlace;?>"><?php echo $tipo_producto;?></a>
+                    <hr class="my-0">
+                  </div>
+                  <?php
+                }else{
+                  ?>
+                  <div class="col-12 mt-2 mb-1">
+                    <a class="enlace_menu_lateral" href="/es/productos/index.php<?php echo $complemento_enlace;?>"><?php echo $tipo_producto;?></a>
+                    <hr class="my-0">
+                  </div>
+                  <?php
+                }
+              }
+            }
+            ?>
+        </div>
+        <div class="row mt-4 pr-4">
+            <div class="col-12">
+              <h2 class="titulos_blog lead">Industrias</h2>
+            </div>
+            <?php
+            $sqld="SELECT * FROM INDUSTRIAS";
+            $result=$conn->query($sqld);
+            if($result->num_rows>0){
+              while($row=$result->fetch_assoc()){
+                $id_industria=$row['ID'];
+                $industria=$row['INDUSTRIA'];
+                $complemento_enlace="?id_ind=$id_industria";
+                if(isset($_GET['id_div'])){
+                  $complemento_enlace.="&id_div=$id_division_get";
+                }
+                if(isset($_GET['id_tipo'])){
+                  $complemento_enlace.="&id_tipo=$id_tipo_producto_get";
+                }
+                if($id_industria_get==$id_industria){
+                  ?>
+                  <div class="col-12 mt-2 mb-1 div_menu_lateral_active">
+                    <a class="enlace_menu_lateral_active" href="/es/productos/index.php<?php echo $complemento_enlace;?>"><?php echo $industria;?></a>
+                    <hr class="my-0">
+                  </div>
+                  <?php
+                }else{
+                  ?>
+                  <div class="col-12 mt-2 mb-1">
+                    <a class="enlace_menu_lateral" href="/es/productos/index.php<?php echo $complemento_enlace;?>"><?php echo $industria;?></a>
+                    <hr class="my-0">
+                  </div>
+                  <?php
+                }
+              }
+            }
+            ?>
+        </div>
+        <?php endif; ?>
       </div>
       <div class="col-12 col-sm-9">
-        <!-- Productos -->
+        <?php echo $sql_ppal; ?>
+        <!-- Divisiones e industrias imagenes -->
         <?php if(isset($producto) && $producto==1){ ?>
           <div class="row mt-3">
             <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
-              <a class="imagen_divisiones_home" href="#">
+              <a class="imagen_divisiones_home" href="/es/productos/index.php?id_div=1">
                 <img src="/imagen/divisiones/alimentos.png" alt="" width="100%">
               </a>
             </div>
             <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
-              <a class="imagen_divisiones_home" href="#">
+              <a class="imagen_divisiones_home" href="/es/productos/index.php?id_div=2">
                 <img src="/imagen/divisiones/especialidades.png" alt="" width="100%">
               </a>
             </div>
             <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
-              <a class="imagen_divisiones_home" href="#">
+              <a class="imagen_divisiones_home" href="/es/productos/index.php?id_div=3">
                 <img src="/imagen/divisiones/genericos.png" alt="" width="100%">
               </a>
             </div>
             <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
-              <a class="imagen_divisiones_home" href="#">
+              <a class="imagen_divisiones_home" href="/es/productos/index.php?id_div=4">
                 <img src="/imagen/divisiones/plasticos.png" alt="" width="100%">
               </a>
             </div>
@@ -176,6 +292,59 @@ if(isset($_GET['productos'])){
             </a>
           </div>
         <?php } ?>
+        <!-- Listado de productos-->
+        <?php
+        if($sql_ppal!=""){
+          $result=$conn->query($sql_ppal);
+          if($result->num_rows>0){
+            while($row=$result->fetch_assoc()){
+              $id_producto=$row['ID'];
+              $titulo=$row['TITULO'];
+              $subtitulo=$row['SUBTITULO'];
+              ?>
+              <div class="row mb-2 align-items-center">
+                <div class="col-12 px-0">
+                  <hr class="bg-dark m-0 mb-2">
+                </div>
+                <div class="col-1">
+                  <img src="" alt="">
+                </div>
+                <div class="col-2">
+                  <a href="#"><?php echo $titulo;?></a>
+                </div>
+                <div class="col-7 text-muted">
+                  <?php echo $subtitulo;?>
+                </div>
+                <div class="col-1">
+                  <div class="row">
+                    <small>Categoria</small>
+                  </div>
+                  <?php
+                  $sqlaux="SELECT IDDIVISION FROM PRODUCTOS WHERE ID=$id_producto";
+                  $resultaux=$conn->query($sqlaux);
+                  if($resultaux->num_rows>0){
+                    while($rowaux=$resultaux->fetch_assoc()){
+                      $id_division=$rowaux['IDDIVISION'];
+                      $key=array_search($id_division,$id_divisiones);
+                      $division=$divisiones[$key];
+                      ?>
+                      <div class="row">
+                        <a href="/es/productos/index.php?id_div=<?php echo $id_division;?>"><small><?php echo $division;?></small></a>
+                      </div>
+                      <?php
+                    }
+                  }
+                  ?>
+                </div>
+                <div class="col-1">
+                  <a class="btn btn-sm btn-primary px-3" href="#">Ver</a>
+                </div>
+              </div>
+              <?php
+            }
+          }
+        }
+        ?>
       </div>
     </div>
   </div>

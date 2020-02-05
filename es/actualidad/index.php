@@ -49,26 +49,26 @@ $section="actualidad";
             <button type="button" name="button">Buscar</button>
           </div>
         </div>
-        <div class="row mt-4">
+        <div class="row mt-4 pr-4">
           <div class="col-12">
             <h2 class="titulos_blog lead">Divisiones</h2>
           </div>
-          <div class="col-12 mt-2 mb-1">
-            <a class="enlace_menu_lateral" href="">Alimentos</a>
-            <hr class="my-0">
-          </div>
-          <div class="col-12 my-1">
-            <a class="enlace_menu_lateral" href="">Especialidades</a>
-            <hr class="my-0">
-          </div>
-          <div class="col-12 my-1">
-            <a class="enlace_menu_lateral" href="">Genericos</a>
-            <hr class="my-0">
-          </div>
-          <div class="col-12 my-1">
-            <a class="enlace_menu_lateral" href="">Plásticos</a>
-            <hr class="my-0">
-          </div>
+          <?php
+          $sqld="SELECT * FROM DIVISIONES";
+          $result=$conn->query($sqld);
+          if($result->num_rows>0){
+            while($row=$result->fetch_assoc()){
+              $id_division=$row['ID'];
+              $division=$row['DIVISION'];
+              ?>
+              <div class="col-12 mt-2 mb-1">
+                <a class="enlace_menu_lateral" href="/es/productos/index.php?id_div=<?php echo $id_division;?>"><?php echo $division;?></a>
+                <hr class="my-0">
+              </div>
+              <?php
+              }
+            }
+           ?>
         </div>
       </div>
       <div class="col-12 col-md-9">
