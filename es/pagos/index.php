@@ -35,8 +35,10 @@ $section="pagos";
             <h2 class="titulos_blog lead">Búsqueda</h2>
           </div>
           <div class="col-12">
-            <input type="search" name="" value="" placeholder="Buscar productos...">
-            <button type="button" name="button">Buscar</button>
+            <form action="/es/productos/index.php" method="get">
+              <input type="search" name="search" placeholder="Buscar productos...">
+              <button type="submit">Buscar</button>
+            </form>
           </div>
         </div>
         <div class="row mt-4 pr-4">

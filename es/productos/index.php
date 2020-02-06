@@ -1,9 +1,6 @@
 <?php
-#Quitar el comentario para entrar en mantenimiento.
-#header('Location: mantenimiento/');
 session_start();
 include '../common/conexion.php';
-include '../common/datosGenerales.php';
 //divisiones
 $sql="SELECT * FROM DIVISIONES";
 $id_divisiones=array();
@@ -36,9 +33,23 @@ if(isset($_GET['id_ind'])){
     $sql_ppal="SELECT p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p INNER JOIN PRODUCTOS_INDUSTRIAS i ON p.ID=i.IDPRODUCTO WHERE i.IDINDUSTRIA=$id_industria_get ";
   }
 }
-if(isset($_GET['id_tipo']) && $sql_ppal!=""){
+if(isset($_GET['id_tipo'])){
   $id_tipo_producto_get=$_GET['id_tipo'];
-  $sql_ppal.="AND p.IDTIPOPRODUCTO=$id_tipo_producto_get";
+  if($sql_ppal!=""){
+    $sql_ppal.="AND p.IDTIPOPRODUCTO=$id_tipo_producto_get";
+  }else{
+    $sql_ppal="SELECT p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p WHERE p.IDTIPOPRODUCTO=$id_tipo_producto_get";
+  }
+}
+if(isset($_GET['id_unid'])){
+  $id_unidad_get=$_GET['id_unid'];
+  $sql_ppal="SELECT p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p WHERE p.IDUNIDAD=$id_unidad_get";
+}elseif (isset($_GET['id_pres'])) {
+  $id_presentacion_get=$_GET['id_pres'];
+  $sql_ppal="SELECT p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p WHERE p.IDPRESENTACION=$id_presentacion_get";
+}elseif (isset($_GET['search'])){
+  $search=$_GET['search'];
+  $sql_ppal="SELECT p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p WHERE p.TITULO LIKE '%$search%' OR p.SUBTITULO LIKE '%$search%' OR p.DESCRIPCION LIKE '%$search%'";
 }
 ?>
 <!doctype html>
@@ -71,8 +82,10 @@ if(isset($_GET['id_tipo']) && $sql_ppal!=""){
             <h2 class="titulos_blog lead">Búsqueda</h2>
           </div>
           <div class="col-12">
-            <input type="search" name="" value="" placeholder="Buscar productos...">
-            <button type="button" name="button">Buscar</button>
+            <form action="" method="get">
+              <input type="search" name="search" placeholder="Buscar productos...">
+              <button type="submit">Buscar</button>
+            </form>
           </div>
         </div>
         <div class="row mt-4 pr-4">
@@ -105,7 +118,7 @@ if(isset($_GET['id_tipo']) && $sql_ppal!=""){
             }
            ?>
         </div>
-        <?php if (isset($_GET['id_div']) || isset($_GET['id_ind'])): ?>
+        <?php if (isset($_GET['id_div']) || isset($_GET['id_ind']) || isset($_GET['id_tipo'])): ?>
         <div class="row mt-4 pr-4">
             <div class="col-12">
               <h2 class="titulos_blog lead">Tipo de productos</h2>
@@ -183,7 +196,6 @@ if(isset($_GET['id_tipo']) && $sql_ppal!=""){
         <?php endif; ?>
       </div>
       <div class="col-12 col-sm-9">
-        <?php echo $sql_ppal; ?>
         <!-- Divisiones e industrias imagenes -->
         <?php if(isset($producto) && $producto==1){ ?>
           <div class="row mt-3">
@@ -292,6 +304,25 @@ if(isset($_GET['id_tipo']) && $sql_ppal!=""){
             </a>
           </div>
         <?php } ?>
+        <div class="row mb-2">
+          <?php if(isset($_GET['id_div']) && $_GET['id_div']=="1"){ ?>
+          <p class="text-muted">
+            La División de Alimentos de EuroChem está enfocada en la atención de los principales sectores de la industria de Alimentos (Cárnicos, Lácteos, Bebidas, Nutracéuticos, Salsas, etc.) y cuenta con un amplio portafolio de ingredientes dirigidos a la mejora de atributos tales como: textura, conservación, sabor, entre otros. Disponemos de un equipo técnico y comercial especializado para proporcionar soluciones integrales a nuestros clientes en el mejoramiento y desarrollo de sus productos. Nuestra labor se fundamenta en las alianzas estratégicas con prestigiosas casas productoras, las cuales mantienen los más altos estándares de calidad, servicio, innovación y responsabilidad con el consumidor final.
+          </p>
+        <?php }elseif(isset($_GET['id_div']) && $_GET['id_div']=="2"){ ?>
+          <p class="text-muted">
+            Ofrecemos un portafolio integral de especialidades químicas para múltiples sectores industriales, como recubrimientos, polimerización, formuladores, aseo, plásticos, petróleos, construcción, entre otros. En nuestra extensa gama de productos se destacan pigmentos, resinas, aditivos de formulación para recubrimientos y tensoactivos para variadas aplicaciones. Trabajamos con casas productoras reconocidas por su calidad y tecnología. Contamos con un laboratorio de aplicaciones que nos permite ofrecer acompañamiento en la homologación, uso de nuestros productos y asesoría en el desarrollo de formulaciones.
+          </p>
+        <?php }elseif(isset($_GET['id_div']) && $_GET['id_div']=="3"){ ?>
+          <p class="text-muted">
+            En esta división de negocios, EuroChem agrupa una amplia oferta de insumos químicos para diversas industrias, con mayor énfasis en recubrimientos, aseo, fabricación de intermediarios químicos, alimentos y bebidas, adhesivos y pegantes, textiles, petróleos, farma, cosméticos, agro, construcción, nutrición animal, cuero y papel. Los productos de esta división se presentan en formas líquidas y sólidas, representan un amplio espectro de la química inorgánica (ácidos, bases, sales, pigmentos, etc.) y de la química orgánica (solventes alifáticos, aromáticos, clorados, alcoholes, cetonas, acetatos, tensoactivos aniónicos y no iónicos, entre otros).
+          </p>
+        <?php }elseif(isset($_GET['id_div']) && $_GET['id_div']=="4"){ ?>
+          <p class="text-muted">
+            Proveemos soluciones integrales para la industria del plástico, ofreciendo un amplio portafolio de resinas genéricas y especializadas para la transformación por procesos de inyección, soplado, extrusión y expansión. Contamos con proveedores que son nuestros aliados para llevar a los clientes un producto con altos estándares de calidad, soporte técnico y oportunidad en la entrega.
+          </p>
+        <?php } ?>
+        </div>
         <!-- Listado de productos-->
         <?php
         if($sql_ppal!=""){
@@ -310,7 +341,7 @@ if(isset($_GET['id_tipo']) && $sql_ppal!=""){
                   <img src="" alt="">
                 </div>
                 <div class="col-2">
-                  <a href="#"><?php echo $titulo;?></a>
+                  <a href="detalles.php?id_prod=<?php echo $id_producto;?>"><?php echo $titulo;?></a>
                 </div>
                 <div class="col-7 text-muted">
                   <?php echo $subtitulo;?>
@@ -337,7 +368,7 @@ if(isset($_GET['id_tipo']) && $sql_ppal!=""){
                   ?>
                 </div>
                 <div class="col-1">
-                  <a class="btn btn-sm btn-primary px-3" href="#">Ver</a>
+                  <a class="btn btn-sm btn-primary px-3" href="detalles.php?id_prod=<?php echo $id_producto;?>">Ver</a>
                 </div>
               </div>
               <?php
