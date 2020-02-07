@@ -26,7 +26,7 @@ $section="actualidad";
   <meta name="keywords" content="">
   <meta name="author" content="Eutuxia, C.A.">
   <meta name="application-name" content=""/>
-  <link rel="icon" type="image/jpg" sizes="16x16" href="../imagen/">
+  <link rel="icon" type="image/png" sizes="16x16" href="/imagen/logo.png">
   <link rel="stylesheet" href="/css/style.css">
   <link href="/assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">

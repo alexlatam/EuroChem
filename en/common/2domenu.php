@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white pt-0 navbar_fixed" id="navbar2">
   <div class="container my-0">
-    <a class="navbar-brand py-2" href="/index.php">
+    <a class="navbar-brand py-2" href="/en/index.php">
       <img src="/imagen/es/logo_texto.png" alt="" width="100%">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

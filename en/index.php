@@ -12,7 +12,7 @@ $section="home";
   <meta name="keywords" content="">
   <meta name="author" content="Eutuxia, C.A.">
   <meta name="application-name" content=""/>
-  <link rel="icon" type="image/jpg" sizes="16x16" href="admin/img/<?php echo $imageLogo;?>">
+  <link rel="icon" type="image/png" sizes="16x16" href="/imagen/logo.png">
   <link rel="stylesheet" href="/assets/vendor/owlcarousel/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="/assets/vendor/owlcarousel/assets/owl.theme.default.min.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -27,9 +27,18 @@ $section="home";
   <!--Colores #cc0033 #000066 -->
   <!--Corousel Library-->
   <div class="owl-carousel owl-theme" id="carousel">
-    <div class="imagenPpal"><img class="img-fluid" src="/imagen/principal1.jpg" alt=""></div>
-    <div class="imagenPpal"><img class="img-fluid" src="/imagen/principal3.jpg" alt=""></div>
-    <div class="imagenPpal"><img class="img-fluid" src="/imagen/principal2.jpg" alt=""></div>
+    <div class="imagenPpal"><img class="img-fluid" src="/imagen/principal1.jpg" alt="">
+      <div class="texto_carousel">
+         <span>We're more than suppliers</span>
+      </div>
+    </div>
+    <div class="imagenPpal"><img class="img-fluid" src="/imagen/principal3.jpg" alt="">
+      <div class="texto_carousel">
+        <span>We provide trustwrothy solutions
+          <br>
+           for the supply chemical products</span>
+      </div>
+    </div>
   </div>
   <script>
     $('#carousel').owlCarousel({
@@ -182,7 +191,7 @@ $section="home";
         </a>
       </div>
       <div class="row justify-content-center mt-5">
-        <a class="btn btn-primary px-4" href="/en/products/index.php?industrias=1">See all</a>
+        <a class="btn btn-primary px-4" href="/en/products/index.php?industries=1">See all</a>
       </div>
     </div>
   </section>

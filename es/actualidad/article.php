@@ -28,7 +28,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
   <meta name="author" content="<?php echo $autor;?>">
   <meta name="news_keywords" content="<?php echo $keywords;?>"/>
   <title>EuroChem</title>
-  <link rel="icon" type="image/png" href="../images/favicon.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/imagen/logo.png">
   <link rel="stylesheet" href="../../css/style.css">
   <link href="../../assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">

@@ -14,7 +14,7 @@ $section="proteccion";
   <meta name="keywords" content="">
   <meta name="author" content="Eutuxia, C.A.">
   <meta name="application-name" content=""/>
-  <link rel="icon" type="image/jpg" sizes="16x16" href="../imagen/">
+  <link rel="icon" type="image/png" sizes="16x16" href="/imagen/logo.png">
   <link rel="stylesheet" href="../../assets/vendor/owlcarousel/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="../../assets/vendor/owlcarousel/assets/owl.theme.default.min.css">
   <link rel="stylesheet" href="../../css/style.css">
