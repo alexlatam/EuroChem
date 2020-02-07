@@ -1,14 +1,55 @@
 <?php
-#Quitar el comentario para entrar en mantenimiento.
-#header('Location: mantenimiento/');
 session_start();
 include '../common/conexion.php';
-include '../common/datosGenerales.php';
-$section="products";
-if(isset($_GET['products'])){
-  $producto=$_GET['products'];
-}else if(isset($_GET['industries'])){
-  $industrias=$_GET['industries'];
+//divisiones
+$sql="SELECT * FROM DIVISIONES";
+$id_divisiones=array();
+$divisiones=array();
+$result=$conn->query($sql);
+if($result->num_rows>0){
+  while($row=$result->fetch_assoc()){
+    array_push($id_divisiones,$row['ID']);
+    array_push($divisiones,$row['DIVISION']);
+  }
+}
+$section="productos";
+if(isset($_GET['productos'])){
+  $producto=$_GET['productos'];
+}else if(isset($_GET['industrias'])){
+  $industrias=$_GET['industrias'];
+}
+$sql_ppal="";
+if(isset($_GET['id_div'])){
+  $id_division_get=$_GET['id_div'];
+  $sql_ppal="SELECT p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p WHERE p.IDDIVISION=$id_division_get ";
+  if(isset($_GET['id_ind'])){
+    $id_industria_get=$_GET['id_ind'];
+    $sql_ppal="SELECT p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p INNER JOIN PRODUCTOS_INDUSTRIAS i ON p.ID=i.IDPRODUCTO WHERE p.IDDIVISION=$id_division_get AND i.IDINDUSTRIA=$id_industria_get ";
+  }
+}
+if(isset($_GET['id_ind'])){
+  $id_industria_get=$_GET['id_ind'];
+  if($sql_ppal==""){
+    $sql_ppal="SELECT p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p INNER JOIN PRODUCTOS_INDUSTRIAS i ON p.ID=i.IDPRODUCTO WHERE i.IDINDUSTRIA=$id_industria_get ";
+  }
+}
+if(isset($_GET['id_tipo'])){
+  $id_tipo_producto_get=$_GET['id_tipo'];
+  if($sql_ppal!=""){
+    $sql_ppal.="AND p.IDTIPOPRODUCTO=$id_tipo_producto_get";
+  }else{
+    $sql_ppal="SELECT p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p WHERE p.IDTIPOPRODUCTO=$id_tipo_producto_get";
+  }
+}
+if(isset($_GET['id_unid'])){
+  $id_unidad_get=$_GET['id_unid'];
+  $sql_ppal="SELECT p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p WHERE p.IDUNIDAD=$id_unidad_get";
+}elseif (isset($_GET['id_pres'])) {
+  $id_presentacion_get=$_GET['id_pres'];
+  $sql_ppal="SELECT p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p WHERE p.IDPRESENTACION=$id_presentacion_get";
+}elseif (isset($_GET['search'])){
+  $search=$_GET['search'];
+  $sql_ppal="SELECT p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p WHERE p.TITULO LIKE '%$search%' OR p.SUBTITULO LIKE '%$search%' OR p.DESCRIPCION LIKE '%$search%'";
 }
 ?>
 <!doctype html>
@@ -21,104 +62,175 @@ if(isset($_GET['products'])){
   <meta name="author" content="Eutuxia, C.A.">
   <meta name="application-name" content=""/>
   <link rel="icon" type="image/jpg" sizes="16x16" href="../imagen/">
-  <link rel="stylesheet" href="/assets/vendor/owlcarousel/assets/owl.carousel.min.css">
-  <link rel="stylesheet" href="/assets/vendor/owlcarousel/assets/owl.theme.default.min.css">
-  <link rel="stylesheet" href="/css/style.css">
-  <link href="/assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/vendor/owlcarousel/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="../../assets/vendor/owlcarousel/assets/owl.theme.default.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link href="../../assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
-  <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
-  <script src="/assets/vendor/owlcarousel/owl.carousel.min.js"></script>
+  <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../../assets/vendor/owlcarousel/owl.carousel.min.js"></script>
   <title>Eurochem-Us</title>
 </head>
 <body style="background-color:#ffffff;">
   <?php include '../common/menu.php'; include '../common/2domenu.php';?>
   <div class="container px-5 pb-4">
-    <div class="row px-4 mt-3">
+    <div class="row mt-3">
       <!-- Menu lateral -->
-      <div class="col-12 col-md-3 mt-2">
-        <div class="row">
+      <div class="col-12 col-sm-3 mt-2">
+        <div class="row pr-4">
           <div class="col-12">
             <h2 class="titulos_blog lead">Search</h2>
           </div>
           <div class="col-12">
-            <input type="search" name="" value="" placeholder="Search products...">
-            <button type="button" name="button">Search</button>
+            <form action="" method="get">
+              <input type="search" name="search" placeholder="Search products...">
+              <button type="submit">Search</button>
+            </form>
           </div>
         </div>
-        <div class="row mt-4">
+        <div class="row mt-4 pr-4">
           <div class="col-12">
             <h2 class="titulos_blog lead">Divisions</h2>
           </div>
-          <div class="col-12 mt-2 mb-1">
-            <a class="enlace_menu_lateral" href="">Food</a>
-            <hr class="my-0">
-          </div>
-          <div class="col-12 my-1">
-            <a class="enlace_menu_lateral" href="">Specialty</a>
-            <hr class="my-0">
-          </div>
-          <div class="col-12 my-1">
-            <a class="enlace_menu_lateral" href="">Commodities</a>
-            <hr class="my-0">
-          </div>
-          <div class="col-12 my-1">
-            <a class="enlace_menu_lateral" href="">Plastics</a>
-            <hr class="my-0">
-          </div>
+          <?php
+          $sqld="SELECT * FROM DIVISIONES";
+          $result=$conn->query($sqld);
+          if($result->num_rows>0){
+            while($row=$result->fetch_assoc()){
+              $id_division=$row['ID'];
+              $division=$row['DIVISION'];
+                if($id_division_get==$id_division){
+                  ?>
+                  <div class="col-12 mt-2 mb-1 div_menu_lateral_active">
+                    <a class="enlace_menu_lateral_active" href="/en/products/index.php?id_div=<?php echo $id_division;?>"><?php echo $division;?></a>
+                    <hr class="my-0">
+                  </div>
+                  <?php
+                }else{
+                  ?>
+                  <div class="col-12 mt-2 mb-1">
+                    <a class="enlace_menu_lateral" href="/en/products/index.php?id_div=<?php echo $id_division;?>"><?php echo $division;?></a>
+                    <hr class="my-0">
+                  </div>
+                  <?php
+                }
+              }
+            }
+           ?>
         </div>
+        <?php if (isset($_GET['id_div']) || isset($_GET['id_ind']) || isset($_GET['id_tipo'])): ?>
+        <div class="row mt-4 pr-4">
+            <div class="col-12">
+              <h2 class="titulos_blog lead">Products Type</h2>
+            </div>
+            <?php
+            $sqld="SELECT * FROM TIPO_PRODUCTOS";
+            $result=$conn->query($sqld);
+            if($result->num_rows>0){
+              while($row=$result->fetch_assoc()){
+                $id_tipo_producto=$row['ID'];
+                $tipo_producto=$row['TIPO_PRODUCTO'];
+                $complemento_enlace="?id_tipo=$id_tipo_producto";
+                if(isset($_GET['id_div'])){
+                  $complemento_enlace.="&id_div=$id_division_get";
+                }
+                if(isset($_GET['id_ind'])){
+                  $complemento_enlace.="&id_ind=$id_industria_get";
+                }
+                if($id_tipo_producto_get==$id_tipo_producto){
+                  ?>
+                  <div class="col-12 mt-2 mb-1 div_menu_lateral_active">
+                    <a class="enlace_menu_lateral_active" href="/en/products/index.php<?php echo $complemento_enlace;?>"><?php echo $tipo_producto;?></a>
+                    <hr class="my-0">
+                  </div>
+                  <?php
+                }else{
+                  ?>
+                  <div class="col-12 mt-2 mb-1">
+                    <a class="enlace_menu_lateral" href="/en/products/index.php<?php echo $complemento_enlace;?>"><?php echo $tipo_producto;?></a>
+                    <hr class="my-0">
+                  </div>
+                  <?php
+                }
+              }
+            }
+            ?>
+        </div>
+        <div class="row mt-4 pr-4">
+            <div class="col-12">
+              <h2 class="titulos_blog lead">Industries</h2>
+            </div>
+            <?php
+            $sqld="SELECT * FROM INDUSTRIAS";
+            $result=$conn->query($sqld);
+            if($result->num_rows>0){
+              while($row=$result->fetch_assoc()){
+                $id_industria=$row['ID'];
+                $industria=$row['INDUSTRIA'];
+                $complemento_enlace="?id_ind=$id_industria";
+                if(isset($_GET['id_div'])){
+                  $complemento_enlace.="&id_div=$id_division_get";
+                }
+                if(isset($_GET['id_tipo'])){
+                  $complemento_enlace.="&id_tipo=$id_tipo_producto_get";
+                }
+                if($id_industria_get==$id_industria){
+                  ?>
+                  <div class="col-12 mt-2 mb-1 div_menu_lateral_active">
+                    <a class="enlace_menu_lateral_active" href="/en/products/index.php<?php echo $complemento_enlace;?>"><?php echo $industria;?></a>
+                    <hr class="my-0">
+                  </div>
+                  <?php
+                }else{
+                  ?>
+                  <div class="col-12 mt-2 mb-1">
+                    <a class="enlace_menu_lateral" href="/en/products/index.php<?php echo $complemento_enlace;?>"><?php echo $industria;?></a>
+                    <hr class="my-0">
+                  </div>
+                  <?php
+                }
+              }
+            }
+            ?>
+        </div>
+        <?php endif; ?>
       </div>
       <div class="col-12 col-sm-9">
-        <!-- Productos -->
+        <!-- Divisiones e industrias imagenes -->
         <?php if(isset($producto) && $producto==1){ ?>
           <div class="row mt-3">
             <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
-              <a class="imagen_divisiones_home" href="#">
-                <img src="/imagen/division_alimentos.png" alt="" width="100%">
+              <a class="imagen_divisiones_home" href="/es/productos/index.php?id_div=1">
+                <img src="/imagen/es/divisiones/alimentos.png" alt="" width="100%">
               </a>
             </div>
             <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
-              <a class="imagen_divisiones_home" href="#">
-                <img src="/imagen/division_especializadas.png" alt="" width="100%">
+              <a class="imagen_divisiones_home" href="/es/productos/index.php?id_div=2">
+                <img src="/imagen/es/divisiones/especialidades.png" alt="" width="100%">
               </a>
             </div>
             <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
-              <a class="imagen_divisiones_home" href="#">
-                <img src="/imagen/division_genericos.png" alt="" width="100%">
+              <a class="imagen_divisiones_home" href="/es/productos/index.php?id_div=3">
+                <img src="/imagen/es/divisiones/genericos.png" alt="" width="100%">
               </a>
             </div>
             <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
-              <a class="imagen_divisiones_home" href="#">
-                <img src="/imagen/division_plasticos.png" alt="" width="100%">
+              <a class="imagen_divisiones_home" href="/es/productos/index.php?id_div=4">
+                <img src="/imagen/es/divisiones/plasticos.png" alt="" width="100%">
               </a>
             </div>
           </div>
         <?php }else if(isset($industrias) && $industrias==1){ ?>
           <div class="row justify-content-center align-items-center mt-2">
-            <a class="enlace_img_industrias mx-1" href="#">
+            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=1">
               <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/comercializadores.jpg" alt="">
+                <img class="img_industrias" src="/imagen/industrias/adhesivos.jpg" alt="">
                 <div class="div_text_industria">
-                  <div class="text_span text-white">Adhesives and Glue</div>
+                  <span class="text_span text-white">Adhesives and Glue</span>
                 </div>
               </div>
             </a>
-            <a class="enlace_img_industrias mx-1" href="#">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/aseo.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Cleaning</span>
-                </div>
-              </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="#">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/comercializadores.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Retail</span>
-                </div>
-              </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="#">
+            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=3">
               <div class="contenedor_img_industrias mt-3">
                 <img class="img_industrias" src="/imagen/industrias/construccion.jpg" alt="">
                 <div class="div_text_industria">
@@ -126,47 +238,15 @@ if(isset($_GET['products'])){
                 </div>
               </div>
             </a>
-            <a class="enlace_img_industrias mx-1" href="#">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/cuero.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Leather</span>
-                </div>
-              </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="#">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/petroleos.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Pretroleum</span>
-                </div>
-              </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="#">
+            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=4">
               <div class="contenedor_img_industrias mt-3">
                 <img class="img_industrias" src="/imagen/industrias/farma.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Pharmaceuticals and Cosmetic</span>
+                <div class="div_text_industria text-center">
+                  <div class="text_span text-white text-center">Pharmaceuticals and Cosmetics</div>
                 </div>
               </div>
             </a>
-            <a class="enlace_img_industrias mx-1" href="#">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/impresion.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Printing</span>
-                </div>
-              </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="#">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/industria.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Chemical Industry</span>
-                </div>
-              </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="#">
+            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=5">
               <div class="contenedor_img_industrias mt-3">
                 <img class="img_industrias" src="/imagen/industrias/ingenios.jpg" alt="">
                 <div class="div_text_industria">
@@ -174,7 +254,55 @@ if(isset($_GET['products'])){
                 </div>
               </div>
             </a>
-            <a class="enlace_img_industrias mx-1" href="#">
+            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=6">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/petroleos.jpg" alt="">
+                <div class="div_text_industria">
+                  <div class="text_span text-white">Petroleum</div>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=8">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/telas.jpg" alt="">
+                <div class="div_text_industria">
+                  <span class="text_span text-white">Textiles ang Garments</span>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=9">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/agro.jpg" alt="">
+                <div class="div_text_industria">
+                  <div class="text_span text-white">Agro</div>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=10">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/aseo.jpg" alt="">
+                <div class="div_text_industria">
+                  <span class="text_span text-white">Cleaning</span>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=11">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/cuero.jpg" alt="">
+                <div class="div_text_industria">
+                  <span class="text_span text-white">Leather</span>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=12">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/impresion.jpg" alt="">
+                <div class="div_text_industria">
+                  <span class="text_span text-white">Printing</span>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=13">
               <div class="contenedor_img_industrias mt-3">
                 <img class="img_industrias" src="/imagen/industrias/otras.jpg" alt="">
                 <div class="div_text_industria">
@@ -182,15 +310,7 @@ if(isset($_GET['products'])){
                 </div>
               </div>
             </a>
-            <a class="enlace_img_industrias mx-1" href="#">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/petroleos.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Pretroleum</span>
-                </div>
-              </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="#">
+            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=14">
               <div class="contenedor_img_industrias mt-3">
                 <img class="img_industrias" src="/imagen/industrias/plasticos.jpg" alt="">
                 <div class="div_text_industria">
@@ -198,23 +318,7 @@ if(isset($_GET['products'])){
                 </div>
               </div>
             </a>
-            <a class="enlace_img_industrias mx-1" href="#">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/metal.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Metal Products</span>
-                </div>
-              </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="#">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/papel.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Pulp and paper</span>
-                </div>
-              </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="#">
+            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=15">
               <div class="contenedor_img_industrias mt-3">
                 <img class="img_industrias" src="/imagen/industrias/recubrimientos.jpg" alt="">
                 <div class="div_text_industria">
@@ -222,24 +326,128 @@ if(isset($_GET['products'])){
                 </div>
               </div>
             </a>
-            <a class="enlace_img_industrias mx-1" href="#">
+            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=16">
               <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/telas.jpg" alt="">
+                <img class="img_industrias" src="/imagen/industrias/tratamiento.jpg" alt="">
                 <div class="div_text_industria">
-                  <span class="text_span text-white">Textiles and Garments</span>
+                  <span class="text_span text-white">Water treatment</span>
                 </div>
               </div>
             </a>
-            <a class="enlace_img_industrias mx-1" href="#">
+            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=17">
               <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/petroleos.jpg" alt="">
+                <img class="img_industrias" src="/imagen/industrias/animal.jpg" alt="">
                 <div class="div_text_industria">
-                  <span class="text_span text-white">Pretroleum</span>
+                  <span class="text_span text-white">Feed</span>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=18">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/comercializadores.jpg" alt="">
+                <div class="div_text_industria">
+                  <span class="text_span text-white">Retail</span>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=20">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/industria.jpg" alt="">
+                <div class="div_text_industria">
+                  <div class="text_span text-white">Chemical Industry</div>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=21">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/papel.jpg" alt="">
+                <div class="div_text_industria">
+                  <span class="text_span text-white">Pulp and paper</span>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=22">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/metal.jpg" alt="">
+                <div class="div_text_industria">
+                  <span class="text_span text-white">Metal products</span>
                 </div>
               </div>
             </a>
           </div>
         <?php } ?>
+        <div class="row mb-2">
+          <?php if(isset($_GET['id_div']) && $_GET['id_div']=="1"){ ?>
+          <p class="text-muted">
+            La División de Alimentos de EuroChem está enfocada en la atención de los principales sectores de la industria de Alimentos (Cárnicos, Lácteos, Bebidas, Nutracéuticos, Salsas, etc.) y cuenta con un amplio portafolio de ingredientes dirigidos a la mejora de atributos tales como: textura, conservación, sabor, entre otros. Disponemos de un equipo técnico y comercial especializado para proporcionar soluciones integrales a nuestros clientes en el mejoramiento y desarrollo de sus productos. Nuestra labor se fundamenta en las alianzas estratégicas con prestigiosas casas productoras, las cuales mantienen los más altos estándares de calidad, servicio, innovación y responsabilidad con el consumidor final.
+          </p>
+        <?php }elseif(isset($_GET['id_div']) && $_GET['id_div']=="2"){ ?>
+          <p class="text-muted">
+            Ofrecemos un portafolio integral de especialidades químicas para múltiples sectores industriales, como recubrimientos, polimerización, formuladores, aseo, plásticos, petróleos, construcción, entre otros. En nuestra extensa gama de productos se destacan pigmentos, resinas, aditivos de formulación para recubrimientos y tensoactivos para variadas aplicaciones. Trabajamos con casas productoras reconocidas por su calidad y tecnología. Contamos con un laboratorio de aplicaciones que nos permite ofrecer acompañamiento en la homologación, uso de nuestros productos y asesoría en el desarrollo de formulaciones.
+          </p>
+        <?php }elseif(isset($_GET['id_div']) && $_GET['id_div']=="3"){ ?>
+          <p class="text-muted">
+            En esta división de negocios, EuroChem agrupa una amplia oferta de insumos químicos para diversas industrias, con mayor énfasis en recubrimientos, aseo, fabricación de intermediarios químicos, alimentos y bebidas, adhesivos y pegantes, textiles, petróleos, farma, cosméticos, agro, construcción, nutrición animal, cuero y papel. Los productos de esta división se presentan en formas líquidas y sólidas, representan un amplio espectro de la química inorgánica (ácidos, bases, sales, pigmentos, etc.) y de la química orgánica (solventes alifáticos, aromáticos, clorados, alcoholes, cetonas, acetatos, tensoactivos aniónicos y no iónicos, entre otros).
+          </p>
+        <?php }elseif(isset($_GET['id_div']) && $_GET['id_div']=="4"){ ?>
+          <p class="text-muted">
+            Proveemos soluciones integrales para la industria del plástico, ofreciendo un amplio portafolio de resinas genéricas y especializadas para la transformación por procesos de inyección, soplado, extrusión y expansión. Contamos con proveedores que son nuestros aliados para llevar a los clientes un producto con altos estándares de calidad, soporte técnico y oportunidad en la entrega.
+          </p>
+        <?php } ?>
+        </div>
+        <!-- Listado de productos-->
+        <?php
+        if($sql_ppal!=""){
+          $result=$conn->query($sql_ppal);
+          if($result->num_rows>0){
+            while($row=$result->fetch_assoc()){
+              $id_producto=$row['ID'];
+              $titulo=$row['TITULO'];
+              $subtitulo=$row['SUBTITULO'];
+              ?>
+              <div class="row mb-2 align-items-center">
+                <div class="col-12 px-0">
+                  <hr class="bg-dark m-0 mb-2">
+                </div>
+                <div class="col-1">
+                  <img src="" alt="">
+                </div>
+                <div class="col-2">
+                  <a href="details.php?id_prod=<?php echo $id_producto;?>"><?php echo $titulo;?></a>
+                </div>
+                <div class="col-7 text-muted">
+                  <?php echo $subtitulo;?>
+                </div>
+                <div class="col-1">
+                  <div class="row">
+                    <small>Category</small>
+                  </div>
+                  <?php
+                  $sqlaux="SELECT IDDIVISION FROM PRODUCTOS WHERE ID=$id_producto";
+                  $resultaux=$conn->query($sqlaux);
+                  if($resultaux->num_rows>0){
+                    while($rowaux=$resultaux->fetch_assoc()){
+                      $id_division=$rowaux['IDDIVISION'];
+                      $key=array_search($id_division,$id_divisiones);
+                      $division=$divisiones[$key];
+                      ?>
+                      <div class="row">
+                        <a href="/es/productos/index.php?id_div=<?php echo $id_division;?>"><small><?php echo $division;?></small></a>
+                      </div>
+                      <?php
+                    }
+                  }
+                  ?>
+                </div>
+                <div class="col-1">
+                  <a class="btn btn-sm btn-primary px-3" href="details.php?id_prod=<?php echo $id_producto;?>">See</a>
+                </div>
+              </div>
+              <?php
+            }
+          }
+        }
+        ?>
       </div>
     </div>
   </div>
@@ -259,7 +467,7 @@ if(isset($_GET['products'])){
       }
     };
   </script>
-  <script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
-  <script src="/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+  <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

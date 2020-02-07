@@ -36,8 +36,10 @@ $section="pagos";
             <h2 class="titulos_blog lead">Search</h2>
           </div>
           <div class="col-12">
-            <input type="search" name="" value="" placeholder="Search products...">
-            <button type="button" name="button">Search</button>
+            <form action="/en/products/index.php" method="get">
+              <input type="search" name="search" placeholder="Search products...">
+              <button type="submit">Search</button>
+            </form>
           </div>
         </div>
         <div class="row mt-4">
@@ -45,19 +47,19 @@ $section="pagos";
             <h2 class="titulos_blog lead">Divisions</h2>
           </div>
           <div class="col-12 mt-2 mb-1">
-            <a class="enlace_menu_lateral" href="">Food</a>
+            <a class="enlace_menu_lateral" href="/en/products/index.php?id_prod=1">Food</a>
             <hr class="my-0">
           </div>
           <div class="col-12 my-1">
-            <a class="enlace_menu_lateral" href="">Specialty</a>
+            <a class="enlace_menu_lateral" href="/en/products/index.php?id_prod=2">Specialty</a>
             <hr class="my-0">
           </div>
           <div class="col-12 my-1">
-            <a class="enlace_menu_lateral" href="">Commodities</a>
+            <a class="enlace_menu_lateral" href="/en/products/index.php?id_prod=3">Commodities</a>
             <hr class="my-0">
           </div>
           <div class="col-12 my-1">
-            <a class="enlace_menu_lateral" href="">Plastics</a>
+            <a class="enlace_menu_lateral" href="/en/products/index.php?id_prod=4">Plastics</a>
             <hr class="my-0">
           </div>
         </div>

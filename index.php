@@ -85,22 +85,22 @@ $section="home";
     <div class="row px-3 px-md-4 mt-3">
       <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
         <a class="imagen_divisiones_home" href="/es/productos/index.php?id_div=1">
-          <img src="/imagen/divisiones/alimentos.png" alt="" width="100%">
+          <img src="/imagen/es/divisiones/alimentos.png" alt="" width="100%">
         </a>
       </div>
       <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
         <a class="imagen_divisiones_home" href="/es/productos/index.php?id_div=2">
-          <img src="/imagen/divisiones/especialidades.png" alt="" width="100%">
+          <img src="/imagen/es/divisiones/especialidades.png" alt="" width="100%">
         </a>
       </div>
       <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
         <a class="imagen_divisiones_home" href="/es/productos/index.php?id_div=3">
-          <img src="/imagen/divisiones/genericos.png" alt="" width="100%">
+          <img src="/imagen/es/divisiones/genericos.png" alt="" width="100%">
         </a>
       </div>
       <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
         <a class="imagen_divisiones_home" href="/es/productos/index.php?id_div=4">
-          <img src="/imagen/divisiones/plasticos.png" alt="" width="100%">
+          <img src="/imagen/es/divisiones/plasticos.png" alt="" width="100%">
         </a>
       </div>
     </div>
@@ -112,15 +112,15 @@ $section="home";
         <h2 class="titulos">Industrias</h2>
       </div>
       <div class="row justify-content-center align-items-center mt-2">
-        <a class="enlace_img_industrias mx-1" href="#">
+        <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=21">
           <div class="contenedor_img_industrias mt-3">
-            <img class="img_industrias" src="imagen/industrias/comercializadores.jpg" alt="">
+            <img class="img_industrias" src="/imagen/industrias/papel.jpg" alt="">
             <div class="div_text_industria">
-              <div class="text_span text-white">Alimentos y bebidas</div>
+              <span class="text_span text-white">Papel y Cartón</span>
             </div>
           </div>
         </a>
-        <a class="enlace_img_industrias mx-1" href="#">
+        <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=15">
           <div class="contenedor_img_industrias mt-3">
             <img class="img_industrias" src="imagen/industrias/recubrimientos.jpg" alt="">
             <div class="div_text_industria">
@@ -128,7 +128,7 @@ $section="home";
             </div>
           </div>
         </a>
-        <a class="enlace_img_industrias mx-1" href="#">
+        <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=18">
           <div class="contenedor_img_industrias mt-3">
             <img class="img_industrias" src="imagen/industrias/comercializadores.jpg" alt="">
             <div class="div_text_industria">
@@ -136,7 +136,7 @@ $section="home";
             </div>
           </div>
         </a>
-        <a class="enlace_img_industrias mx-1" href="#">
+        <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=10">
           <div class="contenedor_img_industrias mt-3">
             <img class="img_industrias" src="imagen/industrias/aseo.jpg" alt="">
             <div class="div_text_industria">
@@ -144,7 +144,7 @@ $section="home";
             </div>
           </div>
         </a>
-        <a class="enlace_img_industrias mx-1" href="#">
+        <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=8">
           <div class="contenedor_img_industrias mt-3">
             <img class="img_industrias" src="imagen/industrias/telas.jpg" alt="">
             <div class="div_text_industria">
@@ -154,7 +154,7 @@ $section="home";
         </a>
       </div>
       <div class="row justify-content-center align-items-center mt-2">
-        <a class="enlace_img_industrias mx-1" href="#">
+        <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=20">
           <div class="contenedor_img_industrias mt-3">
             <img class="img_industrias" src="imagen/industrias/industria.jpg" alt="">
             <div class="div_text_industria">
@@ -162,7 +162,7 @@ $section="home";
             </div>
           </div>
         </a>
-        <a class="enlace_img_industrias mx-1" href="#">
+        <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=14">
           <div class="contenedor_img_industrias mt-3">
             <img class="img_industrias" src="imagen/industrias/plasticos.jpg" alt="">
             <div class="div_text_industria">
@@ -170,7 +170,7 @@ $section="home";
             </div>
           </div>
         </a>
-        <a class="enlace_img_industrias mx-1" href="#">
+        <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=1">
           <div class="contenedor_img_industrias mt-3">
             <img class="img_industrias" src="imagen/industrias/adhesivos.jpg" alt="">
             <div class="div_text_industria">
@@ -178,7 +178,7 @@ $section="home";
             </div>
           </div>
         </a>
-        <a class="enlace_img_industrias mx-1" href="#">
+        <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=12">
           <div class="contenedor_img_industrias mt-3">
             <img class="img_industrias" src="imagen/industrias/impresion.jpg" alt="">
             <div class="div_text_industria">
@@ -186,7 +186,7 @@ $section="home";
             </div>
           </div>
         </a>
-        <a class="enlace_img_industrias mx-1" href="#">
+        <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=6">
           <div class="contenedor_img_industrias mt-3">
             <img class="img_industrias" src="imagen/industrias/petroleos.jpg" alt="">
             <div class="div_text_industria">
@@ -227,7 +227,7 @@ $section="home";
           <h2 class="titulos">Producto del mes</h2>
         </div>
         <div class="row mt-4">
-          <img src="imagen/producto_del_mes.jpg" alt="" width="90%">
+          <img src="imagen/es/mes_p.png" alt="" width="90%">
         </div>
       </div>
       <div class="col-12 col-md-4">

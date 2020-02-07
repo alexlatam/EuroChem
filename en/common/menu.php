@@ -23,7 +23,9 @@
         </span>
       </div>
       <div class="col-auto ml-auto d-none d-sm-block">
-        <input type="search" name="" value="" placeholder="search products...">
+        <form action="/en/products/index.php" method="get" id="search1">
+          <input type="search" name="search" placeholder="Buscar productos..." onkeypress="if (event.keyCode == 13) enviar_formulario()">
+        </form>
       </div>
     </div>
   </div>

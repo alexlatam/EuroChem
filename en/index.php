@@ -1,7 +1,6 @@
 <?php
 session_start();
 include 'common/conexion.php';
-include 'common/datosGenerales.php';
 $section="home";
 ?>
 <!doctype html>
@@ -71,23 +70,23 @@ $section="home";
     </div>
     <div class="row px-3 px-md-4 mt-3">
       <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
-        <a class="imagen_divisiones_home" href="#">
-          <img src="/imagen/division_alimentos.png" alt="" width="100%">
+        <a class="imagen_divisiones_home" href="/en/products/index.php?id_div=1">
+          <img src="/imagen/en/divisions/1.png" alt="" width="100%">
         </a>
       </div>
       <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
-        <a class="imagen_divisiones_home" href="#">
-          <img src="/imagen/division_especializadas.png" alt="" width="100%">
+        <a class="imagen_divisiones_home" href="/en/products/index.php?id_div=2">
+          <img src="/imagen/en/divisions/2.png" alt="" width="100%">
         </a>
       </div>
       <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
-        <a class="imagen_divisiones_home" href="#">
-          <img src="/imagen/division_genericos.png" alt="" width="100%">
+        <a class="imagen_divisiones_home" href="/en/products/index.php?id_div=3">
+          <img src="/imagen/en/divisions/3.png" alt="" width="100%">
         </a>
       </div>
       <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
-        <a class="imagen_divisiones_home" href="#">
-          <img src="/imagen/division_plasticos.png" alt="" width="100%">
+        <a class="imagen_divisiones_home" href="/en/products/index.php?id_div=4">
+          <img src="/imagen/en/divisions/4.png" alt="" width="100%">
         </a>
       </div>
     </div>
@@ -99,11 +98,11 @@ $section="home";
         <h2 class="titulos">Industries</h2>
       </div>
       <div class="row justify-content-center align-items-center mt-2">
-        <a class="enlace_img_industrias mx-1" href="#">
+        <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=21">
           <div class="contenedor_img_industrias mt-3">
-            <img class="img_industrias" src="/imagen/industrias/comercializadores.jpg" alt="">
+            <img class="img_industrias" src="/imagen/industrias/papel.jpg" alt="">
             <div class="div_text_industria">
-              <div class="text_span text-white">Food and Beverages</div>
+              <span class="text_span text-white">Pulp and paper</span>
             </div>
           </div>
         </a>
@@ -214,7 +213,7 @@ $section="home";
           <h2 class="titulos">Featured product</h2>
         </div>
         <div class="row mt-4">
-          <img src="/imagen/producto_del_mes.jpg" alt="" width="90%">
+          <img src="/imagen/en/month_p.png" alt="" width="90%">
         </div>
       </div>
       <div class="col-12 col-md-4">

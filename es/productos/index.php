@@ -201,84 +201,28 @@ if(isset($_GET['id_unid'])){
           <div class="row mt-3">
             <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
               <a class="imagen_divisiones_home" href="/es/productos/index.php?id_div=1">
-                <img src="/imagen/divisiones/alimentos.png" alt="" width="100%">
+                <img src="/imagen/es/divisiones/alimentos.png" alt="" width="100%">
               </a>
             </div>
             <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
               <a class="imagen_divisiones_home" href="/es/productos/index.php?id_div=2">
-                <img src="/imagen/divisiones/especialidades.png" alt="" width="100%">
+                <img src="/imagen/es/divisiones/especialidades.png" alt="" width="100%">
               </a>
             </div>
             <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
               <a class="imagen_divisiones_home" href="/es/productos/index.php?id_div=3">
-                <img src="/imagen/divisiones/genericos.png" alt="" width="100%">
+                <img src="/imagen/es/divisiones/genericos.png" alt="" width="100%">
               </a>
             </div>
             <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
               <a class="imagen_divisiones_home" href="/es/productos/index.php?id_div=4">
-                <img src="/imagen/divisiones/plasticos.png" alt="" width="100%">
+                <img src="/imagen/es/divisiones/plasticos.png" alt="" width="100%">
               </a>
             </div>
           </div>
         <?php }else if(isset($industrias) && $industrias==1){ ?>
           <div class="row justify-content-center align-items-center mt-2">
-            <a class="enlace_img_industrias mx-1" href="#">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/comercializadores.jpg" alt="">
-                <div class="div_text_industria">
-                  <div class="text_span text-white">Alimentos y bebidas</div>
-                </div>
-              </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="#">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/recubrimientos.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Recubrimientos</span>
-                </div>
-              </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="#">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/comercializadores.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Comercializadores</span>
-                </div>
-              </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="#">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/aseo.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Aseo</span>
-                </div>
-              </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="#">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/telas.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Textil y prendas</span>
-                </div>
-              </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="#">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/industria.jpg" alt="">
-                <div class="div_text_industria">
-                  <div class="text_span text-white">Industria Química</div>
-                </div>
-              </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="#">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/plasticos.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Plasticos</span>
-                </div>
-              </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="#">
+            <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=1">
               <div class="contenedor_img_industrias mt-3">
                 <img class="img_industrias" src="/imagen/industrias/adhesivos.jpg" alt="">
                 <div class="div_text_industria">
@@ -286,7 +230,71 @@ if(isset($_GET['id_unid'])){
                 </div>
               </div>
             </a>
-            <a class="enlace_img_industrias mx-1" href="#">
+            <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=3">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/construccion.jpg" alt="">
+                <div class="div_text_industria">
+                  <span class="text_span text-white">Construcción y vías</span>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=4">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/farma.jpg" alt="">
+                <div class="div_text_industria">
+                  <div class="text_span text-white">Farma y cosmética</div>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=5">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/ingenios.jpg" alt="">
+                <div class="div_text_industria">
+                  <span class="text_span text-white">Ingenios</span>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=6">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/petroleos.jpg" alt="">
+                <div class="div_text_industria">
+                  <div class="text_span text-white">Petróleos</div>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=8">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/telas.jpg" alt="">
+                <div class="div_text_industria">
+                  <span class="text_span text-white">Textil y prendas</span>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=9">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/agro.jpg" alt="">
+                <div class="div_text_industria">
+                  <div class="text_span text-white">Agro</div>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=10">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/aseo.jpg" alt="">
+                <div class="div_text_industria">
+                  <span class="text_span text-white">Aseo</span>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=11">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/cuero.jpg" alt="">
+                <div class="div_text_industria">
+                  <span class="text_span text-white">Cuero</span>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=12">
               <div class="contenedor_img_industrias mt-3">
                 <img class="img_industrias" src="/imagen/industrias/impresion.jpg" alt="">
                 <div class="div_text_industria">
@@ -294,11 +302,75 @@ if(isset($_GET['id_unid'])){
                 </div>
               </div>
             </a>
-            <a class="enlace_img_industrias mx-1" href="#">
+            <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=13">
               <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/petroleos.jpg" alt="">
+                <img class="img_industrias" src="/imagen/industrias/otras.jpg" alt="">
                 <div class="div_text_industria">
-                  <span class="text_span text-white">Petróleos</span>
+                  <span class="text_span text-white">Otras industrias</span>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=14">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/plasticos.jpg" alt="">
+                <div class="div_text_industria">
+                  <span class="text_span text-white">Plasticos</span>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=15">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/recubrimientos.jpg" alt="">
+                <div class="div_text_industria">
+                  <span class="text_span text-white">Recubrimientos</span>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=16">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/tratamiento.jpg" alt="">
+                <div class="div_text_industria">
+                  <span class="text_span text-white">Tratamiento de aguas</span>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=17">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/animal.jpg" alt="">
+                <div class="div_text_industria">
+                  <span class="text_span text-white">Alimentación animal</span>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=18">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/comercializadores.jpg" alt="">
+                <div class="div_text_industria">
+                  <span class="text_span text-white">Comercializadores</span>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=20">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/industria.jpg" alt="">
+                <div class="div_text_industria">
+                  <div class="text_span text-white">Industria Química</div>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=21">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/papel.jpg" alt="">
+                <div class="div_text_industria">
+                  <span class="text_span text-white">Papel y Cartón</span>
+                </div>
+              </div>
+            </a>
+            <a class="enlace_img_industrias mx-1" href="/es/productos/index.php?id_ind=22">
+              <div class="contenedor_img_industrias mt-3">
+                <img class="img_industrias" src="/imagen/industrias/metal.jpg" alt="">
+                <div class="div_text_industria">
+                  <span class="text_span text-white">Productos de metal</span>
                 </div>
               </div>
             </a>
