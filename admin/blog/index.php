@@ -26,7 +26,7 @@ $previouspage=$curpage - 1;
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Página administrativa de Balita">
   <meta name="author" content="Eutuxia Web">
-  <link rel="icon" type="image/png" href="../../imagenes/favicon.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="/imagen/logo.png">
   <title>Administración - Balita</title>
   <link href="../../assets/admin/css/style.min.css" rel="stylesheet">
   <link href="../../assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">

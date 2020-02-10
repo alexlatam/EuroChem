@@ -12,11 +12,11 @@ require '../../common/conexion.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="Eutuxia Web, C.A.">
-  <link rel="icon" type="image/jpg" sizes="16x16" href="../img/">
+  <link rel="icon" type="image/png" sizes="16x16" href="/imagen/logo.png">
   <title>EuroChem - Administración</title>
-  <link href="../assets/admin/css/style.min.css" rel="stylesheet">
-  <link href="../assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <link href="/assets/admin/css/style.min.css" rel="stylesheet">
+  <link href="/assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
   <div class="preloader">
@@ -286,9 +286,9 @@ require '../../common/conexion.php';
   </script>
 </div>
 </div>
-<script src="../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
-<script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../../assets/admin/js/custom.min.js"></script>
+<script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+<script src="/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/admin/js/custom.min.js"></script>
 <script src='https://cdn.jsdelivr.net/npm/sweetalert2@7.29.0/dist/sweetalert2.all.min.js'></script>
 </body>
 </html>

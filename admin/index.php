@@ -33,13 +33,13 @@ if(isset($_SESSION['USUARIO'])){
   <meta name="description" content="">
   <meta name="author" content="">
   <title>EuroChem- Administración</title>
-  <link rel="icon" type="image/png" href="../images/favicon1.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="/imagen/logo.png">
   <link href="../assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
   <div class="container mt-4">
     <div class="text-center">
-      <img src="../images/logo-balita-3.png" onerror="this.remove()" style="max-width:200px;">
+      <img src="/imagen/es/logo_texto.png" alt="" width="15%">
     </div>
     <div class="row text-center mt-4">
       <div class="card card-login mx-auto mt-3 col-md-6 col-sm-10">

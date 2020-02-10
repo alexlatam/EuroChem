@@ -93,7 +93,7 @@ $section="actualidad";
                        <div class="container-img-blog">
                          <a class="d-flex" href="article.php?id=<?php echo $id_articulo;?>">
                            <div class="imagen-blog">
-                             <img class="img-blog" src="../admin/blog/img/<?php echo $imagen;?>">
+                             <img class="img-blog" src="/admin/blog/img/<?php echo $imagen;?>">
                            </div>
                          </a>
                        </div>
@@ -112,7 +112,7 @@ $section="actualidad";
                          </p>
                        </div>
                        <div class="row">
-                         <a class="btn btn-primary px-5" href="article.php?id=<?php echo $id_articulo;?>">Ver más</a>
+                         <a class="btn btn-primary px-5" href="article.php?id=<?php echo $id_articulo;?>">See more</a>
                        </div>
                      </div>
                    </div>

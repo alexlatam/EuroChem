@@ -58,11 +58,13 @@ if(isset($_POST['producto'],$_POST['formula'],$_POST['nombre_comercial'],$_POST[
               <?php $sql="SELECT p.ID,p.TITULO FROM PRODUCTOS p LEFT JOIN FICHA_TECNICA f ON p.ID=f.IDPRODUCTO WHERE p.ID NOT IN (SELECT IDPRODUCTO FROM FICHA_TECNICA);";
               $result=$conn->query($sql);
               if($result->num_rows>0){
+                $cont=0;
                 while($row=$result->fetch_assoc()){
+                  ++$cont;
                   $id_producto=$row['ID'];
                   $titulo=$row['TITULO'];
                   ?>
-                  <option value="<?php echo $id_producto;?>"><a target="_blank" href="<?php echo $url_temp;?>"><?php echo $titulo;?></a> </option>
+                  <option value="<?php echo $id_producto;?>"><a target="_blank" href="<?php echo $url_temp;?>"><?php echo $cont."- ".$titulo;?></a> </option>
                   <?php
                 }
               }

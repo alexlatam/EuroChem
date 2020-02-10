@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Página administrativa de Eurochem">
   <meta name="author" content="Eutuxia Web">
-  <link rel="icon" type="image/jpg" sizes="16x16" href="/admin/img/">
+  <link rel="icon" type="image/png" sizes="16x16" href="/imagen/logo.png">
   <title>EuroChem - Administración</title>
   <link href="../assets/admin/css/style.min.css" rel="stylesheet">
   <link href="../assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">

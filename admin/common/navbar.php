@@ -21,7 +21,9 @@
   </ul>
   <ul class="navbar-nav float-right">
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?php echo $root_folder;?>/admin/img/" alt="user" class="rounded-circle" width="31"></a>
+      <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img src="/imagen/logo.png" alt="user" class="rounded-circle" width="31">
+      </a>
       <div class="dropdown-menu dropdown-menu-right user-dd animated">
         <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal" data-target="#closeSesion"><i class="ti-export m-r-5 m-l-5"></i>Cerrar sesión</a>
       </div>
@@ -82,7 +84,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <a href="<?php echo $root_folder;?>/admin/common/salir_sesion.php" class="btn btn-primary">Salir</a>
+        <a href="/admin/common/salir_sesion.php" class="btn btn-primary">Salir</a>
       </div>
     </div>
   </div>
