@@ -1,8 +1,25 @@
 <?php
 include '../common/sesion.php';
-if($_SESSION['nivel']==6 || $_SESSION['nivel']==1){
-}else{header('Location: ../principal.php');}
 require '../../common/conexion.php';
+$sql="SELECT * FROM `CONFIGURACION`";
+$result=$conn->query($sql);
+if($result->num_rows>0){
+  while($row=$result->fetch_assoc()){
+    if($row['ATRIBUTO']=="facebook"){
+      $facebook=$row['VALOR'];
+    }else if($row['ATRIBUTO']=="youtube"){
+      $youtube=$row['VALOR'];
+    }else if($row['ATRIBUTO']=="linkedin"){
+      $linkedin=$row['VALOR'];
+    }else if($row['ATRIBUTO']=="video"){
+      $url_video=$row['VALOR'];
+    }
+  }
+}else{
+  $facebook="";
+  $youtube="";
+  $linkedin="";
+}
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -41,17 +58,13 @@ require '../../common/conexion.php';
             <div class="card">
               <div class="card-body">
                 <!-- Imagenes Banner ppal -->
+                <form enctype="multipart/form-data" id="formBanner" method="post">
                 <div class="container mb-3">
                   <div class="row align-items-center">
                     <div class="col-4">
                       <h4 class="card-title mb-0">Imagenes Banner Principal</h4>
                       <span class="card-subtitle">Van en la imagen principal de la pagina.</span>
                     </div>
-                    <div class="col-3">
-                      <form enctype="multipart/form-data" id="formBanner" method="post">
-                        <label class="btn btn-link" for="filesBanner">Seleccionar Imagenes</label>
-                        <input type="file" name="images[]" id="filesBanner" multiple hidden="hidden"/>
-                      </div>
                       <div class="col-4">
                         <div class="input-group">
                           <?php
@@ -63,68 +76,144 @@ require '../../common/conexion.php';
                           }
                           ?>
                           <div class="input-group-append">
-                            <span class="input-group-text" data-toggle="tooltip" title="cantidad de imagenes en el banner"><b>Imagenes</b></span>
+                            <span class="input-group-text" data-toggle="tooltip" title="cantidad de imagenes en el banner"><b>Nro Imagenes en el Banner</b></span>
                           </div>
                           <input type="number" class="form-control" step="1" value="<?php echo $cantidadBanner;?>" style="max-width: 100px" id='cantidad-img-banner' name="cantidadBanner" max="8" min="1">
                         </div>
                       </div>
-                      <div class="col-1">
-                        <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                      <div class="col-auto ml-auto">
+                        <button type="submit" class="btn btn-outline-primary">Guardar Imagenes</button>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-auto">
+                        <label class="btn btn-link" for="filesBanner">Seleccionar Imagenes</label>
+                        <input type="file" name="images[]" id="filesBanner" multiple hidden="hidden"/>
                       </div>
                     </div>
                     <div class="row mt-2" id="image-holder">
                       <?php
                       $result=$conn->query("SELECT * FROM IMAGENES WHERE `TIPO`='1'");
                       if($result->num_rows>0){
-                        $h=0;
                         while($rowImg = $result->fetch_assoc()){
                           $imagenBanner= $rowImg['URLIMAGEN'];
-                          $enlace=$rowImg['ENLACE'];
-                          $target=$rowImg['TARGET'];
-                          $active_button="";
-                          $disabled='';
-                          if ($enlace=='') {
-                            $active_button='active';
-                            $disabled='disabled';
-                          }
                           ?>
                           <div class='container-img-banner-admin col-12 mb-2'>
-                            <img class='img-banner-admin' src='<?php echo "../img/$imagenBanner";?>'/>
-                          </div>
-                          <div class='input-group mb-3 contenedor-enlaces-banner<?php echo $h;?>'>
-                            <div class='input-group-append'>
-                              <button class='btn btn-outline-secondary boton-sin-enlace <?php echo $active_button;?>' type='button'>Sin enlace</button>
-                            </div>
-                            <div class='input-group-prepend'>
-                              <label class='input-group-text'>Enlace de redirección</label>
-                            </div>
-                            <input type='text' name='enlaces[]' class='form-control' placeholder='Ej. www.enlace.com' value="<?php echo $enlace;?>" <?php echo $disabled;?>/>
-                            <select name='target[]' class='custom-select' style='max-width: 170px!important;' <?php echo $disabled;?>>
-                              <?php if ($target=='1') {?>
-                                <option value="0">Abrirá..</option>
-                                <option value='1' selected>En misma pestaña</option>
-                                <option value='_blank'>En otra pestaña</option>
-                              <?php }else if($target=='_blank') {?>
-                                <option value="0">Abrirá..</option>
-                                <option value='1'>En misma pestaña</option>
-                                <option value='_blank' selected>En otra pestaña</option>
-                              <?php }else{ ?>
-                                <option value="0" selected>Abrirá..</option>
-                                <option value='1'>En misma pestaña</option>
-                                <option value='_blank'>En otra pestaña</option>
-                              <?php } ?>
-                            </select>
+                            <img class='img-banner-admin' src='<?php echo "/imagen/$imagenBanner";?>' width="100%"/>
                           </div>
                           <?php
-                          ++$h;
                         }
                       }
                       ?>
                     </div>
-                  </form>
                 </div>
+              </form>
                 <hr>
                 </div>
+                <hr>
+                <!-- Video -->
+                <div class="container mb-3">
+                  <div class="row mb-2">
+                    <h4 class="card-title mb-0 ml-3">Video de  compañia </h4>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col-12">
+                      <div class="input-group">
+                        <div class="input-group-append">
+                          <span class="input-group-text" data-toggle="tooltip" title=""><b>Enlace del video</b></span>
+                        </div>
+                        <input type="url" class="form-control text-secondary" placeholder="Enlace del video" id="url_video" value="<?php echo $url_video?>">
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button mr-auto" class="btn btn-outline-primary" id="submit_video">Guardar Video</button>
+                </div>
+                <hr>
+                <!-- Producto del mes -->
+                <div class="container mb-3">
+                  <div class="row align-items-center">
+                    <div class="col-12">
+                      <h4 class="card-title mb-0 d-inline">Producto del mes </h4>
+                    </div>
+                    <div class="col-12 text-center" id="divInputLoad">
+                      <form enctype="multipart/form-data" id="formProduct" method="post">
+                        <div id="file-preview-zone">
+                          <?php
+                          $sql="SELECT * FROM CONFIGURACION WHERE `ATRIBUTO`='productoMes'";
+                          $result=$conn->query($sql);
+                          if($result->num_rows>0){
+                            $row=$result->fetch_assoc();
+                          ?>
+                          <img class="p-0 m-0" width="75%" src="/imagen/<?php echo $row['VALOR'];?>" id="file-preview"/>
+                          <?php } ?>
+                        </div>
+                        <div id="divFileUpload">
+                          <label class="btn btn-link" for="file-upload">Seleccionar Imagen</label>
+                          <input class="form-group" id="file-upload" type="file" accept="image/*" hidden="hidden" name='product'/>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                      <button type="submit" class="btn btn-outline-primary">Guardar Producto del Mes</button>
+                    </form>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <!-- Preview Imagen Producto -->
+                <script>
+                  function readFile(input) {
+                    $("#file-preview").remove();
+                    if (input.files && input.files[0]) {
+                      var reader = new FileReader();
+                      reader.onload = function (e) {
+                        var filePreview = document.createElement('img');
+                        filePreview.id = 'file-preview';
+                        filePreview.setAttribute("width", "50%");
+                        //e.target.result contents the base64 data from the image uploaded
+                        filePreview.src = e.target.result;
+                        var previewZone = document.getElementById('file-preview-zone');
+                        previewZone.appendChild(filePreview);
+                      }
+                      reader.readAsDataURL(input.files[0]);
+                    }
+                  }
+                  var fileUpload = document.getElementById('file-upload');
+                  fileUpload.onchange = function (e) {
+                    var imgPath=$(this)[0].value;
+                    var extn=imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+                    if (extn=="png" || extn=="jpg" || extn=="jpeg") {
+                      readFile(e.srcElement);
+                    }else {
+                      const toast=swal.mixin({toast:true,position:'top-end',showConfirmButton:false,timer:4000});
+                      toast({type:'error',title:"¡Desbes subir imagenes tipo jpg, jpge o png"})
+                    }
+                  }
+                </script>
+                <!-- Enviar Producto -->
+                <script>
+                  $(document).ready(function(e){
+                    $("#formProduct").on('submit', function(e){
+                      e.preventDefault();
+                      $.ajax({
+                        type: 'POST',
+                        url: 'ajax_product_mes.php',
+                        data: new FormData(this),
+                        contentType: false,
+                        cache: false,
+                        processData:false,
+                        success: function(respuesta){
+                          if(respuesta=='1'){
+                            const toast=swal.mixin({toast:true,position:'top-end',showConfirmButton:false,timer:4000});
+                            toast({type:'success',title:"¡El producto fue guardado exitosamente!"})
+                          }else{
+                            const toast=swal.mixin({toast:true,position:'top-end',showConfirmButton:false,timer:4000});
+                            toast({type:'error',title:"Hubo un error! \n Vuelve a intentarlo."})
+                          }
+                        }
+                      });
+                    });
+                  });
+                </script>
                 <!-- redes sociales -->
                 <div class="container mb-3">
                   <div class="row mb-2">
@@ -136,25 +225,7 @@ require '../../common/conexion.php';
                         <div class="input-group-append">
                           <span class="input-group-text" data-toggle="tooltip" title=""><b>Facebook</b></span>
                         </div>
-                        <input type="text" class="form-control text-secondary" placeholder="Link de Facebook" id="facebook" value="<?php if(isset($facebook )) echo $facebook; else echo '';?>">
-                      </div>
-                    </div>
-                    <div class="col-6">
-                      <div class="input-group">
-                        <div class="input-group-append">
-                          <span class="input-group-text" data-toggle="tooltip" title=""><b>Instagram</b></span>
-                        </div>
-                        <input type="text" class="form-control text-secondary" placeholder="Link de Instagram" id="instagram" value="<?php if (isset($instagram)) echo $instagram; else echo '';?>">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row mb-2">
-                    <div class="col-6">
-                      <div class="input-group">
-                        <div class="input-group-append">
-                          <span class="input-group-text" data-toggle="tooltip" title=""><b>Twitter</b></span>
-                        </div>
-                        <input type="text" class="form-control text-secondary" placeholder="Link de Twitter" id="twitter" value="<?php if(isset($twitter)) echo $twitter; else echo '';?>">
+                        <input type="text" class="form-control text-secondary" placeholder="Link de Facebook" id="facebook" value="<?php echo $facebook?>">
                       </div>
                     </div>
                     <div class="col-6">
@@ -166,34 +237,66 @@ require '../../common/conexion.php';
                       </div>
                     </div>
                   </div>
-                  <button type="button mr-auto" class="btn btn-outline-primary" id="submit_redes">Guardar</button>
+                  <div class="row mb-2">
+                    <div class="col-6">
+                      <div class="input-group">
+                        <div class="input-group-append">
+                          <span class="input-group-text" data-toggle="tooltip" title=""><b>Youtube</b></span>
+                        </div>
+                        <input type="text" class="form-control text-secondary" placeholder="Link de youtube" id="youtube" value="<?php if (isset($youtube)) echo $youtube; else echo '';?>">
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button mr-auto" class="btn btn-outline-primary" id="submit_redes">Guardar Redes</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
   </div>
+  <input type="hidden" data-toggle="modal" data-target="#loader_modal" id="loader_now">
+  <div class="modal fade" id="loader_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false" id="loader_real">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content bg-transparent no_border mt-5 pt-5">
+        <button type="button" class="close bg-transparent" data-dismiss="modal" aria-label="Close" id="close_loader"></button>
+        <div class="container mt-5">
+          <div class="row justify-content-center"><div class="col-auto background_loader"><div class="loader algin-self-middle"></div></div></div>
+          <b class="row justify-content-center text-white">¡¡Puede tardar unos segundos!!</b>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- Redes Sociales -->
   <script>
     $(document).on('click',"#submit_redes",function(){
       var facebook=$("#facebook").val();
-      var instagram=$("#instagram").val();
-      var twitter=$("#twitter").val();
+      var youtube=$("#youtube").val();
       var linkedin=$("#linkedin").val();
-      if (facebook!='' && instagram!='' && twitter!='' && linkedin!='') {
-        $.post('ajax_redes.php',{facebook:facebook,instagram:instagram,twitter:twitter,linkedin:linkedin},verificar,'text');
-        function verificar(text){
-          if (text=="1") {
-            const toast=swal.mixin({toast:true,position:'top-end',showConfirmButton:false,timer:4000});
-            toast({type:'success',title:"¡Se actualizarón exitosamentelas redes sociales!"})
-          }else {
-            const toast=swal.mixin({toast:true,position:'top-end',showConfirmButton:false,timer:4000});
-            toast({type:'error',title:"Hubo un error! \n Vuelve a intentarlo."})
-          }
+      $.post('ajax_redes.php',{facebook:facebook,youtube:youtube,linkedin:linkedin},verificar,'text');
+      function verificar(text){
+        if (text=="1") {
+          const toast=swal.mixin({toast:true,position:'top-end',showConfirmButton:false,timer:4000});
+          toast({type:'success',title:"¡Se actualizarón exitosamentelas redes sociales!"})
+        }else {
+          const toast=swal.mixin({toast:true,position:'top-end',showConfirmButton:false,timer:4000});
+          toast({type:'error',title:"Hubo un error! \n Vuelve a intentarlo."})
         }
-      }else {
-        const toast=swal.mixin({toast:true,position:'top-end',showConfirmButton:false,timer:4000});
-        toast({type:'info',title:"¡Desbes colocar alguna red social!"})
+      }
+    });
+  </script>
+  <!-- Video -->
+  <script>
+    $(document).on('click',"#submit_video",function(){
+      var url_video=$("#url_video").val();
+      $.post('ajax_video.php',{url_video:url_video},verificar,'text');
+      function verificar(text){
+        if(text=="1"){
+          const toast=swal.mixin({toast:true,position:'top-end',showConfirmButton:false,timer:4000});
+          toast({type:'success',title:"¡El video se guardó correctamente !"})
+        }else{
+          const toast=swal.mixin({toast:true,position:'top-end',showConfirmButton:false,timer:4000});
+          toast({type:'error',title:"Hubo un error! \n Vuelve a intentarlo."})
+        }
       }
     });
   </script>
@@ -212,8 +315,8 @@ require '../../common/conexion.php';
             var reader=new FileReader();
             reader.onload=function(e){
               let aux=Math.floor(Math.random() * (50 - 2)) + 2;
-              var enlace="<div class='input-group mb-3 contenedor-enlaces-banner"+aux+"'><div class='input-group-prepend'><button class='btn btn-outline-secondary boton-sin-enlace' type='button'>Sin enlace</button></div><div class='input-group-prepend'><label class='input-group-text'>Enlace de redirección</label></div><input type='text' name='enlaces[]' class='form-control' placeholder='Ej. www.enlace.com'><select name='target[]' class='custom-select' style='max-width: 170px!important;'><option selected value='0'>Abrirá..</option><option value='1'>En misma pestaña</option><option value='_blank'>En otra pestaña</option></select></div>";
-              $("<div class='container-img-banner-admin col-12 mb-2'><img class='img-banner-admin' src='"+e.target.result+"'/></div>"+enlace).appendTo(image_holder);
+              var enlace="<div class='input-group mb-3 contenedor-enlaces-banner"+aux+"'><div class='input-group-prepend'></div><div class='input-group-prepend'></div></div>";
+              $("<div class='container-img-banner-admin col-12 mb-2'><img class='img-banner-admin' src='"+e.target.result+"' width='100%'/></div>"+enlace).appendTo(image_holder);
             }
             reader.readAsDataURL($(this)[0].files[i]);
           }
@@ -227,55 +330,30 @@ require '../../common/conexion.php';
     $("#cantidad-img-banner").on('change', function(e){
       $("#image-holder").empty();
     });
-    //boton sin enlace
-    $(document).on('click','.boton-sin-enlace',function(){
-      if ($(this).hasClass('active')) {
-        $(this).removeClass('active');
-      }else {
-        $(this).addClass("active");
-      }//contenedor-enlaces-banner
-      var aux=$(this).parent().parent().attr('class').split(" ")[2];
-      if ($("."+aux+" input").attr('disabled')) {
-        $("."+aux+" input").removeAttr("disabled");
-        $("."+aux+" select").removeAttr("disabled");
-      }else {
-        $("."+aux+" input").val("").attr("disabled","");
-        $("."+aux+" select").attr("disabled","");
-      }
-    });
   </script>
   <!-- Enviar Banner -->
   <script>
     $(document).ready(function(e){
       $("#formBanner").on('submit',function(e){
+        $("#loader_now").click();
         e.preventDefault();
         var formData=new FormData(this)
         var array_enlaces= new Array();
         var array_targets=new Array();
-        //agrego los campos adicionales
-        let enlaces = $('input[name^="enlaces"]');
-        let targets = $('select[name^="target"]');
-        //Recorremos los inputs y por cada input guardamos el valor en el array creado
-        $(enlaces).each(function(){
-          array_enlaces.push($(this).val());
-        });
-        $(targets).each(function(){
-          array_targets.push($(this).val());
-        });
-        formData.append("array_enlaces", array_enlaces);
-        formData.append("array_targets", array_targets);
         $.ajax({
           type: 'POST',
           url: 'ajax_images_banner.php',
-          data: formData,//
+          data: formData,
           contentType: false,
           cache: false,
           processData:false,
           success: function(respuesta){
             if (respuesta=='1') {
+              setTimeout ("$('button#close_loader').click();", 500);
               const toast=swal.mixin({toast:true,position:'top-end',showConfirmButton:false,timer:4000});
               toast({type:'success',title:"¡Fueron actualizadas las imagenes exitosamente!"})
             }else {
+              setTimeout ("$('button#close_loader').click();", 500);
               const toast=swal.mixin({toast:true,position:'top-end',showConfirmButton:false,timer:4000});
               toast({type:'error',title:"Hubo un error! \n Vuelve a intentarlo."})
             }

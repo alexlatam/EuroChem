@@ -45,8 +45,8 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     <div class="row">
       <p class="contenido_blog"><?php echo $descripcion;?> </p>
     </div>
-    <div class="row justify-content-center">
-      <img class="img_blog_article" src="/admin/blog/img/<?php echo $imagen;?>" width="100%">
+    <div class="row justify-content-center align-items-center">
+      <img class="img_blog_article" src="/admin/blog/img/<?php echo $imagen;?>">
     </div>
     <div class="row">
       <p class="contenido_blog"><?php echo nl2br($contenido);?></p>

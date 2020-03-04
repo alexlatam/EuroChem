@@ -1,6 +1,5 @@
 <?php
   include '../common/conexion.php';
-  include '../common/datosGenerales.php';
   include 'common/sesion.php';
   $email=$_SESSION['USUARIO'];
   $sql="SELECT NIVEL FROM USUARIOS WHERE CORREO='$email'";

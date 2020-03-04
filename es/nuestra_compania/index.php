@@ -73,7 +73,7 @@ $section="nuestra_company";
         </div>
         <div class="row mt-4">
           <p class="text-muted text-justify">
-            CONQUIMICA S.A. es una compañía 100% nacional fundada en el año de 1977,
+            EuroChem es una compañía 100% nacional fundada en el año de 1977,
             con el propósito de suministrar materias primas a la industria nacional.
             Desde entonces, nos hemos fortalecido como un aliado estratégico de empresas
             pertenecientes a diversas industrias, gracias a nuestro completo portafolio de
@@ -155,9 +155,6 @@ $section="nuestra_company";
           <div class="col-12 col-md-6">
             <h4 class="titulos_blog">Instalaciones</h4>
             <p class="text-muted text-justify">
-              Actualmente contamos con 4 sedes ubicadas en las principales
-              ciudades del país: Cali, Bogotá, Bucaramanga, Medellín, desde
-              las cuales atendemos a todas las regiones. <br>
               Contamos en cada sede con bodegas adecuadas para el almacenamiento
               de nuestros productos y oficinas con personal idóneo para atender
               todos los requerimientos de nuestros clientes.

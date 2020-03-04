@@ -27,18 +27,28 @@ $section="home";
   <!--Colores #cc0033 #000066 -->
   <!--Corousel Library-->
   <div class="owl-carousel owl-theme" id="carousel">
-    <div class="imagenPpal"><img class="img-fluid" src="/imagen/principal1.jpg" alt="">
-      <div class="texto_carousel">
-         <span>We're more than suppliers</span>
-      </div>
-    </div>
-    <div class="imagenPpal"><img class="img-fluid" src="/imagen/principal3.jpg" alt="">
-      <div class="texto_carousel">
-        <span>We provide trustwrothy solutions
-          <br>
-           for the supply chemical products</span>
-      </div>
-    </div>
+    <?php
+        $result=$conn->query("SELECT URLIMAGEN FROM `IMAGENES` WHERE `TIPO`='1'");
+        if($result->num_rows>0){
+          $cont=0;
+          while($rowImg=$result->fetch_assoc()){
+            ++$cont;
+            $imagenBanner=$rowImg['URLIMAGEN'];
+            ?>
+            <div class="imagenPpal"><img class="img-fluid" src="/imagen/<?php echo $imagenBanner;?>" alt="">
+              <div class="texto_carousel d-none d-sm-block">
+                <?php if($cont==1){ ?>
+                  <span>We're more than suppliers</span>
+                <?php }elseif ($cont==2){ ?>
+                  <span>We provide trustwrothy solutions<br> for the supply chemical products</span>
+                <?php } ?>
+              </div>
+            </div>
+          <?php
+          if($cont==2){break;}
+          }
+        }
+    ?>
   </div>
   <script>
     $('#carousel').owlCarousel({
@@ -60,7 +70,7 @@ $section="home";
   <section class="container-fluid mt-4 pt-3 pb-4 bg-euro">
     <div class="container py-4 px-5">
       <div class="row pb-4 px-4">
-        <input class="col-auto search_productos_home" type="search" name="" value="" placeholder="Buscar productos...">
+        <input class="col-auto search_productos_home" type="search" name="" value="" placeholder="Search products...">
         <span class="col-auto ml-auto">
           <a href="#">
             <img src="/imagen/facebook.png" width="25px" alt="">
@@ -210,7 +220,20 @@ $section="home";
         </div>
       </div>
       <div class="col-12 col-md-6">
-        <iframe width="100%" height="250vh" src="https://www.youtube.com/embed/ZOV-7f3aofM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <?php
+        $sql="SELECT VALOR FROM CONFIGURACION WHERE `ATRIBUTO`='video'";
+        $result=$conn->query($sql);
+        if($result->num_rows>0){
+          while($row=$result->fetch_assoc()){
+            $url_video=$row['VALOR'];
+            $aux=mb_strrchr($url_video,"=");//ultima ocurrencia del simbolo =
+            $cont=strlen($aux);//longitud del string
+            $url_aux=substr($aux,1,($cont-1)); //codigo del enlace
+            $url_video="https://www.youtube.com/embed/".$url_aux;
+          }
+        }else{$url_video="";}
+         ?>
+        <iframe width="100%" height="250vh" src="<?php echo $url_video;?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
   </section>
@@ -222,7 +245,18 @@ $section="home";
           <h2 class="titulos">Featured product</h2>
         </div>
         <div class="row mt-4">
-          <img src="/imagen/en/month_p.png" alt="" width="90%">
+          <div class="row mt-4">
+            <?php
+            $sql="SELECT VALOR FROM CONFIGURACION WHERE `ATRIBUTO`='productoMes'";
+            $result=$conn->query($sql);
+            if($result->num_rows>0){
+              while($row=$result->fetch_assoc()){
+                  $productoMes=$row['VALOR'];
+              }
+            }else{$productoMes="";}
+                   ?>
+            <img src="/imagen/<?php echo $productoMes;?>" alt="" width="90%">
+          </div>
         </div>
       </div>
       <div class="col-12 col-md-4">

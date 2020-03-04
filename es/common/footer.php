@@ -1,3 +1,23 @@
+<?php
+include '/common/conexion.php';
+$sql="SELECT * FROM `CONFIGURACION`";
+$result=$conn->query($sql);
+if($result->num_rows>0){
+  while($row=$result->fetch_assoc()){
+    if($row['ATRIBUTO']=="facebook"){
+      $facebook=$row['VALOR'];
+    }else if($row['ATRIBUTO']=="youtube"){
+      $youtube=$row['VALOR'];
+    }else if($row['ATRIBUTO']=="linkedin"){
+      $linkedin=$row['VALOR'];
+    }
+  }
+}else{
+  $facebook="";
+  $youtube="";
+  $linkedin="";
+}
+ ?>
 <section class="container-fluid bg-euro-dark pt-3 pb-4">
   <div class="container text-white px-5">
     <div class="row px-4">
@@ -9,13 +29,13 @@
           <small>Comercializamos materias primas para la industria, generando valor para proveedores, clientes, empleados y accionistas.</small>
         </div>
         <div class="row mt-4">
-          <a class="mr-2" href="#">
+          <a class="mr-2" href="<?php echo $facebook;?>">
             <img src="/imagen/facebook.jpg" alt="">
           </a>
-          <a class="mr-2" href="#">
+          <a class="mr-2" href="<?php echo $linkedin;?>">
             <img src="/imagen/linkedin.jpg" alt="">
           </a>
-          <a href="#">
+          <a href="<?php echo $youtube;?>">
             <img src="/imagen/youtube.jpg" alt="">
           </a>
         </div>

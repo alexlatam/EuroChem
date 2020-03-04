@@ -21,16 +21,16 @@ if(isset($_GET['productos'])){
 $sql_ppal="";
 if(isset($_GET['id_div'])){
   $id_division_get=$_GET['id_div'];
-  $sql_ppal="SELECT p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p WHERE p.IDDIVISION=$id_division_get ";
+  $sql_ppal="SELECT p.IDDIVISION,p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p WHERE p.IDDIVISION=$id_division_get ";
   if(isset($_GET['id_ind'])){
     $id_industria_get=$_GET['id_ind'];
-    $sql_ppal="SELECT p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p INNER JOIN PRODUCTOS_INDUSTRIAS i ON p.ID=i.IDPRODUCTO WHERE p.IDDIVISION=$id_division_get AND i.IDINDUSTRIA=$id_industria_get ";
+    $sql_ppal="SELECT p.IDDIVISION,p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p INNER JOIN PRODUCTOS_INDUSTRIAS i ON p.ID=i.IDPRODUCTO WHERE p.IDDIVISION=$id_division_get AND i.IDINDUSTRIA=$id_industria_get ";
   }
 }
 if(isset($_GET['id_ind'])){
   $id_industria_get=$_GET['id_ind'];
   if($sql_ppal==""){
-    $sql_ppal="SELECT p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p INNER JOIN PRODUCTOS_INDUSTRIAS i ON p.ID=i.IDPRODUCTO WHERE i.IDINDUSTRIA=$id_industria_get ";
+    $sql_ppal="SELECT p.IDDIVISION,p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p INNER JOIN PRODUCTOS_INDUSTRIAS i ON p.ID=i.IDPRODUCTO WHERE i.IDINDUSTRIA=$id_industria_get ";
   }
 }
 if(isset($_GET['id_tipo'])){
@@ -38,18 +38,18 @@ if(isset($_GET['id_tipo'])){
   if($sql_ppal!=""){
     $sql_ppal.="AND p.IDTIPOPRODUCTO=$id_tipo_producto_get";
   }else{
-    $sql_ppal="SELECT p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p WHERE p.IDTIPOPRODUCTO=$id_tipo_producto_get";
+    $sql_ppal="SELECT p.IDDIVISION,p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p WHERE p.IDTIPOPRODUCTO=$id_tipo_producto_get";
   }
 }
 if(isset($_GET['id_unid'])){
   $id_unidad_get=$_GET['id_unid'];
-  $sql_ppal="SELECT p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p WHERE p.IDUNIDAD=$id_unidad_get";
+  $sql_ppal="SELECT p.IDDIVISION,p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p WHERE p.IDUNIDAD=$id_unidad_get";
 }elseif (isset($_GET['id_pres'])) {
   $id_presentacion_get=$_GET['id_pres'];
-  $sql_ppal="SELECT p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p WHERE p.IDPRESENTACION=$id_presentacion_get";
+  $sql_ppal="SELECT p.IDDIVISION,p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p WHERE p.IDPRESENTACION=$id_presentacion_get";
 }elseif (isset($_GET['search'])){
   $search=$_GET['search'];
-  $sql_ppal="SELECT p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p WHERE p.TITULO LIKE '%$search%' OR p.SUBTITULO LIKE '%$search%' OR p.DESCRIPCION LIKE '%$search%'";
+  $sql_ppal="SELECT p.IDDIVISION,p.ID,p.TITULO,p.SUBTITULO FROM PRODUCTOS p WHERE p.TITULO LIKE '%$search%' OR p.SUBTITULO LIKE '%$search%' OR p.DESCRIPCION LIKE '%$search%'";
 }
 ?>
 <!doctype html>
@@ -404,13 +404,22 @@ if(isset($_GET['id_unid'])){
               $id_producto=$row['ID'];
               $titulo=$row['TITULO'];
               $subtitulo=$row['SUBTITULO'];
+              $id_division_bd=$row['IDDIVISION'];
               ?>
               <div class="row mb-2 align-items-center">
                 <div class="col-12 px-0">
                   <hr class="bg-dark m-0 mb-2">
                 </div>
                 <div class="col-1">
-                  <img src="" alt="">
+                  <?php if ($id_division_bd=='1'){ ?>
+                    <img src="/imagen/en/logos/food.png" alt="" width="75px">
+                  <?php }elseif ($id_division_bd=='2') { ?>
+                    <img src="/imagen/en/logos/especialty.png" alt="" width="75px">
+                  <?php }elseif ($id_division_bd=='3') { ?>
+                    <img src="/imagen/en/logos/commodities.png" alt="" width="75px">
+                  <?php }elseif ($id_division_bd=='4') {  ?>
+                    <img src="/imagen/en/logos/plastic.png" alt="" width="75px">
+                  <?php } ?>
                 </div>
                 <div class="col-2">
                   <a href="details.php?id_prod=<?php echo $id_producto;?>"><?php echo $titulo;?></a>

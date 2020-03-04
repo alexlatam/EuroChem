@@ -103,10 +103,18 @@ if (isset($_GET['id_prod'])) {
           <h2 class="titulos"><a href="/es/productos/detalles.php?id_prod=<?php echo $id_producto;?>"><?php echo $titulo;?></a></h2>
         </div>
         <div class="row">
-          <div class="col-4">
-            <img src="" alt="">
+          <div class="col-3 align-self-center justify-self-start">
+            <?php if ($id_division=='1'){ ?>
+              <img src="/imagen/es/logos/alimentos.png" alt="" width="100%">
+            <?php }elseif ($id_division=='2') { ?>
+              <img src="/imagen/es/logos/especialidades.png" alt="" width="100%">
+            <?php }elseif ($id_division=='3') { ?>
+              <img src="/imagen/es/logos/genericos.png" alt="" width="100%">
+            <?php }elseif ($id_division=='4') { ?>
+              <img src="/imagen/es/logos/plasticos.png" alt="" width="100%">
+            <?php } ?>
           </div>
-          <div class="col-8">
+          <div class="col-9">
             <div class="row">
               <span class="text-muted"><?php echo $subtitulo;?></span>
             </div>
@@ -249,7 +257,15 @@ if (isset($_GET['id_prod'])) {
                     <hr class="bg-dark m-0 mb-2">
                   </div>
                   <div class="col-1">
-                    <img src="" alt="">
+                    <?php if ($id_division=='1'){ ?>
+                      <img src="/imagen/es/logos/alimentos.png" alt="" width="75px">
+                    <?php }elseif ($id_division=='2') { ?>
+                      <img src="/imagen/es/logos/especialidades.png" alt="" width="75px">
+                    <?php }elseif ($id_division=='3') { ?>
+                      <img src="/imagen/es/logos/genericos.png" alt="" width="75px">
+                    <?php }elseif ($id_division=='4') { ?>
+                      <img src="/imagen/es/logos/plasticos.png" alt="" width="75px">
+                    <?php } ?>
                   </div>
                   <div class="col-2">
                     <a href="detalles.php?id_prod=<?php echo $id_producto;?>"><?php echo $titulo;?></a>

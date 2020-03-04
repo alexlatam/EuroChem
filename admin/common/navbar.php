@@ -43,7 +43,9 @@
           </a>
           <div class="dropdown-container-sidemenu" style="display:none;" id="dropdown1">
             <a class="d-block sidebar-link waves-effect waves-dark sidebar-link ml-5" href="/admin/generales/pagina.php"><span class="hide-menu">Página Web </span></a>
-            <a class="d-block sidebar-link waves-effect waves-dark sidebar-link ml-5" href="/admin/generales/usuarios.php"><span class="hide-menu">Usuarios </span></a>
+            <?php if($_SESSION['nivel']==1){ ?>
+              <a class="d-block sidebar-link waves-effect waves-dark sidebar-link ml-5" href="/admin/generales/usuarios.php"><span class="hide-menu">Usuarios </span></a>
+            <?php } ?>
           </div>
         </li>
         <li class="sidebar-item">
@@ -58,12 +60,12 @@
         </li>
         <li class="sidebar-item">
           <a class="sidebar-link waves-effect waves-dark sidebar-link dropdown-btn-sidebar">
-            <i class="mdi mdi-ticket"></i>
-            <span class="hide-menu">Formularios </span>
+            <i class="mdi mdi-store"></i>
+            <span class="hide-menu">Productos </span>
           </a>
           <div class="dropdown-container-sidemenu" style="display:none;" id="dropdown1">
-            <a class="d-block sidebar-link waves-effect waves-dark sidebar-link ml-5" href="/admin/formularios/form_productos.php"><span class="hide-menu">Formulario Productos</span></a>
-            <a class="d-block sidebar-link waves-effect waves-dark sidebar-link ml-5" href="/admin/formularios/form_pdf.php"><span class="hide-menu">Formulario Pdf`s</span></a>
+            <a class="d-block sidebar-link waves-effect waves-dark sidebar-link ml-5" href="/admin/productos/form_productos.php"><span class="hide-menu">Agregar Productos</span></a>
+            <a class="d-block sidebar-link waves-effect waves-dark sidebar-link ml-5" href="/admin/productos/ficha.php"><span class="hide-menu">Agregar Ficha Técnica</span></a>
           </div>
         </li>
       </ul>

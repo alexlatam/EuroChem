@@ -27,23 +27,29 @@ $section="home";
   <!--Colores #cc0033 #000066 -->
   <!--Corousel Library-->
   <div class="owl-carousel owl-theme" id="carousel">
-    <div class="imagenPpal"><img class="img-fluid" src="imagen/principal1.jpg" alt="">
-      <div class="texto_carousel">
-        <span>Somos más que proveedores</span>
-      </div>
-    </div>
-    <div class="imagenPpal"><img class="img-fluid" src="imagen/principal3.jpg" alt="">
-      <div class="texto_carousel">
-        <span>Proveemos soluciones confiables
-          <br>
-           para el abastecimiento de productos </span>
-      </div>
-    </div>
-    <div class="imagenPpal"><img class="img-fluid" src="imagen/principal2.jpg" alt="">
-      <div class="texto_carousel">
-        <span>El mejor equipo de trabajo </span>
-      </div>
-    </div>
+    <?php
+        $result=$conn->query("SELECT URLIMAGEN FROM `IMAGENES` WHERE `TIPO`='1'");
+        if($result->num_rows>0){
+          $cont=0;
+          while($rowImg=$result->fetch_assoc()){
+            ++$cont;
+            $imagenBanner=$rowImg['URLIMAGEN'];
+            ?>
+            <div class="imagenPpal"><img class="img-fluid" src="imagen/<?php echo $imagenBanner;?>" alt="">
+              <div class="texto_carousel d-none d-sm-block">
+                <?php if($cont==1){ ?>
+                  <span>Somos más que proveedores</span>
+                <?php }elseif ($cont==2){ ?>
+                  <span>Proveemos soluciones confiables<br>para el abastecimiento de productos </span>
+                <?php }elseif ($cont==3){ ?>
+                  <span>El mejor equipo de trabajo </span>
+                <?php } ?>
+              </div>
+            </div>
+          <?php
+          }
+        }
+    ?>
   </div>
   <script>
     $('#carousel').owlCarousel({
@@ -215,7 +221,20 @@ $section="home";
         </div>
       </div>
       <div class="col-12 col-md-6">
-        <iframe width="100%" height="250vh" src="https://www.youtube.com/embed/ZOV-7f3aofM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <?php
+        $sql="SELECT VALOR FROM CONFIGURACION WHERE `ATRIBUTO`='video'";
+        $result=$conn->query($sql);
+        if($result->num_rows>0){
+          while($row=$result->fetch_assoc()){
+            $url_video=$row['VALOR'];
+            $aux=mb_strrchr($url_video,"=");//ultima ocurrencia del simbolo =
+            $cont=strlen($aux);//longitud del string
+            $url_aux=substr($aux,1,($cont-1)); //codigo del enlace
+            $url_video="https://www.youtube.com/embed/".$url_aux;
+          }
+        }else{$url_video="";}
+         ?>
+        <iframe width="100%" height="250vh" src="<?php echo $url_video;?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
   </section>
@@ -227,7 +246,16 @@ $section="home";
           <h2 class="titulos">Producto del mes</h2>
         </div>
         <div class="row mt-4">
-          <img src="imagen/es/mes_p.png" alt="" width="90%">
+          <?php
+          $sql="SELECT VALOR FROM CONFIGURACION WHERE `ATRIBUTO`='productoMes'";
+          $result=$conn->query($sql);
+          if($result->num_rows>0){
+            while($row=$result->fetch_assoc()){
+              $productoMes=$row['VALOR'];
+            }
+          }else{$productoMes="";}
+                 ?>
+          <img src="imagen/<?php echo $productoMes;?>" alt="" width="90%">
         </div>
       </div>
       <div class="col-12 col-md-4">

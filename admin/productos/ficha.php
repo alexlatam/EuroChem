@@ -34,7 +34,8 @@ if(isset($_POST['producto'],$_POST['formula'],$_POST['nombre_comercial'],$_POST[
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Formulario - Pdf</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="/imagen/logo.png">
+    <title>Formulario - Ficha técnica</title>
     <link href="../../assets/admin/css/style.min.css" rel="stylesheet">
     <link href="../../assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
@@ -44,7 +45,7 @@ if(isset($_POST['producto'],$_POST['formula'],$_POST['nombre_comercial'],$_POST[
       <?php include '../common/navbar.php';?>
       <div class="page-wrapper">
       <div class="container">
-        <h1>Formulario </h1>
+        <h4>Formulario - Ficha técnica </h4>
       </div>
       <div class="container px-3">
         <form action="" method="post">
@@ -131,7 +132,7 @@ if(isset($_POST['producto'],$_POST['formula'],$_POST['nombre_comercial'],$_POST[
         </div>
         <div class="container-fluid" id="contenedor_especif">
           <div class="row">
-            <h4>Especificaicones Tecnicas</h4> <span class="col-auto ml-auto" style="cursor:pointer;" id="agregar_especf">Agregar Especificacion</span>
+            <h4>Especificaciones Técnicas</h4> <span class="col-auto ml-auto" style="cursor:pointer;" id="agregar_especf">Agregar Especificacion</span>
           </div>
           <div class="row">
             <div class="input-group input-group-sm mb-3 col-6">
