@@ -2,6 +2,19 @@
 include('../common/sesion.php');
 if($_SESSION['nivel']!=1){header('Location: ../principal.php');}
 require '../../common/conexion.php';
+#cambio de Password
+if(isset($_POST['nuevaPassw'],$_POST['nuevaPasswConfirm'],$_POST['user']) & !empty($_POST['nuevaPassw'])){
+  $nuevaPassw=$_POST['nuevaPassw'];
+  $nuevaPasswConf=$_POST['nuevaPasswConfirm'];
+  $user=$_POST['user'];
+  if($nuevaPassw==$nuevaPasswConf){
+    $nuevaPassw=md5($nuevaPassw);
+    $sql ="UPDATE USUARIOS SET CLAVE='$nuevaPassw' WHERE CORREO='$user'";
+    if($conn->query($sql)===TRUE){$passw=1;}
+  }else{
+    $passw=2;
+  }
+}
 #paginacion y eliinacion de productos
 if(isset($_GET['delete']) & !empty($_GET['delete'])){
   $idusuario=$_GET['delete'];
@@ -33,9 +46,9 @@ $previouspage = $curpage - 1;
   <meta name="author" content="Eutuxia Web, C.A.">
   <link rel="icon" type="image/png" sizes="16x16" href="/imagen/logo.png">
   <title>EuroChem - Administración</title>
-  <link href="/assets/admin/css/style.min.css" rel="stylesheet">
-  <link href="/assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+  <link href="../../assets/admin/css/style.min.css" rel="stylesheet">
+  <link href="../../assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
   <div class="preloader">
@@ -112,6 +125,7 @@ $previouspage = $curpage - 1;
                             <th scope="col">Nombre</th>
                             <th scope="col">Permisos</th>
                             <th scope="col"></th>
+                            <th scope="col"></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -131,7 +145,46 @@ $previouspage = $curpage - 1;
                                 } ?>
                               </td>
                               <td class="p-0 p-2"><a class="btn btn-outline-danger btn-sm" href="?delete=<?=$row['IDUSUARIO']?>" >Eliminar</a></td>
+                              <td class="p-0 p-2"><button class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModal">Cambiar Password</button></td>
                             </tr>
+                            <!-- Modal Password -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title"><?=$row['CORREO']?></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <form action="" method="post">
+                                    <div class="modal-body">
+                                      <div class="row">
+                                        <div class="input-group mb-3">
+                                          <div class="input-group-prepend">
+                                            <span class="input-group-text">Nueva Password</span>
+                                          </div>
+                                          <input type="password" class="form-control" placeholder="Inserte aqui.." name="nuevaPassw">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="input-group mb-3">
+                                          <div class="input-group-prepend">
+                                            <span class="input-group-text">Confirme Password</span>
+                                          </div>
+                                          <input type="password" class="form-control" placeholder="Inserte aqui.." name="nuevaPasswConfirm">
+                                        </div>
+                                      </div>
+                                      <input type="hidden" name="user" value="<?=$row['CORREO']?>">
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+                                      <button type="submit" class="btn btn-primary px-5">Cambiar</button>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
                           <?php } ?>
                         </tbody>
                       </table>
@@ -175,6 +228,19 @@ $previouspage = $curpage - 1;
       </div>
     </div>
     </div>
+    <!-- Cambio de clave -->
+    <script>
+    $(document).ready(function(){
+      var pass=<?php if(isset($passw)){echo $passw;}else{echo "No";} ?>;
+      if (pass==1) {
+        const toast=swal.mixin({toast:true,position:'top-end',showConfirmButton:false,timer:4000});
+        toast({type:'success',title:"¡Se camibo la clave exitosamente!"})
+      }else if (pass==2) {
+        const toast=swal.mixin({toast:true,position:'top-end',showConfirmButton:false,timer:4000});
+        toast({type:'error',title:"¡No se pudo cambiar la clave, intentalo de nuevo!"})
+      }
+    });
+    </script>
     <!-- usuarios -->
     <script>
       $(document).on('click',"#submit_users",function(){
@@ -194,9 +260,9 @@ $previouspage = $curpage - 1;
         }
       });
     </script>
-    <script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
-    <script src="/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/admin/js/custom.min.js"></script>
+    <script src="../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/admin/js/custom.min.js"></script>
     <script src='https://cdn.jsdelivr.net/npm/sweetalert2@7.29.0/dist/sweetalert2.all.min.js'></script>
 </body>
 </html>

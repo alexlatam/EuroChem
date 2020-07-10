@@ -7,7 +7,7 @@ include '../common/datosGenerales.php';
 $section="pagos";
 ?>
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -18,7 +18,9 @@ $section="pagos";
   <link rel="icon" type="image/png" sizes="16x16" href="/imagen/logo.png">
   <link rel="stylesheet" href="/assets/vendor/owlcarousel/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="/assets/vendor/owlcarousel/assets/owl.theme.default.min.css">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="../../assets/icons/css/all.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <script src="../../js/filtros.js"></script>
   <link href="/assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
   <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
@@ -29,51 +31,19 @@ $section="pagos";
   <?php include '../common/menu.php'; include '../common/2domenu.php';?>
   <div class="container px-5 pb-4">
     <div class="row px-4 mt-3">
-      <!-- Menu lateral -->
-      <div class="col-12 col-md-3 mt-2">
-        <div class="row">
-          <div class="col-12">
-            <h2 class="titulos_blog lead">Search</h2>
-          </div>
-          <div class="col-12">
-            <form action="/en/products/index.php" method="get">
-              <input type="search" name="search" placeholder="Search products...">
-              <button type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-        <div class="row mt-4">
-          <div class="col-12">
-            <h2 class="titulos_blog lead">Divisions</h2>
-          </div>
-          <div class="col-12 mt-2 mb-1">
-            <a class="enlace_menu_lateral" href="/en/products/index.php?id_prod=1">Food</a>
-            <hr class="my-0">
-          </div>
-          <div class="col-12 my-1">
-            <a class="enlace_menu_lateral" href="/en/products/index.php?id_prod=2">Specialty</a>
-            <hr class="my-0">
-          </div>
-          <div class="col-12 my-1">
-            <a class="enlace_menu_lateral" href="/en/products/index.php?id_prod=3">Commodities</a>
-            <hr class="my-0">
-          </div>
-          <div class="col-12 my-1">
-            <a class="enlace_menu_lateral" href="/en/products/index.php?id_prod=4">Plastics</a>
-            <hr class="my-0">
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-9">
-        <div class="row">
-          <div class="col-12 col-md-6">
-            <div class="row px-5">
-              <h4 class="text-muted"><strong>Login</strong></h4>
+      <!-- Navbar -->
+      <?php // include '../common/navbar.php'; ?>
+      <div class="row">
+          <div class="col-12 col-md-8">
+            <div class="row">
+              <div class ="col-12 text-center pb-2 px-0">
+                <h4 class="text-primary"><strong>ONLINE PAYMENT ENTRY</strong></h4>
+              </div>
             </div>
-            <div class="row px-5 mt-4">
+            <div class="row px-5">
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <span class="input-group-text bg-dark text-white">User</span>
+                  <span class="input-group-text bg-danger input_search text-white"><i class="fas fa-user mx-2"></i></span>
                 </div>
                 <input class="form-control" type="text" name="" value="" placeholder="User">
               </div>
@@ -81,31 +51,35 @@ $section="pagos";
             <div class="row px-5">
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <span class="input-group-text bg-dark text-white">Password</span>
+                  <span class="input-group-text bg-danger input_search text-white"><i class="fas fa-key mx-2"></i></span>
                 </div>
                 <input class="form-control" type="password" name="" value="" placeholder="Password">
               </div>
             </div>
-            <div class="row px-5 mb-4">
-              <button class="btn btn-secondary px-4" type="button">Login</button>
-            </div>
-          </div>
-          <div class="col-12 col-md-6">
-            <div class="row contenedor_pagos2 p-2">
-              <div class="col-12">
-                <h4 class="text-muted lead"><strong>On this site you can:</strong></h4>
-              </div>
-              <div class="col-12 mt-3 pl-5">
-                <h6 class="text-muted"><strong>Consult</strong></h6>
-              </div>
-              <div class="col-12 mb-5 pl-5">
-                <span>Transactional Document History.</span>
+            <div class="row mb-4 px-5">
+              <div class="col-12 px-0">
+                <button class="btn btn-primary px-4 input_search" type="button"><b>Login</b></button>
               </div>
             </div>
           </div>
+          <div class="col-12 col-md-4">
+            <div class="row px-4 bg-primary m-2">
+              <div class="col-12 my-3 pl-2">
+                <h class="text-light h5"><strong>INFORMATION</strong></h6>
+              </div>
+              <div class="col-12 mb-5 pl-5 text-justify">
+                <span class='text-light' style="font-family: 'Roboto Condensed', sans-serif;">Online payments allows you to <b class="">view </b>the history of your <b class="">transactional documents</b>.</span>
+              </div>
+            </div>
         </div>
       </div>
     </div>
+  </div>
+  <!-- whatsapp -->
+  <div class="whatsapp_div">
+    <a href="https://wa.me/17867029996?texto=Buen%20dia" target="_blank">
+      <img class="whatsapp_image" src="../../imagen/whatsapp.png" alt="whatsapp Button">
+    </a>
   </div>
   <!-- Footer -->
   <?php include '../common/footer.php';?>

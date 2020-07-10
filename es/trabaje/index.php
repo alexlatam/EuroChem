@@ -27,59 +27,30 @@ $section="trabaje";
 <body style="background-color:#ffffff;">
   <?php include '../common/menu.php'; include '../common/2domenu.php';?>
   <div class="container px-5 pb-4">
-    <div class="row px-4 mt-2">
-      <!-- Menu lateral -->
-      <div class="col-12 col-md-3 mt-3">
+    <div class="row px-4 my-2">
+      <div class="col-12">
         <div class="row">
-          <div class="col-12">
-            <h2 class="titulos_blog lead">Búsqueda</h2>
-          </div>
-          <div class="col-12">
-            <form action="/es/productos/index.php" method="get">
-              <input type="search" name="search" placeholder="Buscar productos...">
-              <button type="submit">Buscar</button>
-            </form>
-          </div>
-        </div>
-        <div class="row mt-4 pr-4">
-          <div class="col-12">
-            <h2 class="titulos_blog lead">Divisiones</h2>
-          </div>
-          <?php
-          $sqld="SELECT * FROM DIVISIONES";
-          $result=$conn->query($sqld);
-          if($result->num_rows>0){
-            while($row=$result->fetch_assoc()){
-              $id_division=$row['ID'];
-              $division=$row['DIVISION'];
-              ?>
-              <div class="col-12 mt-2 mb-1">
-                <a class="enlace_menu_lateral" href="/es/productos/index.php?id_div=<?php echo $id_division;?>"><?php echo $division;?></a>
-                <hr class="my-0">
-              </div>
-              <?php
-              }
-            }
-           ?>
-        </div>
-      </div>
-      <div class="col-12 col-md-9 mt-2">
-        <div class="row">
-          <div class="col-12 col-md-6">
-            <h4 class="text-muted"><strong>Envíanos tu hoja de vida</strong></h4>
-            <p class="text-muted">
-              Conquimica pone a  disposición este correo para enviar su hoja de vida
-               y su información profesional de acuerdo al perfil que más se ajuste a
-               su experiencia y conocimientos
+          <div class="col-12 col-md-6 mt-3">
+            <h2 class="titulos">ENVÍANOS TU HOJA DE VIDA</h2>
+            <p class="text_general">
+              Eurochem pone a  disposición este correo para enviar su hoja de vida
+              y su información profesional de acuerdo al perfil que más se ajuste a
+              su experiencia y conocimientos
             </p>
-            <a href="#">Info@eurochem.com</a>
+            <a href="mailto:info@eurochemus.com">Info@eurochemus.com</a>
           </div>
-          <div class="col-12 col-md-6">
+          <div class="col-12 col-md-6 mt-3">
             <img src="/imagen/trabaja_nosotros.jpg" alt="" width="100%">
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <!-- whatsapp -->
+  <div class="whatsapp_div">
+    <a href="https://wa.me/17867029996?texto=Buen%20dia" target="_blank">
+      <img class="whatsapp_image" src="../../imagen/whatsapp.png" alt="whatsapp Button">
+    </a>
   </div>
   <!-- Footer -->
   <?php include '../common/footer.php';?>

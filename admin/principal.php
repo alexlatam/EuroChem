@@ -24,42 +24,42 @@
   <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
-    <div id="main-wrapper" data-navbarbg="skin6" data-theme="light" data-layout="vertical" data-sidebartype="full" data-boxed-layout="full">
-        <?php include 'common/navbar.php';?>
-        <div class="page-wrapper">
-          <div class="page-breadcrumb">
-            <div class="row">
-              <div class="col-5 align-self-center">
-                <h4 class="page-title">Principal <a href="../admin/principal.php" class="m-2" ><i title="Actualizar" data-toggle="tooltip" class="ti-loop"></i></a></h4>
-              </div>
-              <div class="col-7 align-self-center">
-                <div class="d-flex align-items-center justify-content-end">
-                  <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                      <li class="breadcrumb-item">
-                        <a href="principal.php">Inicio</a>
-                      </li>
-                      <li class="breadcrumb-item active" aria-current="page">Principal</li>
-                    </ol>
-                  </nav>
-                </div>
-              </div>
+  <div id="main-wrapper" data-navbarbg="skin6" data-theme="light" data-layout="vertical" data-sidebartype="full" data-boxed-layout="full">
+    <?php include 'common/navbar.php';?>
+    <div class="page-wrapper">
+      <div class="page-breadcrumb">
+        <div class="row">
+          <div class="col-5 align-self-center">
+            <h4 class="page-title">Principal <a href="../admin/principal.php" class="m-2" ><i title="Actualizar" data-toggle="tooltip" class="ti-loop"></i></a></h4>
+          </div>
+          <div class="col-7 align-self-center">
+            <div class="d-flex align-items-center justify-content-end">
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="principal.php">Inicio</a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">Principal</li>
+                </ol>
+              </nav>
             </div>
           </div>
-          <div class="container-fluid">
-            <div class="row justify-content-center">
-              <div class="col-lg-11">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Página Administrativa de la Empresa EuroChem</h4>
-                  </div>
-                </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-lg-11">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Página Administrativa de la Empresa EuroChem</h4>
               </div>
             </div>
           </div>
         </div>
+      </div>
     </div>
-    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/admin/js/custom.min.js"></script>
+  </div>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/admin/js/custom.min.js"></script>
 </body>
 </html>

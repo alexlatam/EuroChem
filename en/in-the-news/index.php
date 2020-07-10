@@ -32,48 +32,16 @@ $section="actualidad";
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
   <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="/assets/vendor/owlcarousel/owl.carousel.min.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <title>Eurochem-Us</title>
 </head>
 <body style="background-color:#ffffff;">
   <?php include '../common/menu.php'; include '../common/2domenu.php';?>
   <div class="container px-5 pb-4">
     <div class="row px-4 mt-3">
-      <!-- Menu lateral -->
-      <div class="col-12 col-md-3 mt-2">
-        <div class="row">
-          <div class="col-12">
-            <h2 class="titulos_blog lead">Search</h2>
-          </div>
-          <div class="col-12">
-            <form action="/en/products/index.php" method="get">
-              <input type="search" name="search" placeholder="Search products...">
-              <button type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-        <div class="row mt-4">
-          <div class="col-12">
-            <h2 class="titulos_blog lead">Divisions</h2>
-          </div>
-          <div class="col-12 mt-2 mb-1">
-            <a class="enlace_menu_lateral" href="/en/products/index.php?id_prod=1">Food</a>
-            <hr class="my-0">
-          </div>
-          <div class="col-12 my-1">
-            <a class="enlace_menu_lateral" href="/en/products/index.php?id_prod=2">Specialty</a>
-            <hr class="my-0">
-          </div>
-          <div class="col-12 my-1">
-            <a class="enlace_menu_lateral" href="/en/products/index.php?id_prod=3">Commodities</a>
-            <hr class="my-0">
-          </div>
-          <div class="col-12 my-1">
-            <a class="enlace_menu_lateral" href="/en/products/index.php?id_prod=4">Plastics</a>
-            <hr class="my-0">
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-9">
+      <!-- Navbar -->
+      <?php //include '../common/navbar.php'; ?>
+      <div class="col-12">
         <div class="container">
               <?php
               $sql="SELECT * FROM ARTICLESBLOG LIMIT $empezar_desde,$tamagno_paginas";
@@ -81,14 +49,14 @@ $section="actualidad";
               if($result->num_rows>0){
                 while($row=$result->fetch_assoc()){
                   $id_articulo=$row['IDARTICULO'];
-                  $titulo=ucwords($row['TITLE']);
-                  $descripcion=ucwords($row['DESCRIPTION']);
-                  $contenido=ucfirst($row['CONTENT']);
+                  $titulo=ucfirst(strtolower($row['TITLE']));
+                  $descripcion=ucfirst(strtolower($row['DESCRIPTION']));
+                  $contenido=ucfirst(strtolower($row['CONTENT']));
                   $fecha=$row['DATE'];
                   $imagen=$row['IMAGE'];
                   $autor=$row['AUTOR'];
                    ?>
-                   <div class="row mb-5">
+                   <div class="row mb-5" data-aos="fade-up" data-aos-duration="1000">
                      <div class="col-12 col-md-6">
                        <div class="container-img-blog">
                          <a class="d-flex" href="article.php?id=<?php echo $id_articulo;?>">
@@ -112,7 +80,7 @@ $section="actualidad";
                          </p>
                        </div>
                        <div class="row">
-                         <a class="btn btn-primary px-5" href="article.php?id=<?php echo $id_articulo;?>">See more</a>
+                         <a class="btn btn-outline-danger px-5" href="article.php?id=<?php echo $id_articulo;?>">See more</a>
                        </div>
                      </div>
                    </div>
@@ -160,6 +128,12 @@ $section="actualidad";
       </div>
     </div>
   </div>
+  <!-- whatsapp -->
+  <div class="whatsapp_div">
+    <a href="https://wa.me/17867029996?texto=Buen%20dia" target="_blank">
+      <img class="whatsapp_image" src="../../imagen/whatsapp.png" alt="whatsapp Button">
+    </a>
+  </div>
   <!-- Footer -->
   <?php include '../common/footer.php';?>
   <script>
@@ -178,5 +152,9 @@ $section="actualidad";
   </script>
   <script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
   <script src="/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+  AOS.init();
+  </script>
 </body>
 </html>

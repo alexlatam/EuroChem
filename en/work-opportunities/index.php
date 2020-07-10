@@ -28,57 +28,28 @@ $section="trabaje";
 <body style="background-color:#ffffff;">
   <?php include '../common/menu.php'; include '../common/2domenu.php';?>
   <div class="container px-5 pb-4">
-    <div class="row px-4 mt-2">
-      <!-- Menu lateral -->
-      <div class="col-12 col-md-3 mt-2">
+    <div class="row px-4 my-2">
+      <div class="col-12">
         <div class="row">
-          <div class="col-12">
-            <h2 class="titulos_blog lead">Search</h2>
-          </div>
-          <div class="col-12">
-            <form action="/en/products/index.php" method="get">
-              <input type="search" name="search" placeholder="Search products...">
-              <button type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-        <div class="row mt-4">
-          <div class="col-12">
-            <h2 class="titulos_blog lead">Divisions</h2>
-          </div>
-          <div class="col-12 mt-2 mb-1">
-            <a class="enlace_menu_lateral" href="/en/products/index.php?id_prod=1">Food</a>
-            <hr class="my-0">
-          </div>
-          <div class="col-12 my-1">
-            <a class="enlace_menu_lateral" href="/en/products/index.php?id_prod=2">Specialty</a>
-            <hr class="my-0">
-          </div>
-          <div class="col-12 my-1">
-            <a class="enlace_menu_lateral" href="/en/products/index.php?id_prod=3">Commodities</a>
-            <hr class="my-0">
-          </div>
-          <div class="col-12 my-1">
-            <a class="enlace_menu_lateral" href="/en/products/index.php?id_prod=4">Plastics</a>
-            <hr class="my-0">
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-9 mt-2">
-        <div class="row">
-          <div class="col-12 col-md-6">
-            <h4 class="text-muted"><strong>Envíanos tu hoja de vida</strong></h4>
-            <p class="text-muted">
-              You can send your résumé or CV to the email below. Your professional information will be matched to the profile that best matches your experience and knowledge.
+          <div class="col-12 col-md-6 mt-3">
+            <h2 class="titulos">SEND US YOUR RESUME</h2>
+            <p class="text_general">
+              Eurochem makes this email available to send your resume and professional information according to the profile that best suits your experience and knowledge
             </p>
-            <a href="#">Info@eurochem.com</a>
+            <a href="mailto:info@eurochemus.com">Info@eurochemus.com</a>
           </div>
-          <div class="col-12 col-md-6">
+          <div class="col-12 col-md-6 my-3">
             <img src="/imagen/trabaja_nosotros.jpg" alt="" width="100%">
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <!-- whatsapp -->
+  <div class="whatsapp_div">
+    <a href="https://wa.me/17867029996?texto=Buen%20dia" target="_blank">
+      <img class="whatsapp_image" src="../../imagen/whatsapp.png" alt="whatsapp Button">
+    </a>
   </div>
   <!-- Footer -->
   <?php include '../common/footer.php';?>

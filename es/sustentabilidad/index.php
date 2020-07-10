@@ -29,43 +29,16 @@ $section="sustentabilidad";
   <div class="container px-5 pb-4">
     <div class="row px-4 mt-3">
       <!-- Menu lateral -->
-      <div class="col-12 col-sm-3 mt-2">
-        <div class="row">
-          <div class="col-12">
-            <h2 class="titulos_blog lead">Búsqueda</h2>
-          </div>
-          <div class="col-12">
-            <form action="/es/productos/index.php" method="get">
-              <input type="search" name="search" placeholder="Buscar productos...">
-              <button type="submit">Buscar</button>
-            </form>
-          </div>
-        </div>
-        <div class="row mt-4 pr-4">
-          <div class="col-12">
-            <h2 class="titulos_blog lead">Divisiones</h2>
-          </div>
-          <?php
-          $sqld="SELECT * FROM DIVISIONES";
-          $result=$conn->query($sqld);
-          if($result->num_rows>0){
-            while($row=$result->fetch_assoc()){
-              $id_division=$row['ID'];
-              $division=$row['DIVISION'];
-              ?>
-              <div class="col-12 mt-2 mb-1">
-                <a class="enlace_menu_lateral" href="/es/productos/index.php?id_div=<?php echo $id_division;?>"><?php echo $division;?></a>
-                <hr class="my-0">
-              </div>
-              <?php
-              }
-            }
-           ?>
-        </div>
-      </div>
+      <?php include '../common/navbar.php';?>
       <div class="col-12 col-sm-9">
       </div>
     </div>
+  </div>
+  <!-- whatsapp -->
+  <div class="whatsapp_div">
+    <a href="https://wa.me/17867029996?texto=Buen%20dia" target="_blank">
+      <img class="whatsapp_image" src="../../imagen/whatsapp.png" alt="whatsapp Button">
+    </a>
   </div>
   <!-- Footer -->
   <?php include '../common/footer.php';?>

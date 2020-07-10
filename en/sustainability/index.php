@@ -29,44 +29,17 @@ $section="sustentabilidad";
   <?php include '../common/menu.php'; include '../common/2domenu.php';?>
   <div class="container px-5 pb-4">
     <div class="row px-4 mt-3">
-      <!-- Menu lateral -->
-      <div class="col-12 col-md-3 mt-2">
-        <div class="row">
-          <div class="col-12">
-            <h2 class="titulos_blog lead">Search</h2>
-          </div>
-          <div class="col-12">
-            <form action="/en/products/index.php" method="get">
-              <input type="search" name="search" placeholder="Search products...">
-              <button type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-        <div class="row mt-4">
-          <div class="col-12">
-            <h2 class="titulos_blog lead">Divisions</h2>
-          </div>
-          <div class="col-12 mt-2 mb-1">
-            <a class="enlace_menu_lateral" href="/en/products/index.php?id_prod=1">Food</a>
-            <hr class="my-0">
-          </div>
-          <div class="col-12 my-1">
-            <a class="enlace_menu_lateral" href="/en/products/index.php?id_prod=2">Specialty</a>
-            <hr class="my-0">
-          </div>
-          <div class="col-12 my-1">
-            <a class="enlace_menu_lateral" href="/en/products/index.php?id_prod=3">Commodities</a>
-            <hr class="my-0">
-          </div>
-          <div class="col-12 my-1">
-            <a class="enlace_menu_lateral" href="/en/products/index.php?id_prod=4">Plastics</a>
-            <hr class="my-0">
-          </div>
-        </div>
-      </div>
+      <!-- Navbar -->
+      <?php include '../common/navbar.php'; ?>
       <div class="col-12 col-sm-9">
       </div>
     </div>
+  </div>
+  <!-- whatsapp -->
+  <div class="whatsapp_div">
+    <a href="https://wa.me/17867029996?texto=Buen%20dia" target="_blank">
+      <img class="whatsapp_image" src="../../imagen/whatsapp.png" alt="whatsapp Button">
+    </a>
   </div>
   <!-- Footer -->
   <?php include '../common/footer.php';?>

@@ -1,24 +1,26 @@
 <?php
 include '../common/sesion.php';
 require '../../common/conexion.php';
+$facebook="";
+$twitter="";
+$linkedin="";
+$instagram="";
 $sql="SELECT * FROM `CONFIGURACION`";
 $result=$conn->query($sql);
 if($result->num_rows>0){
   while($row=$result->fetch_assoc()){
     if($row['ATRIBUTO']=="facebook"){
       $facebook=$row['VALOR'];
-    }else if($row['ATRIBUTO']=="youtube"){
-      $youtube=$row['VALOR'];
+    }else if($row['ATRIBUTO']=="twitter"){
+      $twitter=$row['VALOR'];
+    }else if($row['ATRIBUTO']=="instagram"){
+      $instagram=$row['VALOR'];
     }else if($row['ATRIBUTO']=="linkedin"){
       $linkedin=$row['VALOR'];
     }else if($row['ATRIBUTO']=="video"){
       $url_video=$row['VALOR'];
     }
   }
-}else{
-  $facebook="";
-  $youtube="";
-  $linkedin="";
 }
 ?>
 <!DOCTYPE html>
@@ -141,11 +143,13 @@ if($result->num_rows>0){
                           <?php
                           $sql="SELECT * FROM CONFIGURACION WHERE `ATRIBUTO`='productoMes'";
                           $result=$conn->query($sql);
-                          if($result->num_rows>0){
-                            $row=$result->fetch_assoc();
-                          ?>
-                          <img class="p-0 m-0" width="75%" src="/imagen/<?php echo $row['VALOR'];?>" id="file-preview"/>
-                          <?php } ?>
+                          if($conn->query($sql)===TRUE){
+                            if($result->num_rows>0){
+                              $row=$result->fetch_assoc();
+                            ?>
+                            <img class="p-0 m-0" width="75%" src="/imagen/<?php echo $row['VALOR'];?>" id="file-preview"/>
+                            <?php }
+                           } ?>                          
                         </div>
                         <div id="divFileUpload">
                           <label class="btn btn-link" for="file-upload">Seleccionar Imagen</label>
@@ -241,9 +245,17 @@ if($result->num_rows>0){
                     <div class="col-6">
                       <div class="input-group">
                         <div class="input-group-append">
-                          <span class="input-group-text" data-toggle="tooltip" title=""><b>Youtube</b></span>
+                          <span class="input-group-text" data-toggle="tooltip"><b>Twitter</b></span>
                         </div>
-                        <input type="text" class="form-control text-secondary" placeholder="Link de youtube" id="youtube" value="<?php if (isset($youtube)) echo $youtube; else echo '';?>">
+                        <input type="text" class="form-control text-secondary" placeholder="Link de twitter" id="twitter" value="<?php if (isset($twitter)) echo $twitter; else echo '';?>">
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="input-group">
+                        <div class="input-group-append">
+                          <span class="input-group-text" data-toggle="tooltip"><b>Instagram</b></span>
+                        </div>
+                        <input type="text" class="form-control text-secondary" placeholder="Link de Instagram" id="instagram" value="<?php if (isset($instagram)) echo $instagram; else echo '';?>">
                       </div>
                     </div>
                   </div>
@@ -270,14 +282,15 @@ if($result->num_rows>0){
   <script>
     $(document).on('click',"#submit_redes",function(){
       var facebook=$("#facebook").val();
-      var youtube=$("#youtube").val();
+      var twitter=$("#twitter").val();
       var linkedin=$("#linkedin").val();
-      $.post('ajax_redes.php',{facebook:facebook,youtube:youtube,linkedin:linkedin},verificar,'text');
+      var instagram=$("#instagram").val();
+      $.post('ajax_redes.php',{facebook:facebook,twitter:twitter,linkedin:linkedin,instagram:instagram},verificar,'text');
       function verificar(text){
-        if (text=="1") {
+        if(text=="1"){
           const toast=swal.mixin({toast:true,position:'top-end',showConfirmButton:false,timer:4000});
           toast({type:'success',title:"¡Se actualizarón exitosamentelas redes sociales!"})
-        }else {
+        }else{
           const toast=swal.mixin({toast:true,position:'top-end',showConfirmButton:false,timer:4000});
           toast({type:'error',title:"Hubo un error! \n Vuelve a intentarlo."})
         }

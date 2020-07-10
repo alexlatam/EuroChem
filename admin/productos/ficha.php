@@ -72,7 +72,7 @@ if(isset($_POST['producto'],$_POST['formula'],$_POST['nombre_comercial'],$_POST[
               ?>
             </select>
           </div>
-          <span id="url_p"></span>
+          <!--span id="url_p"></span-->
         </div>
         <div class="row">
           <div class="input-group mb-3">

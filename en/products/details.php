@@ -9,7 +9,7 @@ $result=$conn->query($sql);
 if($result->num_rows>0){
   while($row=$result->fetch_assoc()){
     array_push($id_divisiones,$row['ID']);
-    array_push($divisiones,$row['DIVISION']);
+    array_push($divisiones,$row['DIVISION_EN']);
   }
 }
 //presentaciones
@@ -42,7 +42,7 @@ $result=$conn->query($sql);
 if($result->num_rows>0){
   while($row=$result->fetch_assoc()){
     array_push($id_productos,$row['ID']);
-    array_push($productos,$row['TIPO_PRODUCTO']);
+    array_push($productos,$row['TIPO_PRODUCTO_EN']);
   }
 }
 $section="productos";
@@ -68,7 +68,24 @@ if (isset($_GET['id_prod'])) {
       $id_tipo_producto=$row['IDTIPOPRODUCTO'];
       $key=array_search($id_tipo_producto,$id_productos);
       $tipo_producto=$productos[$key];
+
+       //url ficha tecnica
+      $url_ficha_tecnica = 'pdf.php?id_producto='.$id_producto;
     }
+  }
+}
+
+//validar existencia de ficha tecnica
+$existe_ficha=0;
+$sql_ficha="SELECT COUNT(*) FROM `FICHA_TECNICA`  WHERE `IDPRODUCTO`='$id_producto'";
+$query_ficha = mysqli_query($conn,$sql_ficha);
+if ($r = mysqli_fetch_array($query_ficha)){
+  if ($r[0]>0){
+    //la ficha existe
+    $existe_ficha=1;
+  }else{
+    //no existe ficha
+    $existe_ficha=0;
   }
 }
 ?>
@@ -84,6 +101,7 @@ if (isset($_GET['id_prod'])) {
   <link rel="icon" type="image/png" sizes="16x16" href="/imagen/logo.png">
   <link rel="stylesheet" href="../../assets/vendor/owlcarousel/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="../../assets/vendor/owlcarousel/assets/owl.theme.default.min.css">
+  <link rel="stylesheet" href="../../assets/icons/css/all.min.css">
   <link rel="stylesheet" href="../../css/style.css">
   <link href="../../assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
@@ -100,28 +118,28 @@ if (isset($_GET['id_prod'])) {
       </div>
       <div class="col-12 col-sm-9">
         <div class="row">
-          <h2 class="titulos"><a href="/en/products/details.php?id_prod=<?php echo $id_producto;?>"><?php echo $titulo;?></a></h2>
+        <h2 class="text-danger text-center"><?php echo strtoupper($titulo);?></h2>
         </div>
         <div class="row">
-          <div class="col-3 align-self-center justify-self-start">
+          <!--div class="col-3 align-self-center justify-self-start">
             <?php if ($id_division=='1'){ ?>
-              <img src="/imagen/en/logos/food.png" alt="" width="100%">
+              <!-- <img src="/imagen/en/logos/food.png" alt="" width="100%"> -->
             <?php }elseif ($id_division=='2') { ?>
-              <img src="/imagen/en/logos/especialidades.png" alt="" width="100%">
+              <!-- <img src="/imagen/en/logos/especialidades.png" alt="" width="100%"> -->
             <?php }elseif ($id_division=='3') { ?>
-              <img src="/imagen/en/logos/commodities.png" alt="" width="100%">
+              <!-- <img src="/imagen/en/logos/commodities.png" alt="" width="100%"> -->
             <?php }elseif ($id_division=='4') { ?>
-              <img src="/imagen/en/logos/plastic.png" alt="" width="100%">
+              <!-- <img src="/imagen/en/logos/plastic.png" alt="" width="100%"> -->
             <?php } ?>
-          </div>
-          <div class="col-8">
+          <!--/div-->
+          <div class="col-12">
             <div class="row">
               <span class="text-muted"><?php echo $subtitulo;?></span>
             </div>
             <div class="row align-items-center">
-              <small>SKU: <?php echo $sku;?></small>&nbsp;
-              <small>Category: <a href="/es/productos/index.php?id_div=<?php echo $id_division;?>"><?php echo $division;?></a></small>&nbsp;
-              <small>Tag:<a href="/es/productos/index.php?id_tipo=<?php echo $id_tipo_producto;?>"> <?php echo $tipo_producto;?></a></small>
+            <small class="text-primary"><b>SKU:</b> <?php echo $sku;?></small>&nbsp;
+              <small class="text-primary"><b>Categoria: </b> <a href="/en/products/index.php?id_div=<?php echo $id_division;?>"><?php echo $division;?></a></small>&nbsp;
+              <small class="text-primary"><b>Etiqueta: </b><a href="/en/products/index.php?id_tipo=<?php echo $id_tipo_producto;?>"> <?php echo $tipo_producto;?></a></small>
             </div>
           </div>
         </div>
@@ -134,33 +152,48 @@ if (isset($_GET['id_prod'])) {
               <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Additional Information</a>
             </li>
           </ul>
+        </div>
+        <div class="row mt-3">
           <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
               <div class="container d-block">
                 <div class="row mt-2">
-                  <h2 class="titulos">Description</h2>
+                  <h2 class="text_menu_2">DESCRIPTION</h2>
                 </div>
-                <div class="row text-muted">
+                <div class="row text-muted  text-justify">
                   <?php echo $descripcion;?>
                 </div>
+                <?php
+                if ($existe_ficha){
+                 ?>
                 <div class="row mt-3">
-                  <a href="#">See tecnic data</a>
+                  <a class="ficha-tecnica ficha-tecnica-on" href="<?=$url_ficha_tecnica?>" target='_blank'>See technical data</a>
+                </div>
+                <?php
+                } else{
+                  ?>
+                <div class="row mt-3">
+                  <span class="ficha-tecnica ficha-tecnica-off" >Sin ficha técnica</span>
+                </div>
+                <?php
+                }?>
+                <div class="row mt-3">
+                  <a  href="<?=$url_ficha_tecnica?>" target='_blank'></a>
                 </div>
               </div>
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
               <div class="container">
                 <div class="row mt-2">
-                  <h2 class="titulos">Additional Information</h2>
+                  <h2 class="text_menu_2">ADDITIONAL INFORMATION</h2>
                 </div>
-                <div class="row">
+                <div class="row  my-3">
                   <div class="col-12">
-                    <hr>
                   </div>
-                  <div class="col-3">
-                    <small><strong>Industries</strong></small>
+                  <div class="col-12 col-md-3">
+                     <strong class="text-danger">Industries</strong>
                   </div>
-                  <div class="col-9">
+                  <div class="col-12 col-md-9">
                     <?php
                     $sql="SELECT i.ID,i.INDUSTRIA FROM INDUSTRIAS i INNER JOIN (SELECT pi.IDINDUSTRIA FROM PRODUCTOS_INDUSTRIAS pi WHERE pi.IDPRODUCTO=$id_producto) aux ON i.ID=aux.IDINDUSTRIA";
                     $result=$conn->query($sql);
@@ -169,32 +202,30 @@ if (isset($_GET['id_prod'])) {
                         $id_industria=$row['ID'];
                         $industria=$row['INDUSTRIA'];
                         ?>
-                        <a href="/es/productos/index.php?id_ind=<?php echo $id_industria;?>"><?php echo $industria;?>,</a>
+                        <a href="/en/products/index.php?id_ind=<?php echo $id_industria;?>"><?php echo $industria;?>,</a>
                         <?php
                       }
                     }
                      ?>
                   </div>
                 </div>
-                <div class="row">
+                <div class="row my-3">
                   <div class="col-12">
-                    <hr>
                   </div>
-                  <div class="col-3">
-                    <small><strong>Product type</strong></small>
+                  <div class="col-12 col-md-3">
+                    <strong class="text-danger">Product type</strong>
                   </div>
-                  <div class="col-9">
-                    <a href="/es/productos/index.php?id_tipo=<?php echo $id_tipo_producto;?>"> <?php echo $tipo_producto;?></a>
+                  <div class="col-12 col-md-9">
+                    <a href="/en/products/index.php?id_tipo=<?php echo $id_tipo_producto;?>"> <?php echo $tipo_producto;?></a>
                   </div>
                 </div>
-                <div class="row">
+                <div class="row my-3">
                   <div class="col-12">
-                    <hr>
                   </div>
-                  <div class="col-3">
-                    <small><strong>Other Names</strong></small>
+                  <div class="col-12 col-md-3">
+                   <strong class="text-danger">Other Names</strong>
                   </div>
-                  <div class="col-9">
+                  <div class="col-12 col-md-9">
                     <?php
                     $sql="SELECT o.OTRO_NOMBRE FROM OTROS_NOMBRES o INNER JOIN (SELECT pon.IDOTRONOMBRE FROM PRODUCTOS_OTROS_NOMBRES pon WHERE pon.IDPRODUCTO=$id_producto) aux ON o.ID=aux.IDOTRONOMBRE";
                     $result=$conn->query($sql);
@@ -209,26 +240,24 @@ if (isset($_GET['id_prod'])) {
                      ?>
                   </div>
                 </div>
-                <div class="row">
+                <div class="row my-3">
                   <div class="col-12">
-                    <hr>
                   </div>
-                  <div class="col-3">
-                    <small><strong>Metric Units</strong></small>
+                  <div class="col-12 col-md-3">
+                    <strong class="text-danger">Metric Units</strong>
                   </div>
-                  <div class="col-9">
-                    <a href="/es/productos/index.php?id_unid=<?php echo $id_unidad;?>"><?php echo $unidad;?></a>
+                  <div class="col-12 col-md-9">
+                    <a href="/en/products/index.php?id_unid=<?php echo $id_unidad;?>"><?php echo $unidad;?></a>
                   </div>
                 </div>
-                <div class="row">
+                <div class="row my-3">
                   <div class="col-12">
-                    <hr>
                   </div>
-                  <div class="col-3">
-                    <small><strong>Presentations</strong></small>
+                  <div class="col-12 col-md-3">
+                    <strong class="text-danger">Presentations</strong>
                   </div>
-                  <div class="col-9">
-                    <a href="/es/productos/index.php?id_pres=<?php echo $id_presentacion;?>"><?php echo $presentacion;?></a>
+                  <div class="col-12 col-md-9">
+                    <a href="/en/products/index.php?id_pres=<?php echo $id_presentacion;?>"><?php echo $presentacion;?></a>
                   </div>
                 </div>
               </div>
@@ -239,7 +268,7 @@ if (isset($_GET['id_prod'])) {
           <hr>
         </div>
         <div class="row">
-          <h2 class="titulos">Related Products</h2>
+          <h2 class="text_menu_2">RELATED PRODUCTS</h2>
         </div>
           <!-- Listado de productos relacionados-->
           <?php
@@ -253,29 +282,26 @@ if (isset($_GET['id_prod'])) {
                 $subtitulo=$row['SUBTITULO'];
                 ?>
                 <div class="row mb-2 align-items-center">
-                  <div class="col-12 px-0">
-                    <hr class="bg-dark m-0 mb-2">
-                  </div>
-                  <div class="col-1">
+                  <!--div class="d-none d-lg-block col-1">
                     <?php if($id_division=='1'){ ?>
-                      <img src="/imagen/en/logos/food.png" alt="" width="75px">
+                      <!-- <img src="/imagen/en/logos/food.png" alt="" width="75px"> -->
                     <?php }elseif($id_division=='2'){ ?>
-                      <img src="/imagen/en/logos/especialidades.png" alt="" width="75px">
+                      <!-- <img src="/imagen/en/logos/especialidades.png" alt="" width="75px"> -->
                     <?php }elseif($id_division=='3'){ ?>
-                      <img src="/imagen/en/logos/commodities.png" alt="" width="75px">
+                      <!-- <img src="/imagen/en/logos/commodities.png" alt="" width="75px"> -->
                     <?php }elseif($id_division=='4'){ ?>
-                      <img src="/imagen/en/logos/plastic.png" alt="" width="75px">
+                      <!-- <img src="/imagen/en/logos/plastic.png" alt="" width="75px"> -->
                     <?php } ?>
+                  <!--/div-->
+                  <div class="col-sm-10 col-md-4 col-lg-4">
+                   <a class='productos' href="/en/products/details.php?id_prod=<?php echo $id_producto;?>"><?php echo $titulo;?></a>
                   </div>
-                  <div class="col-2">
-                    <a href="/en/products/details.php?id_prod=<?php echo $id_producto;?>"><?php echo $titulo;?></a>
-                  </div>
-                  <div class="col-7 text-muted">
+                  <div class="col-12 col-md-6 col-lg-6 text-muted">
                     <?php echo $subtitulo;?>
                   </div>
-                  <div class="col-1">
+                  <div class="d-none d-lg-block col-sm-1">
                     <div class="row">
-                      <small>Category</small>
+                      <small class= "text-primary"><b>Category</b></small>
                     </div>
                     <?php
                     $sqlaux="SELECT IDDIVISION FROM PRODUCTOS WHERE ID=$id_producto";
@@ -287,16 +313,20 @@ if (isset($_GET['id_prod'])) {
                         $division=$divisiones[$key];
                         ?>
                         <div class="row">
-                          <a href="/es/productos/index.php?id_div=<?php echo $id_division;?>"><small><?php echo $division;?></small></a>
+                          <a href="/en/products/index.php?id_div=<?php echo $id_division;?>"><small><?php echo $division;?></small></a>
                         </div>
                         <?php
                       }
                     }
                     ?>
                   </div>
-                  <div class="col-1">
-                    <a class="btn btn-sm btn-primary px-3" href="details.php?id_prod=<?php echo $id_producto;?>">See</a>
+                  <div class="col-6 col-sm-1">
+                    <a class="btn btn-sm btn-outline-danger px-3" href="details.php?id_prod=<?php echo $id_producto;?>">See</a>
                   </div>
+                  <div class="col-4"></div>
+                <div class="col-8 px-0 pt-3">
+                  <hr class="bg-muted m-0 mb-2">
+                </div>
                 </div>
                 <?php
               }
@@ -305,6 +335,12 @@ if (isset($_GET['id_prod'])) {
           ?>
       </div>
     </div>
+  </div>
+  <!-- whatsapp -->
+  <div class="whatsapp_div">
+    <a href="https://wa.me/17867029996?texto=Buen%20dia" target="_blank">
+      <img class="whatsapp_image" src="../../imagen/whatsapp.png" alt="whatsapp Button">
+    </a>
   </div>
   <!-- Footer -->
   <?php include '../common/footer.php';?>

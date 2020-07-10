@@ -9,12 +9,12 @@ $result=$conn->query($sql);
 if($result->num_rows>0){
   while($row=$result->fetch_assoc()){
     array_push($id_divisiones,$row['ID']);
-    array_push($divisiones,$row['DIVISION']);
+    array_push($divisiones,$row['DIVISION_EN']);
   }
 }
-$section="productos";
-if(isset($_GET['productos'])){
-  $producto=$_GET['productos'];
+$section="products";
+if(isset($_GET['products'])){
+  $producto=$_GET['products'];
 }else if(isset($_GET['industries'])){
   $industrias=$_GET['industries'];
 }
@@ -53,7 +53,7 @@ if(isset($_GET['id_unid'])){
 }
 ?>
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -64,334 +64,285 @@ if(isset($_GET['id_unid'])){
   <link rel="icon" type="image/png" sizes="16x16" href="/imagen/logo.png">
   <link rel="stylesheet" href="../../assets/vendor/owlcarousel/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="../../assets/vendor/owlcarousel/assets/owl.theme.default.min.css">
+  <link rel="stylesheet" href="../../assets/icons/css/all.min.css">
   <link rel="stylesheet" href="../../css/style.css">
+  <script src="../../js/filtros.js"></script>
   <link href="../../assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Source+Sans+Pro&display=swap" rel="stylesheet">
   <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="../../assets/vendor/owlcarousel/owl.carousel.min.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <title>Eurochem-Us</title>
 </head>
 <body style="background-color:#ffffff;">
   <?php include '../common/menu.php'; include '../common/2domenu.php';?>
   <div class="container px-5 pb-4">
     <div class="row mt-3">
-      <!-- Menu lateral -->
-      <div class="col-12 col-sm-3 mt-2">
-        <div class="row pr-4">
-          <div class="col-12">
-            <h2 class="titulos_blog lead">Search</h2>
-          </div>
-          <div class="col-12">
-            <form action="" method="get">
-              <input type="search" name="search" placeholder="Search products...">
-              <button type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-        <div class="row mt-4 pr-4">
-          <div class="col-12">
-            <h2 class="titulos_blog lead">Divisions</h2>
-          </div>
-          <?php
-          $sqld="SELECT * FROM DIVISIONES";
-          $result=$conn->query($sqld);
-          if($result->num_rows>0){
-            while($row=$result->fetch_assoc()){
-              $id_division=$row['ID'];
-              $division=$row['DIVISION'];
-                if($id_division_get==$id_division){
-                  ?>
-                  <div class="col-12 mt-2 mb-1 div_menu_lateral_active">
-                    <a class="enlace_menu_lateral_active" href="/en/products/index.php?id_div=<?php echo $id_division;?>"><?php echo $division;?></a>
-                    <hr class="my-0">
-                  </div>
-                  <?php
-                }else{
-                  ?>
-                  <div class="col-12 mt-2 mb-1">
-                    <a class="enlace_menu_lateral" href="/en/products/index.php?id_div=<?php echo $id_division;?>"><?php echo $division;?></a>
-                    <hr class="my-0">
-                  </div>
-                  <?php
-                }
-              }
-            }
-           ?>
-        </div>
-        <?php if (isset($_GET['id_div']) || isset($_GET['id_ind']) || isset($_GET['id_tipo'])): ?>
-        <div class="row mt-4 pr-4">
-            <div class="col-12">
-              <h2 class="titulos_blog lead">Products Type</h2>
-            </div>
-            <?php
-            $sqld="SELECT * FROM TIPO_PRODUCTOS";
-            $result=$conn->query($sqld);
-            if($result->num_rows>0){
-              while($row=$result->fetch_assoc()){
-                $id_tipo_producto=$row['ID'];
-                $tipo_producto=$row['TIPO_PRODUCTO'];
-                $complemento_enlace="?id_tipo=$id_tipo_producto";
-                if(isset($_GET['id_div'])){
-                  $complemento_enlace.="&id_div=$id_division_get";
-                }
-                if(isset($_GET['id_ind'])){
-                  $complemento_enlace.="&id_ind=$id_industria_get";
-                }
-                if($id_tipo_producto_get==$id_tipo_producto){
-                  ?>
-                  <div class="col-12 mt-2 mb-1 div_menu_lateral_active">
-                    <a class="enlace_menu_lateral_active" href="/en/products/index.php<?php echo $complemento_enlace;?>"><?php echo $tipo_producto;?></a>
-                    <hr class="my-0">
-                  </div>
-                  <?php
-                }else{
-                  ?>
-                  <div class="col-12 mt-2 mb-1">
-                    <a class="enlace_menu_lateral" href="/en/products/index.php<?php echo $complemento_enlace;?>"><?php echo $tipo_producto;?></a>
-                    <hr class="my-0">
-                  </div>
-                  <?php
-                }
-              }
-            }
-            ?>
-        </div>
-        <div class="row mt-4 pr-4">
-            <div class="col-12">
-              <h2 class="titulos_blog lead">Industries</h2>
-            </div>
-            <?php
-            $sqld="SELECT * FROM INDUSTRIAS";
-            $result=$conn->query($sqld);
-            if($result->num_rows>0){
-              while($row=$result->fetch_assoc()){
-                $id_industria=$row['ID'];
-                $industria=$row['INDUSTRIA'];
-                $complemento_enlace="?id_ind=$id_industria";
-                if(isset($_GET['id_div'])){
-                  $complemento_enlace.="&id_div=$id_division_get";
-                }
-                if(isset($_GET['id_tipo'])){
-                  $complemento_enlace.="&id_tipo=$id_tipo_producto_get";
-                }
-                if($id_industria_get==$id_industria){
-                  ?>
-                  <div class="col-12 mt-2 mb-1 div_menu_lateral_active">
-                    <a class="enlace_menu_lateral_active" href="/en/products/index.php<?php echo $complemento_enlace;?>"><?php echo $industria;?></a>
-                    <hr class="my-0">
-                  </div>
-                  <?php
-                }else{
-                  ?>
-                  <div class="col-12 mt-2 mb-1">
-                    <a class="enlace_menu_lateral" href="/en/products/index.php<?php echo $complemento_enlace;?>"><?php echo $industria;?></a>
-                    <hr class="my-0">
-                  </div>
-                  <?php
-                }
-              }
-            }
-            ?>
-        </div>
-        <?php endif; ?>
-      </div>
-      <div class="col-12 col-sm-9">
+      <!-- Navbar -->
+      <?php include '../common/navbar.php'; ?>
+      <div class="col-12 col-md-8 col-lg-9">
         <!-- Divisiones e industrias imagenes -->
         <?php if(isset($producto) && $producto==1){ ?>
-          <div class="row mt-3">
-            <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
-              <a class="imagen_divisiones_home" href="/es/productos/index.php?id_div=1">
-                <img src="/imagen/es/divisiones/alimentos.png" alt="" width="100%">
-              </a>
-            </div>
-            <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
-              <a class="imagen_divisiones_home" href="/es/productos/index.php?id_div=2">
-                <img src="/imagen/es/divisiones/especialidades.png" alt="" width="100%">
-              </a>
-            </div>
-            <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
-              <a class="imagen_divisiones_home" href="/es/productos/index.php?id_div=3">
-                <img src="/imagen/es/divisiones/genericos.png" alt="" width="100%">
-              </a>
-            </div>
-            <div class="col-12 col-md-6 col-lg-3 mb-4 text-center">
-              <a class="imagen_divisiones_home" href="/es/productos/index.php?id_div=4">
-                <img src="/imagen/es/divisiones/plasticos.png" alt="" width="100%">
-              </a>
+          <div class="container mt-3">
+            <div class="gallery_f_inner row imageGallery1">
+              <div class="col-lg-3 col-sm-6" data-aos="fade-up" data-aos-duration="1500">
+                <div class="h_gallery_item">
+                  <img src="/imagen/divisiones/food.jpg" alt="">
+                  <div class="hover">
+                    <a href="/en/products/index.php?id_div=1">
+                      <h4>Foods</h4>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-sm-6" data-aos="fade-up" data-aos-duration="1500">
+                <div class="h_gallery_item">
+                  <img src="/imagen/divisiones/especialidades.jpg" alt="">
+                  <div class="hover">
+                    <a href="/en/products/index.php?id_div=2">
+                      <h4>Specialty</h4>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-sm-6" data-aos="fade-up" data-aos-duration="1500">
+                <div class="h_gallery_item">
+                  <img src="/imagen/divisiones/genericos.jpg" alt="">
+                  <div class="hover">
+                    <a href="/en/products/index.php?id_div=3">
+                      <h4>Commodities</h4>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-sm-6" data-aos="fade-up" data-aos-duration="1500">
+                <div class="h_gallery_item">
+                  <img src="/imagen/divisiones/plastico.jpg" alt="">
+                  <div class="hover">
+                    <a href="/en/products/index.php?id_div=4">
+                      <h4>Plastics</h4>
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         <?php }else if(isset($industrias) && $industrias==1){ ?>
-          <div class="row justify-content-center align-items-center mt-2">
-            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=1">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/adhesivos.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Adhesives and Glue</span>
+          <div class="container mt-3">
+            <div class="gallery_f_inner row imageGallery1">
+              <div class="col-lg-4 col-sm-6 px-0" data-aos="fade-up" data-aos-duration="1500">
+                <div class="h_gallery_item">
+                  <img src="/imagen/industrias/adhesivos.jpg" alt="">
+                  <div class="hover">
+                    <a href="/en/products/index.php?id_ind=1">
+                      <h4>Adhesives and glues</h4>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=3">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/construccion.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Building</span>
+              <div class="col-lg-4 col-sm-6 px-0" data-aos="fade-up" data-aos-duration="1500">
+                <div class="h_gallery_item">
+                  <img src="/imagen/industrias/construccion.jpg" alt="">
+                  <div class="hover">
+                    <a href="/en/products/index.php?id_ind=3">
+                      <h4>Building</h4>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=4">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/farma.jpg" alt="">
-                <div class="div_text_industria text-center">
-                  <div class="text_span text-white text-center">Pharmaceuticals and Cosmetics</div>
+              <div class="col-lg-4 col-sm-6 px-0" data-aos="fade-up" data-aos-duration="1500">
+                <div class="h_gallery_item">
+                  <img src="/imagen/industrias/farma.jpg" alt="">
+                  <div class="hover">
+                    <a href="/en/products/index.php?id_ind=4">
+                      <h4>Pharma and cosmetics</h4>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=5">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/ingenios.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Sugar mills</span>
+              <div class="col-lg-4 col-sm-6 px-0" data-aos="fade-up" data-aos-duration="1500">
+                <div class="h_gallery_item">
+                  <img src="/imagen/industrias/ingenios.jpg" alt="">
+                  <div class="hover">
+                    <a href="/en/products/index.php?id_ind=5">
+                      <h4>Sugar mills</h4>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=6">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/petroleos.jpg" alt="">
-                <div class="div_text_industria">
-                  <div class="text_span text-white">Petroleum</div>
+              <div class="col-lg-4 col-sm-6 px-0" data-aos="fade-up" data-aos-duration="1500">
+                <div class="h_gallery_item">
+                  <img src="/imagen/industrias/petroleos.jpg" alt="">
+                  <div class="hover">
+                    <a href="/en/products/index.php?id_ind=6">
+                      <h4>Petroleum</h4>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=8">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/telas.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Textiles ang Garments</span>
+              <div class="col-lg-4 col-sm-6 px-0" data-aos="fade-up" data-aos-duration="1500">
+                <div class="h_gallery_item">
+                  <img src="/imagen/industrias/telas.jpg" alt="">
+                  <div class="hover">
+                    <a href="/en/products/index.php?id_ind=8">
+                      <h4>Textile and garments</h4>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=9">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/agro.jpg" alt="">
-                <div class="div_text_industria">
-                  <div class="text_span text-white">Agro</div>
+              <div class="col-lg-4 col-sm-6 px-0" data-aos="fade-up" data-aos-duration="1500">
+                <div class="h_gallery_item">
+                  <img src="/imagen/industrias/agro.jpg" alt="">
+                  <div class="hover">
+                    <a href="/en/products/index.php?id_ind=9">
+                      <h4>Agro</h4>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=10">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/aseo.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Cleaning</span>
+              <div class="col-lg-4 col-sm-6 px-0" data-aos="fade-up" data-aos-duration="1500">
+                <div class="h_gallery_item">
+                  <img src="/imagen/industrias/aseo.jpg" alt="">
+                  <div class="hover">
+                    <a href="/en/products/index.php?id_ind=10">
+                      <h4>Cleanliness</h4>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=11">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/cuero.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Leather</span>
+              <div class="col-lg-4 col-sm-6 px-0" data-aos="fade-up" data-aos-duration="1500">
+                <div class="h_gallery_item">
+                  <img src="/imagen/industrias/cuero.jpg" alt="">
+                  <div class="hover">
+                    <a href="/en/products/index.php?id_ind=11">
+                      <h4>Leather</h4>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=12">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/impresion.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Printing</span>
+              <div class="col-lg-4 col-sm-6 px-0" data-aos="fade-up" data-aos-duration="1500">
+                <div class="h_gallery_item">
+                  <img src="/imagen/industrias/impresion.jpg" alt="">
+                  <div class="hover">
+                    <a href="/en/products/index.php?id_ind=12">
+                      <h4>Printing</h4>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=13">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/otras.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Other Industries</span>
+              <div class="col-lg-4 col-sm-6 px-0" data-aos="fade-up" data-aos-duration="1500">
+                <div class="h_gallery_item">
+                  <img src="/imagen/industrias/otras.jpg" alt="">
+                  <div class="hover">
+                    <a href="/en/products/index.php?id_ind=13">
+                      <h4>Other industries</h4>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=14">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/plasticos.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Plastics</span>
+              <div class="col-lg-4 col-sm-6 px-0" data-aos="fade-up" data-aos-duration="1500">
+                <div class="h_gallery_item">
+                  <img src="/imagen/industrias/plasticos.jpg" alt="">
+                  <div class="hover">
+                    <a href="/en/products/index.php?id_ind=14">
+                      <h4>Plastics</h4>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=15">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/recubrimientos.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Coverings</span>
+              <div class="col-lg-4 col-sm-6 px-0" data-aos="fade-up" data-aos-duration="1500">
+                <div class="h_gallery_item">
+                  <img src="/imagen/industrias/recubrimientos.jpg" alt="">
+                  <div class="hover">
+                    <a href="/en/products/index.php?id_ind=15">
+                      <h4>Coatings</h4>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=16">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/tratamiento.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Water treatment</span>
+              <div class="col-lg-4 col-sm-6 px-0" data-aos="fade-up" data-aos-duration="1500">
+                <div class="h_gallery_item">
+                  <img src="/imagen/industrias/tratamiento.jpg" alt="">
+                  <div class="hover">
+                    <a href="/en/products/index.php?id_ind=16">
+                      <h4>Water treatment</h4>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=17">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/animal.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Feed</span>
+              <div class="col-lg-4 col-sm-6 px-0" data-aos="fade-up" data-aos-duration="1500">
+                <div class="h_gallery_item">
+                  <img src="/imagen/industrias/animal.jpg" alt="">
+                  <div class="hover">
+                    <a href="/en/products/index.php?id_ind=17">
+                      <h4>Animal feeding</h4>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=18">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/comercializadores.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Retail</span>
+              <div class="col-lg-4 col-sm-6 px-0" data-aos="fade-up" data-aos-duration="1500">
+                <div class="h_gallery_item">
+                  <img src="/imagen/industrias/comercializadores.jpg" alt="">
+                  <div class="hover">
+                    <a href="/en/products/index.php?id_ind=18">
+                      <h4>Marketers</h4>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=20">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/industria.jpg" alt="">
-                <div class="div_text_industria">
-                  <div class="text_span text-white">Chemical Industry</div>
+              <div class="col-lg-4 col-sm-6 px-0" data-aos="fade-up" data-aos-duration="1500">
+                <div class="h_gallery_item">
+                  <img src="/imagen/industrias/industria.jpg" alt="">
+                  <div class="hover">
+                    <a href="/en/products/index.php?id_ind=20">
+                      <h4>Chemical industry</h4>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=21">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/papel.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Pulp and paper</span>
+              <div class="col-lg-4 col-sm-6 px-0" data-aos="fade-up" data-aos-duration="1500">
+                <div class="h_gallery_item">
+                  <img src="/imagen/industrias/papel.jpg" alt="">
+                  <div class="hover">
+                    <a href="/en/products/index.php?id_ind=21">
+                      <h4>Paper and paperboard</h4>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </a>
-            <a class="enlace_img_industrias mx-1" href="/en/products/index.php?id_ind=22">
-              <div class="contenedor_img_industrias mt-3">
-                <img class="img_industrias" src="/imagen/industrias/metal.jpg" alt="">
-                <div class="div_text_industria">
-                  <span class="text_span text-white">Metal products</span>
+              <div class="col-lg-4 col-sm-6 px-0" data-aos="fade-up" data-aos-duration="1500">
+                <div class="h_gallery_item">
+                  <img src="/imagen/industrias/metal.jpg" alt="">
+                  <div class="hover">
+                    <a href="/en/products/index.php?id_ind=22">
+                      <h4>Metal products</h4>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </a>
+            </div>
           </div>
         <?php } ?>
         <div class="row mb-2">
           <?php if(isset($_GET['id_div']) && $_GET['id_div']=="1"){ ?>
+            <h1 class="text-danger">FOOD</h1>
           <p class="text-muted">
-            La División de Alimentos de EuroChem está enfocada en la atención de los principales sectores de la industria de Alimentos (Cárnicos, Lácteos, Bebidas, Nutracéuticos, Salsas, etc.) y cuenta con un amplio portafolio de ingredientes dirigidos a la mejora de atributos tales como: textura, conservación, sabor, entre otros. Disponemos de un equipo técnico y comercial especializado para proporcionar soluciones integrales a nuestros clientes en el mejoramiento y desarrollo de sus productos. Nuestra labor se fundamenta en las alianzas estratégicas con prestigiosas casas productoras, las cuales mantienen los más altos estándares de calidad, servicio, innovación y responsabilidad con el consumidor final.
+          EuroChem's Food Division is focused on serving the main sectors of the Food industry (Meat, Dairy, Beverages, Nutraceuticals, Sauces, etc.) and has a broad portfolio of ingredients aimed at improving attributes such as : texture, conservation, flavor, among others. We have a specialized technical and commercial team to provide comprehensive solutions to our clients in the improvement and development of their products. Our work is based on strategic alliances with prestigious production houses, which maintain the highest standards of quality, service, innovation and responsibility with the final consumer.
           </p>
         <?php }elseif(isset($_GET['id_div']) && $_GET['id_div']=="2"){ ?>
           <p class="text-muted">
-            Ofrecemos un portafolio integral de especialidades químicas para múltiples sectores industriales, como recubrimientos, polimerización, formuladores, aseo, plásticos, petróleos, construcción, entre otros. En nuestra extensa gama de productos se destacan pigmentos, resinas, aditivos de formulación para recubrimientos y tensoactivos para variadas aplicaciones. Trabajamos con casas productoras reconocidas por su calidad y tecnología. Contamos con un laboratorio de aplicaciones que nos permite ofrecer acompañamiento en la homologación, uso de nuestros productos y asesoría en el desarrollo de formulaciones.
+          <h1 class="text-danger">SPECIALTY</h1>
+          We offer a comprehensive portfolio of chemical specialties for multiple industrial sectors, such as coatings, polymerization, formulators, cleaning, plastics, oils, construction, among others. Pigments, resins, formulation additives for coatings and surfactants for various applications stand out in our extensive range of products. We work with production houses recognized for their quality and technology. We have an applications laboratory that allows us to offer support in the approval, use of our products and advice in the development of formulations.
           </p>
         <?php }elseif(isset($_GET['id_div']) && $_GET['id_div']=="3"){ ?>
+          <h1 class="text-danger">COMMODITIES</h1>
           <p class="text-muted">
-            En esta división de negocios, EuroChem agrupa una amplia oferta de insumos químicos para diversas industrias, con mayor énfasis en recubrimientos, aseo, fabricación de intermediarios químicos, alimentos y bebidas, adhesivos y pegantes, textiles, petróleos, farma, cosméticos, agro, construcción, nutrición animal, cuero y papel. Los productos de esta división se presentan en formas líquidas y sólidas, representan un amplio espectro de la química inorgánica (ácidos, bases, sales, pigmentos, etc.) y de la química orgánica (solventes alifáticos, aromáticos, clorados, alcoholes, cetonas, acetatos, tensoactivos aniónicos y no iónicos, entre otros).
+          In this business division, Eurochemus brings together a wide range of chemical inputs for various industries, with a greater emphasis on coatings, cleaning, chemical intermediates manufacturing, food and beverages, adhesives and glues, textiles, oil, pharma, cosmetics, agriculture, construction , animal nutrition, leather and paper. The products of this division are presented in liquid and solid forms, they represent a broad spectrum of inorganic chemistry (acids, bases, salts, pigments, etc.) and organic chemistry (aliphatic, aromatic, chlorinated solvents, alcohols, ketones, acetates, anionic and nonionic surfactants, among others).
           </p>
         <?php }elseif(isset($_GET['id_div']) && $_GET['id_div']=="4"){ ?>
+          <h1 class="text-danger">PLASTICS</h1>
           <p class="text-muted">
-            Proveemos soluciones integrales para la industria del plástico, ofreciendo un amplio portafolio de resinas genéricas y especializadas para la transformación por procesos de inyección, soplado, extrusión y expansión. Contamos con proveedores que son nuestros aliados para llevar a los clientes un producto con altos estándares de calidad, soporte técnico y oportunidad en la entrega.
+          We provide comprehensive solutions for the plastics industry, offering a broad portfolio of generic and specialized resins for transformation by injection, blowing, extrusion and expansion processes. We have suppliers that are our allies to bring customers a product with high quality standards, technical support and delivery opportunity.
           </p>
         <?php } ?>
         </div>
@@ -400,6 +351,9 @@ if(isset($_GET['id_unid'])){
         if($sql_ppal!=""){
           $result=$conn->query($sql_ppal);
           if($result->num_rows>0){
+            ?>
+            <div><h2 class="titulos">PRODUCTS</h2></div>
+            <?php
             while($row=$result->fetch_assoc()){
               $id_producto=$row['ID'];
               $titulo=$row['TITULO'];
@@ -407,29 +361,21 @@ if(isset($_GET['id_unid'])){
               $id_division_bd=$row['IDDIVISION'];
               ?>
               <div class="row mb-2 align-items-center">
-                <div class="col-12 px-0">
-                  <hr class="bg-dark m-0 mb-2">
-                </div>
-                <div class="col-1">
-                  <?php if ($id_division_bd=='1'){ ?>
-                    <img src="/imagen/en/logos/food.png" alt="" width="75px">
-                  <?php }elseif ($id_division_bd=='2') { ?>
-                    <img src="/imagen/en/logos/especialty.png" alt="" width="75px">
-                  <?php }elseif ($id_division_bd=='3') { ?>
-                    <img src="/imagen/en/logos/commodities.png" alt="" width="75px">
-                  <?php }elseif ($id_division_bd=='4') {  ?>
-                    <img src="/imagen/en/logos/plastic.png" alt="" width="75px">
-                  <?php } ?>
-                </div>
-                <div class="col-2">
-                  <a href="details.php?id_prod=<?php echo $id_producto;?>"><?php echo $titulo;?></a>
-                </div>
-                <div class="col-7 text-muted">
+              <div class="col-sm-10 col-md-4 col-lg-4">
+                <b>
+                  <a class='productos' href="details.php?id_prod=<?php echo $id_producto;?>"><?php echo $titulo;?></a>
+                </b>
+              </div>
+                <div class="col-12 col-md-6 col-lg-6 text-muted">
                   <?php echo $subtitulo;?>
                 </div>
-                <div class="col-1">
+                <div class="d-none d-lg-block col-sm-1">
                   <div class="row">
-                    <small>Category</small>
+                  <small class= "text-primary">
+                      <b>
+                      Category
+                      </b>
+                      </small>
                   </div>
                   <?php
                   $sqlaux="SELECT IDDIVISION FROM PRODUCTOS WHERE ID=$id_producto";
@@ -441,15 +387,19 @@ if(isset($_GET['id_unid'])){
                       $division=$divisiones[$key];
                       ?>
                       <div class="row">
-                        <a href="/es/productos/index.php?id_div=<?php echo $id_division;?>"><small><?php echo $division;?></small></a>
+                        <a href="/en/products/index.php?id_div=<?php echo $id_division;?>"><small><?php echo $division;?></small></a>
                       </div>
                       <?php
                     }
                   }
                   ?>
                 </div>
-                <div class="col-1">
-                  <a class="btn btn-sm btn-primary px-3" href="details.php?id_prod=<?php echo $id_producto;?>">See</a>
+                <div class="col-6 col-sm-1">
+                  <a class="btn btn-sm btn-outline-danger px-3" href="details.php?id_prod=<?php echo $id_producto;?>">See</a>
+                </div>
+                <div class="col-4"></div>
+                <div class="col-8 px-0 pt-3">
+                  <hr class="bg-muted m-0 mb-2">
                 </div>
               </div>
               <?php
@@ -459,6 +409,12 @@ if(isset($_GET['id_unid'])){
         ?>
       </div>
     </div>
+  </div>
+  <!-- whatsapp -->
+  <div class="whatsapp_div">
+    <a href="https://wa.me/17867029996?texto=Buen%20dia" target="_blank">
+      <img class="whatsapp_image" src="../../imagen/whatsapp.png" alt="whatsapp Button">
+    </a>
   </div>
   <!-- Footer -->
   <?php include '../common/footer.php';?>
@@ -478,5 +434,9 @@ if(isset($_GET['id_unid'])){
   </script>
   <script src="../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
   <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>
