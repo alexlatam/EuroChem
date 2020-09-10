@@ -359,7 +359,7 @@ $section = "home";
           <h2 class="titulos">PRODUCTO DEL MES</h2>
         </div>
         <div class="row py-5 justify-content-center">
-          <img src="/imagen/<?php echo $row['VALOR']; ?>" style="max-height:35vh!important;"/>
+          <img src="/imagen/<?php echo $row['VALOR']; ?>" style="max-height:35vh!important;" />
         </div>
       </section>
   <?php }
